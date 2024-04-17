@@ -76,7 +76,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.hotelmanagementsystemfx/com.example.hotelmanagementsystemfx.HelloApplication
+                                com.example.hotelmanagementsystemfx/com.example.hotelmanagementsystemfx.App
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
