@@ -14,6 +14,8 @@ module com.example.hotelmanagementsystemfx {
     exports com.example.hotelmanagementsystemfx.Controllers.Manager;
     exports com.example.hotelmanagementsystemfx.Controllers.Maid;
 
+    exports com.example.hotelmanagementsystemfx.DB;
+
     exports com.example.hotelmanagementsystemfx.Views;
     exports com.example.hotelmanagementsystemfx.Models;
 

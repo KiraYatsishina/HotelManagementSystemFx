@@ -1,22 +1,10 @@
 
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-v
-Fsrc/main/resources/com/example/hotelmanagementsystemfx/hello-view.fxml,6\f\6fd17880848552f79abc2ef72ce5e596185bce2a
-v
-Fsrc/main/java/com/example/hotelmanagementsystemfx/HelloController.java,b\4\b42e26677f7a1db4fcd7914827c5d747cc58bbd2
-w
-Gsrc/main/java/com/example/hotelmanagementsystemfx/HelloApplication.java,b\5\b5d04f81ce29d96933c9cbdbe1a4d321be7a355a
 N
 src/main/java/module-info.java,1\c\1c89a5491fbfda3fb050196d6a239f20200296e7
-É
-Ssrc/main/java/com/example/hotelmanagementsystemfx/Controllers/HelloApplication.java,a\b\abdbf59c0d7b99e70c3c21444eba194bfef37376
-v
-Fsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/App.java,0\6\065fbf47e68d833694135a5ec9b3d0373a2a8db2
 j
 :src/main/java/com/example/hotelmanagementsystemfx/App.java,b\0\b0a164a959ed8f9637fbab5e90be956fa0526f72
-Ä
-Psrc/main/java/com/example/hotelmanagementsystemfx/Controllers/AppController.java,2\f\2f5114a05162dd6c1870d4638bdaa40bc4489b92
 x
 Hsrc/main/java/com/example/hotelmanagementsystemfx/Views/ViewFactory.java,c\e\ce3f71a27fb943065afea0ac88e5f132b0530afe
 ò
@@ -37,3 +25,11 @@ Q.idea/sonarlint/securityhotspotstore/1/c/1c89a5491fbfda3fb050196d6a239f20200296
 Q.idea/sonarlint/securityhotspotstore/0/6/065fbf47e68d833694135a5ec9b3d0373a2a8db2,2\1\21ad9a85039c152b68ca1a53b571400996496721
 Å
 Q.idea/sonarlint/securityhotspotstore/a/b/abdbf59c0d7b99e70c3c21444eba194bfef37376,8\0\8008f6304ae95105fcb7b4af13e5c638c639e218
+q
+Asrc/main/java/com/example/hotelmanagementsystemfx/DB/Configs.java,6\6\66aae658e1ac9f1b230a5b573a4c16039bc2fde9
+o
+?src/main/java/com/example/hotelmanagementsystemfx/DB/Const.java,4\0\40e8ca80dbe5fadfbe3f7a2e255dcf33f1743176
+y
+Isrc/main/java/com/example/hotelmanagementsystemfx/DB/DatabaseHandler.java,7\e\7e167a8b2b8aeff6a496537d03f0b4bc8bd0c412
+o
+?src/main/java/com/example/hotelmanagementsystemfx/Register.java,4\0\40490921a2df6793839aa70db3bb9d87027abd0e
