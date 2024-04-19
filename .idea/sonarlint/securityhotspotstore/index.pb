@@ -21,10 +21,6 @@ w
 G.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7,a\2\a23fecf281bfe300797f845cbd9ec9025ab4ec47
 Å
 Q.idea/sonarlint/securityhotspotstore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7,1\d\1d6f137ed1f3d2f0a99dd6a0a153e6f9abc39407
-Å
-Q.idea/sonarlint/securityhotspotstore/0/6/065fbf47e68d833694135a5ec9b3d0373a2a8db2,2\1\21ad9a85039c152b68ca1a53b571400996496721
-Å
-Q.idea/sonarlint/securityhotspotstore/a/b/abdbf59c0d7b99e70c3c21444eba194bfef37376,8\0\8008f6304ae95105fcb7b4af13e5c638c639e218
 q
 Asrc/main/java/com/example/hotelmanagementsystemfx/DB/Configs.java,6\6\66aae658e1ac9f1b230a5b573a4c16039bc2fde9
 o
