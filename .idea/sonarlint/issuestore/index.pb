@@ -29,3 +29,13 @@ y
 Isrc/main/java/com/example/hotelmanagementsystemfx/DB/DatabaseHandler.java,7\e\7e167a8b2b8aeff6a496537d03f0b4bc8bd0c412
 o
 ?src/main/java/com/example/hotelmanagementsystemfx/Register.java,4\0\40490921a2df6793839aa70db3bb9d87027abd0e
+ú
+lsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Administrator/AdministratorMenuController.java,9\9\99041213c5ddd985c29152b291c482ef32f61754
+ä
+Zsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MaidMenuController.java,4\1\4152612423c87dbf86b0add7f7fa90d644e6f873
+ê
+`src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/ManagerMenuController.java,d\6\d66f3f78871f0838966e63a28b8a9838bc7ca1f4
+ç
+]src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/HomePageController.java,0\e\0ebb9a799c7c6f6f7f34c7739b98d3a2934b187e
+å
+\src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/TopMenuController.java,e\b\eb346f45fde5995e0ba38f605c3e65a34edf1668

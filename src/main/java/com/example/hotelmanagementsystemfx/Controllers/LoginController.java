@@ -1,15 +1,19 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
 
+import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
-public class LoginController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LoginController implements Initializable {
     @FXML
     private Label error_label;
 
@@ -25,8 +29,14 @@ public class LoginController {
     @FXML
     private ImageView visibilityPassword_image;
 
-    @FXML
-    protected void onLoginButtonClick() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        login_button.setOnAction(actionEvent -> onLogin());
+    }
 
+    private void onLogin(){
+        Stage stage =  (Stage) error_label.getScene().getWindow();
+        Model.getInstance().getViewFactory().closeStage(stage);
+        Model.getInstance().getViewFactory().showManagerWindow();
     }
 }
