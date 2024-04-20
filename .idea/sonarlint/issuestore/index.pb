@@ -39,3 +39,11 @@ Zsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MaidMenuCont
 ]src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/HomePageController.java,0\e\0ebb9a799c7c6f6f7f34c7739b98d3a2934b187e
 Œ
 \src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/TopMenuController.java,e\b\eb346f45fde5995e0ba38f605c3e65a34edf1668
+Ž
+^src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/EmployeesController.java,b\9\b9912a60955afa35725282e441e3c40349841c56
+‰
+Ysrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/MenuController.java,8\3\83587c2b033d3454e9eee993d1e3d17252f4bf78
+Œ
+\src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/ClientsController.java,5\8\58e7abe8dbc557790318eb3cbfb7a6f8fc28474c
+
+Osrc/main/java/com/example/hotelmanagementsystemfx/Views/ManagerMenuOptions.java,5\7\5772c2210e06ce4307af68c6ae3481b45fdf1e06

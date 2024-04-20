@@ -20,4 +20,5 @@ module com.example.hotelmanagementsystemfx {
     exports com.example.hotelmanagementsystemfx.Models;
 
     opens com.example.hotelmanagementsystemfx.Controllers to javafx.fxml;
+    opens com.example.hotelmanagementsystemfx.Controllers.Manager;
 }

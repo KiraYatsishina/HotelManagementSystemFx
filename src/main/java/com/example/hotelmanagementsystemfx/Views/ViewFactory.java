@@ -1,31 +1,59 @@
 package com.example.hotelmanagementsystemfx.Views;
 
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ManagerController;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class ViewFactory {
     // Manager Views
-    private AnchorPane managerHomePage;
+    private final ObjectProperty<ManagerMenuOptions> managerSelectedMenuItem;
+    private AnchorPane managerHomePageView;
+    private AnchorPane employeesView;
+    private AnchorPane clientsView;
 
     public ViewFactory(){
+        this.managerSelectedMenuItem = new SimpleObjectProperty<>();
+    }
+    public ObjectProperty<ManagerMenuOptions> getManagerSelectedMenuItem() {
+        return managerSelectedMenuItem;
     }
     public AnchorPane getManagerHomePage(){
-        if(managerHomePage == null){
+        if(managerHomePageView == null){
             try{
-                managerHomePage = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/ManagerMenu.fxml")).load();
+                managerHomePageView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/HomePage.fxml")).load();
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
-        return managerHomePage;
+        return managerHomePageView;
     }
-
+    public AnchorPane getEmployeesView() {
+        if(employeesView == null){
+            try{
+                employeesView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/Employees.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return employeesView;
+    }
+    public AnchorPane getClientsView() {
+        if(clientsView == null){
+            try{
+                clientsView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/Clients.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return clientsView;
+    }
     public void showLoginWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Login.fxml"));
         Scene scene = null;
