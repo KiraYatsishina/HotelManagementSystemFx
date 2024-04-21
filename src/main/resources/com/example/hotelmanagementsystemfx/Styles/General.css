@@ -1,11 +1,53 @@
+.login_button{
+    -fx-background-color: #374652;
+    -fx-text-fill: white;
+    -fx-background-radius: 10;
+}
+
+.login_button:hover{
+    -fx-background-color: #6c7b82;
+    -fx-font-weight: bold;
+}
+.login_button:pressed{
+    -fx-background-color: #fae1ab;
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-text-fill: black;
+    -fx-border-color: white;
+    -fx-border-radius: 10;
+    -fx-font-family: "Yu Gothic";
+}
+
 .menu_button{
     -fx-background-radius: 0;
     -fx-background-color: #151b26;
     -fx-label-padding: 0 0 0 30;
     -fx-graphic-text-gap: 10;
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: "Yu Gothic";
+}
+.menu_button:hover {
+    -fx-background-color: #273240;
+    -fx-font-weight: bold;
+}
+.menu_button_pressed {
+    -fx-label-padding: 0 0 0 30;
+    -fx-background-color: #383d47;
+    -fx-border-image-width: 0 10 0 0;
+    -fx-graphic-text-gap: 10;
 }
 
-.menu_button_hover {
-    -fx-background-color: #273240;
+.logout_button{
+    -fx-background-color: #9c171d;
+    -fx-background-radius: 10;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-radius: 10;
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: "Yu Gothic";
+}
+.logout_button:hover {
     -fx-font-weight: bold;
 }

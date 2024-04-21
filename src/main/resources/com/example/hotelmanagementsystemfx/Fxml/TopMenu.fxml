@@ -14,7 +14,7 @@
          <children>
             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/whiteWave.png" />
+                  <Image url="@../Images/whiteWave.png" />
                </image>
                <HBox.margin>
                   <Insets left="30.0" top="5.0" />

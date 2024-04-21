@@ -72,7 +72,7 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="login_button" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #374652; -fx-text-fill: white; -fx-background-radius: 10;" text="Login">
+            <Button fx:id="login_button" mnemonicParsing="false" prefHeight="35.0" prefWidth="220.0" styleClass="login_button" stylesheets="@../Styles/General.css" text="Login">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>

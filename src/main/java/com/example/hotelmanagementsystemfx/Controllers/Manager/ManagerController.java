@@ -15,6 +15,12 @@ public class ManagerController implements Initializable {
             switch (newVal){
                 case EMPLOYEES -> manager_parent.setCenter(Model.getInstance().getViewFactory().getEmployeesView());
                 case CLIENTS -> manager_parent.setCenter(Model.getInstance().getViewFactory().getClientsView());
+                case RESERVATIONS -> manager_parent.setCenter(Model.getInstance().getViewFactory().getReservationsView());
+                case SERVICE_ORDERS -> manager_parent.setCenter(Model.getInstance().getViewFactory().getServiceOrdersView());
+                case ROOMS -> manager_parent.setCenter(Model.getInstance().getViewFactory().getRoomsView());
+                case ADD_ROOM -> manager_parent.setCenter(Model.getInstance().getViewFactory().getAddRoomView());
+                case ADD_EMPLOYEE -> manager_parent.setCenter(Model.getInstance().getViewFactory().getAddEmployeeView());
+                case SETTINGS -> manager_parent.setCenter(Model.getInstance().getViewFactory().getSettingsView());
                 default -> manager_parent.setCenter(Model.getInstance().getViewFactory().getManagerHomePage());
             }
         });

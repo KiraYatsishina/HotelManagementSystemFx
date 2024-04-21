@@ -5,7 +5,7 @@
 <BorderPane fx:id="manager_parent" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml">
     <top>
-        <fx:include source="TopMenu.fxml"/>
+        <fx:include source="../TopMenu.fxml"/>
     </top>
     <left>
         <fx:include source="ManagerMenu.fxml"/>

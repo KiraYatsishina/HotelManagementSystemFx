@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Manager.AddRoomController">
+   <children>
+      <Text layoutX="387.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add Room">
+         <font>
+            <Font name="Yu Gothic Regular" size="45.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

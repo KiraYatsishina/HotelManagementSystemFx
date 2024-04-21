@@ -2,6 +2,7 @@ package com.example.hotelmanagementsystemfx.Controllers;
 
 
 import com.example.hotelmanagementsystemfx.Models.Model;
+import com.example.hotelmanagementsystemfx.Views.AccountType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -37,6 +38,12 @@ public class LoginController implements Initializable {
     private void onLogin(){
         Stage stage =  (Stage) error_label.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
-        Model.getInstance().getViewFactory().showManagerWindow();
+        if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.MANAGER){
+            Model.getInstance().getViewFactory().showManagerWindow();
+        }else if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.ADMINISTRATOR){
+            Model.getInstance().getViewFactory().showManagerWindow();
+        }else{
+            Model.getInstance().getViewFactory().showManagerWindow();
+        }
     }
 }

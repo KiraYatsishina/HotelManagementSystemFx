@@ -43,7 +43,7 @@
          </children></HBox>
       <VBox prefHeight="650.0" prefWidth="270.0">
          <children>
-            <Button fx:id="home_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style="-fx-background-color: #383d47; -fx-label-padding: 0 0 0 30; -fx-border-image-width: 0 10 0 0; -fx-graphic-text-gap: 10;" text="Home" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="home_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="menu_button_pressed" text="Home" textFill="WHITE" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -96,7 +96,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="reservations_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style=": ;" styleClass="menu_button" text="Reservations" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="reservations_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="menu_button" text="Reservations" textFill="WHITE" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -208,7 +208,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="logOut_button" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #b40707; -fx-background-radius: 10; -fx-text-fill: white;" text="Log out">
+            <Button fx:id="logOut_button" mnemonicParsing="false" prefHeight="35.0" prefWidth="180.0" styleClass="logout_button" text="Log out">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -220,7 +220,7 @@
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
                <VBox.margin>
-                  <Insets left="75.0" top="135.0" />
+                  <Insets left="60.0" top="135.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
