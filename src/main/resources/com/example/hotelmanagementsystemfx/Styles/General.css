@@ -21,7 +21,7 @@
 .menu_button{
     -fx-background-radius: 0;
     -fx-background-color: #151b26;
-    -fx-label-padding: 0 0 0 30;
+    -fx-label-padding: 0 0 0 35;
     -fx-graphic-text-gap: 10;
     -fx-font-size: 16;
     -fx-font-weight: normal;
@@ -32,7 +32,7 @@
     -fx-font-weight: bold;
 }
 .menu_button_pressed {
-    -fx-label-padding: 0 0 0 30;
+    -fx-label-padding: 0 0 0 35;
     -fx-background-color: #383d47;
     -fx-border-image-width: 0 10 0 0;
     -fx-graphic-text-gap: 10;

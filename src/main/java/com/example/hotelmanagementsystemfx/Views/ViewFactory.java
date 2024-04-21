@@ -1,5 +1,6 @@
 package com.example.hotelmanagementsystemfx.Views;
 
+import com.example.hotelmanagementsystemfx.Controllers.Administrator.AdministratorController;
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ManagerController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -11,21 +12,30 @@ import javafx.stage.Stage;
 
 public class ViewFactory {
     private AccountType loginAccountType;
+
     // Manager Views
     private final ObjectProperty<ManagerMenuOptions> managerSelectedMenuItem;
     private AnchorPane managerHomePageView;
     private AnchorPane employeesView;
+    private AnchorPane addRoomView;
+    private AnchorPane addEmployeeView;
+
+    // Administrator Views
+    private final ObjectProperty<AdministratorMenuOptions> administratorSelectedMenuItem;
+    private AnchorPane administratorHomePageView;
+    private AnchorPane newReservationView;
+    private AnchorPane newServiceOrderView;
+    // General
     private AnchorPane clientsView;
     private AnchorPane reservationsView;
     private AnchorPane serviceOrdersView;
     private AnchorPane roomsView;
-    private AnchorPane addRoomView;
-    private AnchorPane addEmployeeView;
     private AnchorPane settingsView;
 
     public ViewFactory(){
-        this.loginAccountType = AccountType.MANAGER;
+        this.loginAccountType = AccountType.ADMINISTRATOR;
         this.managerSelectedMenuItem = new SimpleObjectProperty<>();
+        this.administratorSelectedMenuItem = new SimpleObjectProperty<>();
     }
 
     public AccountType getLoginAccountType() {
@@ -39,7 +49,10 @@ public class ViewFactory {
     public ObjectProperty<ManagerMenuOptions> getManagerSelectedMenuItem() {
         return managerSelectedMenuItem;
     }
-    public AnchorPane getManagerHomePage(){
+    public ObjectProperty<AdministratorMenuOptions> getAdministratorSelectedMenuItem() {
+        return administratorSelectedMenuItem;
+    }
+    public AnchorPane getManagerHomePageView(){
         if(managerHomePageView == null){
             try{
                 managerHomePageView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/HomePage.fxml")).load();
@@ -62,7 +75,7 @@ public class ViewFactory {
     public AnchorPane getClientsView() {
         if(clientsView == null){
             try{
-                clientsView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/Clients.fxml")).load();
+                clientsView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Clients.fxml")).load();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -73,7 +86,7 @@ public class ViewFactory {
     public AnchorPane getReservationsView() {
         if(reservationsView == null){
             try{
-                reservationsView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/Reservations.fxml")).load();
+                reservationsView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Reservations.fxml")).load();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -83,7 +96,7 @@ public class ViewFactory {
     public AnchorPane getServiceOrdersView() {
         if(serviceOrdersView == null){
             try{
-                serviceOrdersView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/ServiceOrders.fxml")).load();
+                serviceOrdersView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/ServiceOrders.fxml")).load();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -93,7 +106,7 @@ public class ViewFactory {
     public AnchorPane getRoomsView() {
         if(roomsView == null){
             try{
-                roomsView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/Rooms.fxml")).load();
+                roomsView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Rooms.fxml")).load();
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -131,6 +144,7 @@ public class ViewFactory {
         }
         return settingsView;
     }
+
     public void showLoginWindow(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Login.fxml"));
         Scene scene = null;
@@ -143,6 +157,14 @@ public class ViewFactory {
         loader.setController(managerController);
         createStage(loader);
     }
+
+    public void showAdministratorWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Administrator/Administrator.fxml"));
+        AdministratorController administratorController = new AdministratorController();
+        loader.setController(administratorController);
+        createStage(loader);
+    }
+
     public void createStage(FXMLLoader loader){
         Scene scene = null;
         try{
@@ -163,6 +185,36 @@ public class ViewFactory {
         stage.close();
     }
     // Administrator Views
+    public AnchorPane getAdministratorHomePageView() {
+        if(administratorHomePageView == null){
+            try{
+                administratorHomePageView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Administrator/HomePage.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return administratorHomePageView;
+    }
+    public AnchorPane getNewReservationView() {
+        if(newReservationView == null){
+            try{
+                newReservationView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Administrator/NewReservation.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return newReservationView;
+    }
+    public AnchorPane getNewServiceOrderView() {
+        if(newServiceOrderView == null){
+            try{
+                newServiceOrderView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Administrator/NewServiceOrder.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return newServiceOrderView;
+    }
 
     // Maid Views
 

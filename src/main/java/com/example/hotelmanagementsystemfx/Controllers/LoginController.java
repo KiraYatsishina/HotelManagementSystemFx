@@ -41,9 +41,9 @@ public class LoginController implements Initializable {
         if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.MANAGER){
             Model.getInstance().getViewFactory().showManagerWindow();
         }else if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.ADMINISTRATOR){
-            Model.getInstance().getViewFactory().showManagerWindow();
+            Model.getInstance().getViewFactory().showAdministratorWindow();
         }else{
-            Model.getInstance().getViewFactory().showManagerWindow();
+            Model.getInstance().getViewFactory().showAdministratorWindow();
         }
     }
 }

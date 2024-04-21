@@ -2,9 +2,16 @@
 
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.hotelmanagementsystemfx.Controllers.Administrator.AdministratorController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane fx:id="administrator_parent" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <fx:include source="../TopMenu.fxml"/>
+    </top>
+    <left>
+        <fx:include source="AdministratorMenu.fxml"/>
+    </left>
 
-</AnchorPane>
+    <center>
+        <fx:include source="HomePage.fxml"/>
+    </center>
+</BorderPane>
