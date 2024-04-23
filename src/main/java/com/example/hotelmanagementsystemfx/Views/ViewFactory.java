@@ -1,6 +1,7 @@
 package com.example.hotelmanagementsystemfx.Views;
 
 import com.example.hotelmanagementsystemfx.Controllers.Administrator.AdministratorController;
+import com.example.hotelmanagementsystemfx.Controllers.Maid.MaidController;
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ManagerController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -25,6 +26,12 @@ public class ViewFactory {
     private AnchorPane administratorHomePageView;
     private AnchorPane newReservationView;
     private AnchorPane newServiceOrderView;
+
+    // Maid Views
+    private final ObjectProperty<MaidMenuOptions> maidSelectedMenuItem;
+    private AnchorPane maidHomePageView;
+    private AnchorPane myServiceOrdersView;
+
     // General
     private AnchorPane clientsView;
     private AnchorPane reservationsView;
@@ -36,6 +43,7 @@ public class ViewFactory {
         this.loginAccountType = AccountType.ADMINISTRATOR;
         this.managerSelectedMenuItem = new SimpleObjectProperty<>();
         this.administratorSelectedMenuItem = new SimpleObjectProperty<>();
+        this.maidSelectedMenuItem = new SimpleObjectProperty<>();
     }
 
     public AccountType getLoginAccountType() {
@@ -51,6 +59,9 @@ public class ViewFactory {
     }
     public ObjectProperty<AdministratorMenuOptions> getAdministratorSelectedMenuItem() {
         return administratorSelectedMenuItem;
+    }
+    public ObjectProperty<MaidMenuOptions> getMaidSelectedMenuItem() {
+        return maidSelectedMenuItem;
     }
     public AnchorPane getManagerHomePageView(){
         if(managerHomePageView == null){
@@ -164,7 +175,12 @@ public class ViewFactory {
         loader.setController(administratorController);
         createStage(loader);
     }
-
+    public void showMaidWindow(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Maid/Maid.fxml"));
+        MaidController maidController = new MaidController();
+        loader.setController(maidController);
+        createStage(loader);
+    }
     public void createStage(FXMLLoader loader){
         Scene scene = null;
         try{
@@ -217,5 +233,24 @@ public class ViewFactory {
     }
 
     // Maid Views
-
+    public AnchorPane getMaidHomePageView() {
+        if(maidHomePageView == null){
+            try{
+                maidHomePageView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Maid/HomePage.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return maidHomePageView;
+    }
+    public AnchorPane getMyServiceOrdersView() {
+        if(myServiceOrdersView == null){
+            try{
+                myServiceOrdersView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Maid/MyServiceOrders.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return myServiceOrdersView;
+    }
 }

@@ -29,8 +29,6 @@ y
 Isrc/main/java/com/example/hotelmanagementsystemfx/DB/DatabaseHandler.java,7\e\7e167a8b2b8aeff6a496537d03f0b4bc8bd0c412
 o
 ?src/main/java/com/example/hotelmanagementsystemfx/Register.java,4\0\40490921a2df6793839aa70db3bb9d87027abd0e
-ú
-lsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Administrator/AdministratorMenuController.java,9\9\99041213c5ddd985c29152b291c482ef32f61754
 ä
 Zsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MaidMenuController.java,4\1\4152612423c87dbf86b0add7f7fa90d644e6f873
 ç
@@ -39,16 +37,8 @@ Zsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MaidMenuCont
 ^src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/EmployeesController.java,b\9\b9912a60955afa35725282e441e3c40349841c56
 â
 Ysrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/MenuController.java,8\3\83587c2b033d3454e9eee993d1e3d17252f4bf78
-å
-\src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/ClientsController.java,5\8\58e7abe8dbc557790318eb3cbfb7a6f8fc28474c
 
 Osrc/main/java/com/example/hotelmanagementsystemfx/Views/ManagerMenuOptions.java,5\7\5772c2210e06ce4307af68c6ae3481b45fdf1e06
-ë
-asrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/ReservationsController.java,1\8\18e79164ac86afa5fa1ff936e6b73a4fe7fbbc5e
-í
-bsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/ServiceOrdersController.java,6\2\623f9aa6a7c3ec6af7f66dd800b1ba23e6112b2e
-ä
-Zsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/RoomsController.java,7\9\79520b54aa1fffab9387fc85c7989aca0aae5705
 å
 \src/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/AddRoomController.java,d\6\d64937a7c28afba49194c397154231c9915e4802
 ê
@@ -63,8 +53,6 @@ csrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Administrator/Hom
 isrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Administrator/NewReservationController.java,c\1\c16b4182492e99abacad621741ac1070b4571b4a
 ö
 jsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Administrator/NewServiceOrderController.java,6\4\647f758fcb5d2021d93e121f7e0e820e13247f11
-ä
-Zsrc/main/java/com/example/hotelmanagementsystemfx/Views/AdministratorSelectedMenuItem.java,c\5\c51d5cb17f01b9d1fb4d1b8865a2c61394e64c6c
 Ö
 Usrc/main/java/com/example/hotelmanagementsystemfx/Views/AdministratorMenuOptions.java,0\d\0d119dd17dfcb064dad1da13ffcfc33a41d6603f
 è
@@ -77,3 +65,11 @@ Zsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/ServiceOrdersCont
 Rsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/RoomsController.java,8\1\815424cb1baf71cf0dc1b339e46195e7e553d5ec
 â
 Ysrc/main/java/com/example/hotelmanagementsystemfx/Controllers/ReservationsController.java,c\a\ca81340aa1861af46cd2cf153d7c834b8e6ffda6
+|
+Lsrc/main/java/com/example/hotelmanagementsystemfx/Views/MaidMenuOptions.java,c\a\ca3556739479b223b170c5e9a944a13f330bcaa8
+ä
+Zsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/HomePageController.java,5\9\591a81c02f9f91dcbb93ca35049d25e69323aad4
+ë
+asrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MyServiceOrdersController.java,f\9\f9fc22baca200dd35e83fe05ce9057875e83f960
+Ü
+Vsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MenuController.java,f\4\f457206ede8cbae5bf4caa027b5be5fb17e6a48f

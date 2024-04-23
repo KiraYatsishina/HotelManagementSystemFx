@@ -43,7 +43,7 @@ public class LoginController implements Initializable {
         }else if(Model.getInstance().getViewFactory().getLoginAccountType() == AccountType.ADMINISTRATOR){
             Model.getInstance().getViewFactory().showAdministratorWindow();
         }else{
-            Model.getInstance().getViewFactory().showAdministratorWindow();
+            Model.getInstance().getViewFactory().showMaidWindow();
         }
     }
 }
