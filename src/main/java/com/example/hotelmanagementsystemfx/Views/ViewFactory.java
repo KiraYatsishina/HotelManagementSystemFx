@@ -12,8 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewFactory {
-    private AccountType loginAccountType;
-
     // Manager Views
     private final ObjectProperty<ManagerMenuOptions> managerSelectedMenuItem;
     private AnchorPane managerHomePageView;
@@ -40,20 +38,10 @@ public class ViewFactory {
     private AnchorPane settingsView;
 
     public ViewFactory(){
-        this.loginAccountType = AccountType.ADMINISTRATOR;
         this.managerSelectedMenuItem = new SimpleObjectProperty<>();
         this.administratorSelectedMenuItem = new SimpleObjectProperty<>();
         this.maidSelectedMenuItem = new SimpleObjectProperty<>();
     }
-
-    public AccountType getLoginAccountType() {
-        return loginAccountType;
-    }
-
-    public void setLoginAccountType(AccountType loginAccountType) {
-        this.loginAccountType = loginAccountType;
-    }
-
     public ObjectProperty<ManagerMenuOptions> getManagerSelectedMenuItem() {
         return managerSelectedMenuItem;
     }

@@ -14,19 +14,19 @@ public class DatabaseHandler extends Configs{
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
         return dbConnection;
     }
+    /*
+    * Manager Section
+    * */
 
-// test connection
-//    public void sing(){
-//        String insert = "INSERT INTO client(firstName,lastName,phoneNumber)VALUES(?,?,?)";
-//        try(PreparedStatement prSt = getDbConnection().prepareStatement(insert);) {
-//            prSt.setString(1, "firstName2");
-//            prSt.setString(2, "lastName2");
-//            prSt.setString(3, "phoneNumber2");
-//            prSt.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    /*
+     * Administrator Section
+     * */
+
+    /*
+     * Maid Section
+     * */
+
+    /*
+     * Utility Methods
+     * */
 }

@@ -128,8 +128,7 @@ public class MenuController implements Initializable {
         );
     }
     private void clearStylesOnButton(Button buttonPressed){
-        for (Button button :
-                allButton()) {
+        for (Button button : allButton()) {
             button.getStyleClass().clear();
             button.getStyleClass().add("menu_button");
         }

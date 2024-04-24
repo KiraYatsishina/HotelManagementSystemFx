@@ -22,8 +22,11 @@ public class Const {
     public static final String EMPLOYEE_PHONE_NUMBER = "phoneNumber";
     public static final String EMPLOYEE_GENDER = "gender";
 
+    public static final String EMPLOYEE_LOGIN = "login";
+    public static final String EMPLOYEE_PASSWORD = "password";
 
     public static final String EMPLOYEE_TYPE_TABLE = "employee_type";
+    public static final String EMPLOYEE_TYPE_ID = "idEmployeeType";
     public static final String EMPLOYEE_TYPE_NAME = "name";
     public static final String EMPLOYEE_TYPE_DESCRIPTION = "description";
     public static final String EMPLOYEE_TYPE_SALARY = "salary";

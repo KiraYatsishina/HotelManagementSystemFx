@@ -21,7 +21,8 @@ public class ManagerController implements Initializable {
                 case ADD_ROOM -> manager_parent.setCenter(Model.getInstance().getViewFactory().getAddRoomView());
                 case ADD_EMPLOYEE -> manager_parent.setCenter(Model.getInstance().getViewFactory().getAddEmployeeView());
                 case SETTINGS -> manager_parent.setCenter(Model.getInstance().getViewFactory().getSettingsView());
-                default -> manager_parent.setCenter(Model.getInstance().getViewFactory().getManagerHomePageView());
+                default -> manager_parent.setCenter(Model.getInstance().getViewFactory().getMaidHomePageView());
+
             }
         });
     }
