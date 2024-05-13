@@ -173,11 +173,13 @@ public class ViewFactory {
         Scene scene = null;
         try{
             scene = new Scene(loader.load());
+
         }catch (Exception e){
             e.printStackTrace();
         }
         Stage stage = new Stage();
         stage.setTitle("Hotel Management System");
+
         stage.setResizable(false);
         stage.setScene(scene);
         Image icon = new Image("C:\\Users\\kirus\\IdeaProjects\\HotelManagementSystemFx\\src\\main\\resources\\com\\example\\hotelmanagementsystemfx\\Images\\hotelIcon.png");

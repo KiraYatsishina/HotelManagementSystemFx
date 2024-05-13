@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="300.0" style="-fx-background-color: #151b26;" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Maid.MenuController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="300.0" style="-fx-background-color: #151b26;" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Maid.MenuController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: white; -fx-border-radius: 0 0 10 10;">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
          <children>
             <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,8 +41,9 @@
                </children>
             </VBox>
          </children></HBox>
-      <VBox prefHeight="650.0" prefWidth="270.0">
+      <VBox prefHeight="725.0" prefWidth="270.0">
          <children>
+            <Line endX="199.29286193847656" endY="5.672375482390635E-5" startX="-100.0" stroke="WHITE" strokeWidth="0.7" />
             <Button fx:id="home_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="menu_button_pressed" text="Home" textFill="WHITE" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -130,7 +131,7 @@
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
                <VBox.margin>
-                  <Insets left="60.0" top="360.0" />
+                  <Insets left="60.0" top="420.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />

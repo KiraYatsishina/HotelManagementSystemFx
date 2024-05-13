@@ -2,6 +2,8 @@
     -fx-background-color: #374652;
     -fx-text-fill: white;
     -fx-background-radius: 10;
+    -fx-font-size: 16;
+    -fx-font-family: "Yu Gothic";
 }
 
 .login_button:hover{
@@ -50,4 +52,5 @@
 }
 .logout_button:hover {
     -fx-font-weight: bold;
+
 }

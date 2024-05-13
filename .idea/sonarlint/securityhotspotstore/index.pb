@@ -73,3 +73,5 @@ asrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MyServiceOrd
 Vsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Maid/MenuController.java,f\4\f457206ede8cbae5bf4caa027b5be5fb17e6a48f
 w
 Gsrc/main/java/com/example/hotelmanagementsystemfx/Animations/Shake.java,1\f\1fef12f3389f047e8b4722107502e57be6155a99
+‘
+asrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/EmployeeCellController.java,6\2\629299fee968fe087478e6381cd7e9fa812992e2
