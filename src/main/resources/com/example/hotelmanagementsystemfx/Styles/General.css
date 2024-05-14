@@ -54,3 +54,26 @@
     -fx-font-weight: bold;
 
 }
+.text_field{
+    -fx-background-radius:  5;
+    -fx-background-color:  rgba(255, 255, 255, 0);
+    -fx-prompt-text-fill:  black;
+    -fx-border-color:   #1e7f78;
+    -fx-border-width:  0 0 1 0;
+}
+
+.custom-checkbox .box {
+    -fx-background-color: #f0f6f6;
+    -fx-border-color: #145a4e;
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}
+
+.custom-radio .radio {
+    -fx-background-color: #f0f6f6;
+    -fx-border-color: #145a4e;
+    -fx-border-radius: 50%;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}

@@ -13,9 +13,9 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="300.0" style="-fx-background-color: #151b26;" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Manager.MenuController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="200.0">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/whiteAccount.png" />
                </image>
@@ -41,7 +41,7 @@
                </children>
             </VBox>
          </children></HBox>
-      <VBox prefHeight="725.0" prefWidth="297.0">
+      <VBox prefHeight="755.0" prefWidth="297.0">
          <children>
             <Line endX="199.29286193847656" endY="5.672375482390635E-5" startX="-100.0" stroke="WHITE" strokeWidth="0.7" />
             <Button fx:id="home_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="menu_button_pressed" text="Home" textFill="WHITE" textOverrun="CLIP">
@@ -221,7 +221,7 @@
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
                <VBox.margin>
-                  <Insets left="60.0" top="190.0" />
+                  <Insets left="60.0" top="220.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
