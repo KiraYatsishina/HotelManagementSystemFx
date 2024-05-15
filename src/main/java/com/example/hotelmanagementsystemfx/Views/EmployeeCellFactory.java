@@ -16,6 +16,7 @@ public class EmployeeCellFactory extends ListCell<Employee> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/EmployeeCell.fxml"));
             EmployeeCellController cellController = new EmployeeCellController(employee);
             loader.setController(cellController);
+            getStyleClass().add("loader");
             setText(null);
             try{
                 setGraphic(loader.load());

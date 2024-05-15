@@ -22,10 +22,20 @@ public class DatabaseHandler extends Configs{
         try{
             statement = getDbConnection().createStatement();
             resultSet = statement.executeQuery("SELECT * FROM " + EMPLOYEE_TABLE + ";");
-        }catch (SQLException e){
+        }catch (SQLException | ClassNotFoundException e){
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
+    public ResultSet search(String sqlRequest){
+        Statement statement;
+        ResultSet resultSet = null;
+        try{
+            statement = getDbConnection().createStatement();
+            resultSet = statement.executeQuery(sqlRequest);
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
         }
         return resultSet;
     }

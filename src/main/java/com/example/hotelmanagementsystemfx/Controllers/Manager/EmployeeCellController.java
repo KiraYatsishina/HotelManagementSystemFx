@@ -42,5 +42,11 @@ public class EmployeeCellController implements Initializable {
         phoneNumber_label.textProperty().bind(employee.phoneNumberProperty());
         profile_label.textProperty().bind(employee.profileProperty());
         status_label.textProperty().bind(employee.statusProperty());
+        switch (status_label.getText()) {
+            case "Employed" -> status_circle.setStyle("-fx-fill: #00FF00;");
+            case "Terminated" -> status_circle.setStyle("-fx-fill: #708090;");
+            case "Vocation" -> status_circle.setStyle("-fx-fill: #1E90FF;");
+            case "Sick Leave" -> status_circle.setStyle("-fx-fill: #FFFF00;");
+            case "Maternity Leave" -> status_circle.setStyle("-fx-fill: #800080;");}
     }
 }

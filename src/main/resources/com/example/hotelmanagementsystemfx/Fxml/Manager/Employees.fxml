@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -78,7 +79,7 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ListView fx:id="employees_listView" layoutX="25.0" layoutY="296.0" prefHeight="500.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
+      <ListView fx:id="employees_listView" layoutX="25.0" layoutY="296.0" maxHeight="500.0" maxWidth="950.0" prefHeight="500.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
       <HBox layoutX="31.0" layoutY="87.0" prefHeight="180.0" prefWidth="940.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by: ">
@@ -101,7 +102,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="0.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
+                        <TextField fx:id="firstName_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="0.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
                            <font>
                               <Font name="Yu Gothic Regular" size="16.0" />
                            </font>
@@ -121,7 +122,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
+                        <TextField fx:id="lastName_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
                            <font>
                               <Font name="Yu Gothic Regular" size="16.0" />
                            </font>
@@ -141,7 +142,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
+                        <TextField fx:id="email_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
                            <font>
                               <Font name="Yu Gothic Regular" size="16.0" />
                            </font>
@@ -161,7 +162,7 @@
                               <Insets right="5.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
+                        <TextField fx:id="phoneNumber_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
                            <font>
                               <Font name="Yu Gothic Regular" size="16.0" />
                            </font>
@@ -178,7 +179,7 @@
             </VBox>
             <VBox prefHeight="177.0" prefWidth="177.0">
                <children>
-                  <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Employed">
+                  <CheckBox fx:id="employed_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Employed">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -186,7 +187,7 @@
                         <Insets top="8.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Terminated">
+                  <CheckBox fx:id="terminated_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Terminated">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -194,7 +195,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Vocation">
+                  <CheckBox fx:id="vocation_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Vocation">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -202,7 +203,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="23.0" prefWidth="129.0" styleClass="custom-checkbox" text="Sick Leave">
+                  <CheckBox fx:id="sickLeave_checkBox" mnemonicParsing="false" prefHeight="23.0" prefWidth="129.0" styleClass="custom-checkbox" text="Sick Leave">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -210,7 +211,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Maternity Leave">
+                  <CheckBox fx:id="maternityLeave_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Maternity Leave">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -225,7 +226,7 @@
             </VBox>
             <VBox prefHeight="177.0" prefWidth="151.0">
                <children>
-                  <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Manager">
+                  <CheckBox fx:id="manager_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Manager">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -233,7 +234,7 @@
                         <Insets top="8.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Administrator">
+                  <CheckBox fx:id="administrator_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Administrator">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -241,7 +242,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Maid">
+                  <CheckBox fx:id="maid_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Maid">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -256,15 +257,18 @@
             </VBox>
             <VBox prefHeight="179.0" prefWidth="136.0">
                <children>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Women">
+                  <RadioButton fx:id="women_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Women">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sex" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Man">
+                  <RadioButton fx:id="man_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Man" toggleGroup="$sex">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
