@@ -77,3 +77,7 @@ Gsrc/main/java/com/example/hotelmanagementsystemfx/Animations/Shake.java,1\f\1f
 asrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/EmployeeCellController.java,6\2\629299fee968fe087478e6381cd7e9fa812992e2
 v
 Fsrc/main/java/com/example/hotelmanagementsystemfx/Models/Employee.java,f\1\f1ab18dc1d0ba5222876f0282a1b862e3aac1a4e
+y
+Isrc/main/java/com/example/hotelmanagementsystemfx/Views/EmployeeCell.java,c\2\c29ea3eb6ce6991be5603153292a53d9c48bf7b1
+€
+Psrc/main/java/com/example/hotelmanagementsystemfx/Views/EmployeeCellFactory.java,f\3\f3623b104f2ab58518921601fe21634ccffd1718

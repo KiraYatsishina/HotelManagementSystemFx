@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -12,12 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1000.0" style="-fx-background-color: #f0f6f6;" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Manager.HomePageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1000.0" style="-fx-background-color: #f0f6f6;" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Manager.EmployeesController">
    <children>
       <VBox prefHeight="75.0" prefWidth="1000.0">
          <children>
@@ -80,7 +78,7 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ListView layoutX="30.0" layoutY="298.0" prefHeight="500.0" prefWidth="940.0" style="-fx-background-radius: 10; -fx-border-color: #f0f6f6; -fx-background-color: #f0f6f6; -fx-border-radius: 10;" />
+      <ListView fx:id="employees_listView" layoutX="25.0" layoutY="296.0" prefHeight="500.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
       <HBox layoutX="31.0" layoutY="87.0" prefHeight="180.0" prefWidth="940.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by: ">
@@ -178,7 +176,7 @@
                   <Insets left="10.0" right="40.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="180.0" prefWidth="171.0">
+            <VBox prefHeight="177.0" prefWidth="177.0">
                <children>
                   <CheckBox mnemonicParsing="false" styleClass="custom-checkbox" text="Employed">
                      <font>
@@ -222,7 +220,7 @@
                   </CheckBox>
                </children>
                <HBox.margin>
-                  <Insets right="25.0" />
+                  <Insets right="20.0" />
                </HBox.margin>
             </VBox>
             <VBox prefHeight="177.0" prefWidth="151.0">
@@ -274,7 +272,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </RadioButton>
-                  <Button alignment="CENTER" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #151b26; -fx-background-radius: 10;" text="Search" textFill="WHITE">
+                  <Button fx:id="search_button" alignment="CENTER" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #151b26; -fx-background-radius: 10;" text="Search" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -294,154 +292,5 @@
          </children>
       </HBox>
       <Line endX="873.0000610351562" layoutX="101.0" layoutY="281.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
-      <AnchorPane layoutX="31.0" layoutY="298.0" maxHeight="55.0" maxWidth="940.0" minHeight="60.0" minWidth="940.0" prefHeight="55.0" prefWidth="940.0" styleClass="listCell" stylesheets="@../../Styles/General.css">
-         <children>
-            <HBox alignment="CENTER" layoutX="736.0" layoutY="106.0" maxHeight="60.0" maxWidth="110.0" minHeight="60.0" minWidth="80.0" prefHeight="60.0" prefWidth="110.0" />
-            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/account.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="874.0" layoutY="12.0" maxHeight="35.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #e09037;" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Button>
-            <Label layoutX="52.0" layoutY="20.0" text="Yatsishina Andrew">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="313.0" layoutY="35.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
-            <Label layoutX="237.0" layoutY="20.0" text="YatsishinaKira@gmail.com">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="456.0" layoutY="20.0" text="0639916586">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="666.0" layoutY="35.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
-            <Label layoutX="582.0" layoutY="20.0" text="Administrator">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Circle fill="#ce0ba4" layoutX="713.0" layoutY="30.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label layoutX="726.0" layoutY="20.0" text="Maternity Leave" AnchorPane.leftAnchor="726.0">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="31.0" layoutY="371.0" maxHeight="55.0" maxWidth="940.0" minHeight="60.0" minWidth="940.0" prefHeight="55.0" prefWidth="940.0" styleClass="listCell" stylesheets="@../../Styles/General.css">
-         <children>
-            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/account.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="874.0" layoutY="12.0" maxHeight="35.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #e09037;" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Button>
-            <Label layoutX="52.0" layoutY="20.0" text="Anderson Lana">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="313.0" layoutY="35.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
-            <Label layoutX="237.0" layoutY="20.0" text="AndersonLana@gmail.com">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="456.0" layoutY="20.0" text="0673395743">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="666.0" layoutY="35.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
-            <Label layoutX="582.0" layoutY="20.0" text="Manager">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Circle fill="DODGERBLUE" layoutX="713.0" layoutY="30.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label layoutX="726.0" layoutY="20.0" text="Vocation" AnchorPane.leftAnchor="726.0">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="30.0" layoutY="442.0" maxHeight="55.0" maxWidth="940.0" minHeight="60.0" minWidth="940.0" prefHeight="55.0" prefWidth="940.0" styleClass="listCell" stylesheets="@../../Styles/General.css">
-         <children>
-            <HBox alignment="CENTER" layoutX="736.0" layoutY="106.0" maxHeight="60.0" maxWidth="110.0" minHeight="60.0" minWidth="80.0" prefHeight="60.0" prefWidth="110.0" />
-            <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/account.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="874.0" layoutY="12.0" maxHeight="35.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" style="-fx-background-color: #e09037;" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Button>
-            <Label layoutX="52.0" layoutY="20.0" text="Young Kelly">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="313.0" layoutY="35.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
-            <Label layoutX="237.0" layoutY="20.0" text="YoungKelly@gmail.com">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="456.0" layoutY="20.0" text="0457793245">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="666.0" layoutY="35.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
-            <Label layoutX="582.0" layoutY="20.0" text="Maid">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-            <Circle fill="#1ea60f" layoutX="713.0" layoutY="30.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label layoutX="726.0" layoutY="20.0" text="Employed" AnchorPane.leftAnchor="726.0">
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

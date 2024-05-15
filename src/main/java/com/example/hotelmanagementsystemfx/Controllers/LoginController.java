@@ -46,7 +46,7 @@ public class LoginController implements Initializable {
     private void onLogin(){
         Stage stage =  (Stage) error_label.getScene().getWindow();
         AccountType accountType = null;
-        ResultSet account = Model.getInstance().getAccountData(userName_textField.getText(), password_field.getText());
+        ResultSet account = Model.getInstance().getDatabaseHandler().getAccountData(userName_textField.getText(), password_field.getText());
         try {
             if (!account.next()){
                 new Shake(userName_textField).playAnim();

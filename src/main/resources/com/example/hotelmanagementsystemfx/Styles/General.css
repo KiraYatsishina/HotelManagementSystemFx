@@ -78,10 +78,10 @@
     -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
 }
 .listCell{
-    -fx-background-color: #fefefe;
+    -fx-background-color:  #fefefe;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
     -fx-effect: dropshadow(three-pass-box, #DDDDDD, 5, 0, 0, 7);
     -fx-border-color: #cccccc;
-
 }
+

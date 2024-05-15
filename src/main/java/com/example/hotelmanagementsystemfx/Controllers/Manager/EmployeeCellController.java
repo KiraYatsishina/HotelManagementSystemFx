@@ -1,4 +1,46 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
-public class EmployeeCellController {
+import com.example.hotelmanagementsystemfx.Models.Employee;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.shape.Circle;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class EmployeeCellController implements Initializable {
+    @FXML
+    private Button edit_button;
+
+    @FXML
+    private Label email_label;
+
+    @FXML
+    private Label fullName_label;
+
+    @FXML
+    private Label phoneNumber_label;
+
+    @FXML
+    private Label profile_label;
+
+    @FXML
+    private Circle status_circle;
+
+    @FXML
+    private Label status_label;
+    private final Employee employee;
+    public EmployeeCellController(Employee employee){
+        this.employee = employee;
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fullName_label.textProperty().bind(employee.fullNameProperty());
+        email_label.textProperty().bind(employee.emailProperty());
+        phoneNumber_label.textProperty().bind(employee.phoneNumberProperty());
+        profile_label.textProperty().bind(employee.profileProperty());
+        status_label.textProperty().bind(employee.statusProperty());
+    }
 }

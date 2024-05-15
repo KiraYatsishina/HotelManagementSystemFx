@@ -21,6 +21,7 @@ public class Const {
     public static final String EMPLOYEE_EMAIL = "email";
     public static final String EMPLOYEE_PHONE_NUMBER = "phoneNumber";
     public static final String EMPLOYEE_GENDER = "gender";
+    public static final String EMPLOYEE_STATUS = "status";
 
     public static final String EMPLOYEE_LOGIN = "login";
     public static final String EMPLOYEE_PASSWORD = "password";

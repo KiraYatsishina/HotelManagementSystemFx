@@ -1,9 +1,8 @@
 package com.example.hotelmanagementsystemfx.DB;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-//import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import static com.example.hotelmanagementsystemfx.DB.Const.*;
+
 
 public class DatabaseHandler extends Configs{
     Connection dbConnection;
@@ -17,7 +16,19 @@ public class DatabaseHandler extends Configs{
     /*
     * Manager Section
     * */
-
+    public ResultSet getAllEmployeesData(){
+        Statement statement;
+        ResultSet resultSet = null;
+        try{
+            statement = getDbConnection().createStatement();
+            resultSet = statement.executeQuery("SELECT * FROM " + EMPLOYEE_TABLE + ";");
+        }catch (SQLException e){
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
     /*
      * Administrator Section
      * */
@@ -29,5 +40,19 @@ public class DatabaseHandler extends Configs{
     /*
      * Utility Methods
      * */
+    public ResultSet getAccountData(String login, String password){
+        Statement statement;
+        ResultSet resultSet = null;
+        try{
+            statement = getDbConnection().createStatement(); //
+            resultSet = statement.executeQuery("SELECT * FROM " + EMPLOYEE_TABLE + " WHERE " + EMPLOYEE_LOGIN + "='" + login + "' AND " + EMPLOYEE_PASSWORD + "='" + password+ "';");
+        }catch (SQLException e){
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return resultSet;
+    }
+
 
 }
