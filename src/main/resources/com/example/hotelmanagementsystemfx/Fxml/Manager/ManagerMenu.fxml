@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -44,7 +45,7 @@
       <VBox prefHeight="755.0" prefWidth="297.0">
          <children>
             <Line endX="199.29286193847656" endY="5.672375482390635E-5" startX="-100.0" stroke="WHITE" strokeWidth="0.7" />
-            <Button fx:id="home_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="menu_button_pressed" text="Home" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="home_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" text="Home" textFill="WHITE" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -56,11 +57,15 @@
                   <Insets top="15.0" />
                </VBox.margin>
                <font>
-                  <Font name="Yu Gothic Bold" size="16.0" />
+                  <Font name="Yu Gothic Regular" size="16.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <styleClass>
+                  <String fx:value="menu_button" />
+                  <String fx:value="selected" />
+               </styleClass>
             </Button>
             <Button fx:id="employees_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="menu_button" text="Employees" textFill="WHITE" textOverrun="CLIP">
                <graphic>

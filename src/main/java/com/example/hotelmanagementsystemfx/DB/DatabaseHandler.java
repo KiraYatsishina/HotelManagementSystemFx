@@ -1,6 +1,8 @@
 package com.example.hotelmanagementsystemfx.DB;
 
 import java.sql.*;
+import java.time.LocalDate;
+
 import static com.example.hotelmanagementsystemfx.DB.Const.*;
 
 
@@ -12,20 +14,6 @@ public class DatabaseHandler extends Configs{
         Class.forName("com.mysql.cj.jdbc.Driver");
         dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
         return dbConnection;
-    }
-    /*
-    * Manager Section
-    * */
-    public ResultSet getAllEmployeesData(){
-        Statement statement;
-        ResultSet resultSet = null;
-        try{
-            statement = getDbConnection().createStatement();
-            resultSet = statement.executeQuery("SELECT * FROM " + EMPLOYEE_TABLE + ";");
-        }catch (SQLException | ClassNotFoundException e){
-            e.printStackTrace();
-        }
-        return resultSet;
     }
 
     public ResultSet search(String sqlRequest){
@@ -39,6 +27,15 @@ public class DatabaseHandler extends Configs{
         }
         return resultSet;
     }
+
+    /*
+    * Manager Section
+    * */
+    public ResultSet getAllEmployeesData(){
+        return search("SELECT * FROM " + EMPLOYEE_TABLE + ";");
+    }
+
+
     /*
      * Administrator Section
      * */
@@ -51,18 +48,36 @@ public class DatabaseHandler extends Configs{
      * Utility Methods
      * */
     public ResultSet getAccountData(String login, String password){
-        Statement statement;
-        ResultSet resultSet = null;
-        try{
-            statement = getDbConnection().createStatement(); //
-            resultSet = statement.executeQuery("SELECT * FROM " + EMPLOYEE_TABLE + " WHERE " + EMPLOYEE_LOGIN + "='" + login + "' AND " + EMPLOYEE_PASSWORD + "='" + password+ "';");
-        }catch (SQLException e){
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return resultSet;
+        return search("SELECT * FROM " + EMPLOYEE_TABLE +
+                " WHERE " + EMPLOYEE_LOGIN + "='" + login +
+                "' AND " + EMPLOYEE_PASSWORD + "='" + password +
+                "' AND " + EMPLOYEE_STATUS + "!='Terminated';");
     }
+    public ResultSet getAllRoomsData(){
+        return search("SELECT * FROM " + ROOM_TABLE + ";");
+    }
+    public String determineRoomStatusToday(String roomId) {
+        LocalDate today = LocalDate.now();
+        String status = "Available";
+        String date = String.valueOf(java.sql.Date.valueOf(today));
+        String query = "SELECT " + Const.RESERVATION_STATUS +
+                " FROM " + Const.RESERVATION_TABLE +
+                " WHERE " + Const.ROOM_ID + " = " + roomId +
+                " AND " + date + " BETWEEN " + Const.RESERVATION_CHECK_IN_DATE + " AND " + Const.RESERVATION_CHECK_OUT_DATE + ";";
 
-
+        ResultSet resultSet = search(query);
+        try {
+            while (resultSet.next()) {
+                String reservationStatus = resultSet.getString(Const.RESERVATION_STATUS);
+                if ("Checked-In".equals(reservationStatus)) {
+                    status = "Occupied";
+                    break;
+                } else if ("Pre-booked".equals(reservationStatus)) {
+                    status = "Reserved";
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();}
+        return status;
+    }
 }

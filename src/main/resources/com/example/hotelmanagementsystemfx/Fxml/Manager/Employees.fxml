@@ -79,7 +79,7 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ListView fx:id="employees_listView" layoutX="25.0" layoutY="296.0" maxHeight="500.0" maxWidth="950.0" prefHeight="500.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
+      <ListView fx:id="employees_listView" layoutX="25.0" layoutY="291.0" maxHeight="500.0" maxWidth="950.0" prefHeight="500.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
       <HBox layoutX="31.0" layoutY="87.0" prefHeight="180.0" prefWidth="940.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by: ">

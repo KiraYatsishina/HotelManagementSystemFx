@@ -31,9 +31,10 @@
 }
 .menu_button:hover {
     -fx-background-color: #273240;
+    -fx-label-padding: 0 0 0 35;
     -fx-font-weight: bold;
 }
-.menu_button_pressed {
+.selected {
     -fx-label-padding: 0 0 0 35;
     -fx-background-color: #383d47;
     -fx-border-image-width: 0 10 0 0;
@@ -90,6 +91,15 @@
 }
 .loader:selected {
     -fx-background-color:  #1e7f78;
+}
+.choice-box{
+    -fx-font-size: 16;
+    -fx-font-weight: normal;
+    -fx-font-family: "Yu Gothic";
+    -fx-background-color:  #f0f6f6;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-color: #cccccc;
 }
 
 

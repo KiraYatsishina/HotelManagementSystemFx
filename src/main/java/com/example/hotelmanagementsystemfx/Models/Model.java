@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 
 public class Model {
@@ -16,10 +17,13 @@ public class Model {
     private final DatabaseHandler databaseHandler;
 
     private final ObservableList<Employee> employees;
+    private final ObservableList<Room> rooms;
+
     private Model(){
         this.viewFactory = new ViewFactory();
         this.databaseHandler = new DatabaseHandler();
         this.employees = FXCollections.observableArrayList();
+        this.rooms = FXCollections.observableArrayList();
     }
     public static synchronized Model getInstance(){
         if(model == null){
@@ -83,6 +87,7 @@ public class Model {
         }
         return searchResults;
     }
+
     /*
      * Administrator Section
      */
@@ -95,4 +100,44 @@ public class Model {
      * Utility Section
      */
 
+    public void setRooms(){
+        ResultSet resultSet = databaseHandler.getAllRoomsData();
+        try{
+            while (resultSet.next()){
+                String roomNumber = resultSet.getString(Const.ROOM_NUMBER);
+                String roomType = resultSet.getString(Const.ROOM_TYPE);
+                String pricePerNight = String.valueOf(resultSet.getDouble(Const.ROOM_PRICE_PER_NIGHT));
+                String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
+                String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
+                String status = Model.getInstance().databaseHandler.determineRoomStatusToday(Const.ROOM_ID);
+                rooms.add(new Room(roomNumber, roomType, pricePerNight, hasRefrigerator, hasAirConditioning, status));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Room> sortRooms(String sqlRequest){
+        ObservableList<Room> sortResults = FXCollections.observableArrayList();
+        ResultSet resultSet = databaseHandler.search(sqlRequest);
+
+        try{
+            while (resultSet.next()) {
+                String roomNumber = resultSet.getString(Const.ROOM_NUMBER);
+                String roomType = resultSet.getString(Const.ROOM_TYPE);
+                String pricePerNight = String.valueOf(resultSet.getDouble(Const.ROOM_PRICE_PER_NIGHT));
+                String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
+                String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
+                String status = Model.getInstance().databaseHandler.determineRoomStatusToday(Const.ROOM_ID);
+                sortResults.add(new Room(roomNumber, roomType, pricePerNight, hasRefrigerator, hasAirConditioning, status));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return sortResults;
+    }
+
+    public ObservableList<Room> getRooms() {
+        return rooms;
+    }
 }

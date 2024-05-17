@@ -45,7 +45,8 @@ public class Const {
     public static final String RESERVATION_ACTUAL_REVENUE = "actualRevenue";
 
     public static final String ROOM_TABLE = "room";
-    public static final String ROOM_ID_ROOM_TYPE = "idRoomType";
+    public static final String ROOM_ID = "idRoom";
+    public static final String ROOM_TYPE = "roomType";
     public static final String ROOM_CAPACITY = "capacity";
     public static final String ROOM_PRICE_PER_NIGHT = "pricePerNight";
     public static final String ROOM_FLOOR = "floor";
