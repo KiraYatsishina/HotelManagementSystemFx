@@ -35,8 +35,46 @@ public class RoomsController implements Initializable {
         initData();
         rooms_listView.setItems(Model.getInstance().getRooms());
         rooms_listView.setCellFactory(e -> new RoomCellFactory());
-        //sort_choiceBox.setOnAction(actionEvent -> onEmployeeSearch());
+        sort_button.setOnAction(actionEvent -> onRoomSearch());
     }
+
+    private void onRoomSearch() {
+        String sqlRequest = makeRequest();
+        ObservableList<Room> searchResults = Model.getInstance().sortRooms(sqlRequest);
+        rooms_listView.setItems(searchResults);
+        rooms_listView.setCellFactory(e -> new RoomCellFactory());
+
+    }
+
+    private String makeRequest() {
+        String selectedSort = sort_choiceBox.getValue();
+        if (selectedSort == null) {
+            return "SELECT * FROM room";
+        }
+        boolean reverseSort = reverseSort_checkBox.isSelected();
+        String order = reverseSort ? "DESC" : "ASC";
+
+        String sortBy;
+        switch (selectedSort) {
+            case "Price":
+                sortBy = "pricePerNight";
+                break;
+            case "Capacity":
+                sortBy = "capacity";
+                break;
+            case "Floor":
+                sortBy = "floor";
+                break;
+            case "Room type":
+                sortBy = "roomType";
+                break;
+            default:
+                sortBy = "price"; // Default sort option
+        }
+
+        return "SELECT * FROM room ORDER BY " + sortBy + " " + order;
+    }
+
     private void initData(){
         if(Model.getInstance().getRooms().isEmpty()){
             Model.getInstance().setRooms();

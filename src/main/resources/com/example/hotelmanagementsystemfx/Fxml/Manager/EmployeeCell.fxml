@@ -10,13 +10,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="50.0" maxWidth="915.0" minHeight="50.0" minWidth="915.0" prefHeight="50.0" prefWidth="915.0" styleClass="listCell" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="50.0" maxWidth="915.0" minHeight="50.0" minWidth="915.0" prefHeight="50.0" prefWidth="915.0" styleClass="listCell" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="30.0" fitWidth="25.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/account.png" />
-         </image>
-      </ImageView>
+      <ImageView fx:id="account_image" fitHeight="30.0" fitWidth="25.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="edit_button" layoutX="849.0" layoutY="10.0" maxHeight="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: #e09037;" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">

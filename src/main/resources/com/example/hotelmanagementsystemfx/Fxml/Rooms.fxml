@@ -88,7 +88,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Text>
-            <ChoiceBox fx:id="sort_choiceBox" prefWidth="150.0">
+            <ChoiceBox fx:id="sort_choiceBox" prefHeight="33.0" prefWidth="162.0">
                <HBox.margin>
                   <Insets left="15.0" />
                </HBox.margin></ChoiceBox>
@@ -112,7 +112,7 @@
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
                <HBox.margin>
-                  <Insets left="420.0" />
+                  <Insets left="405.0" />
                </HBox.margin>
             </Button>
          </children>

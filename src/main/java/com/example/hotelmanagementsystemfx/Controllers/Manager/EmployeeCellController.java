@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
@@ -31,12 +33,18 @@ public class EmployeeCellController implements Initializable {
 
     @FXML
     private Label status_label;
+    @FXML
+    private ImageView account_image;
     private final Employee employee;
     public EmployeeCellController(Employee employee){
         this.employee = employee;
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image femaleImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/femaleAcc.png"));
+        Image maleImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/maleAcc.png"));
+        if(employee.genderProperty().get().equals("Female")) account_image.setImage(femaleImage);
+        else if(employee.genderProperty().get().equals("Male")) account_image.setImage(maleImage);
         fullName_label.textProperty().bind(employee.fullNameProperty());
         email_label.textProperty().bind(employee.emailProperty());
         phoneNumber_label.textProperty().bind(employee.phoneNumberProperty());

@@ -14,7 +14,7 @@ public class Room {
     public Room(String roomNumber, String roomType, String pricePerNight, String hasRefrigerator, String hasAirConditioning, String status) {
         this.roomNumber = new SimpleStringProperty(this, "roomNumber", roomNumber);
         this.roomType = new SimpleStringProperty(this, "roomType", roomType);
-        this.pricePerNight = new SimpleStringProperty(this, "pricePerNight", pricePerNight);
+        this.pricePerNight = new SimpleStringProperty(this, "pricePerNight", pricePerNight+"$");
         this.hasRefrigerator = new SimpleStringProperty(this, "hasRefrigerator", hasRefrigerator);
         this.hasAirConditioning = new SimpleStringProperty(this, "hasAirConditioning", hasAirConditioning);
         this.status = new SimpleStringProperty(this, "status", status);

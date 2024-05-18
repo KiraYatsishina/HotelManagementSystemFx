@@ -11,6 +11,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class RoomCellController implements Initializable {
@@ -63,20 +65,40 @@ public class RoomCellController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         roomNumber_label.textProperty().bind(room.roomNumberProperty());
         pricePerNight_label.textProperty().bind(room.pricePerNightProperty());
-//        Image doneImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/done.png"));
-//        Image noImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/no.png"));
-//        refrigerator_label.textProperty().bind(room.hasRefrigeratorProperty());
-//        if(refrigerator_label.getText().equals("0")) hasRefrigerator_image = new ImageView(doneImage);
-//        else hasRefrigerator_image = new ImageView(noImage);
+        Image doneImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/done.png"));
+        Image noImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/no.png"));
 
-//        conditioning_label.textProperty().bind(room.hasAirConditioningProperty());
-//        if(conditioning_label.getText().equals("1")) hasAirConditioning_image.setImage(new Image(getClass().getResourceAsStream("src/main/resources/com/example/hotelmanagementsystemfx/Images/done.png")));
-//        else hasAirConditioning_image.setImage(new Image(getClass().getResourceAsStream("src/main/resources/com/example/hotelmanagementsystemfx/Images/no.png")));
+        if(room.roomTypeProperty().get().equals("Standard")) fillstar(1);
+        else if(room.roomTypeProperty().get().equals("Lux")) fillstar(2);
+        else if(room.roomTypeProperty().get().equals("Improved")) fillstar(3);
+        else if(room.roomTypeProperty().get().equals("Executive suite")) fillstar(4);
+        else if(room.roomTypeProperty().get().equals("Apartments")) fillstar(5);
+
+        refrigerator_label.textProperty().bind(room.hasRefrigeratorProperty());
+        if(refrigerator_label.getText().equals("1")) hasRefrigerator_image.setImage(doneImage);
+        else hasRefrigerator_image.setImage(noImage);
+        refrigerator_label.textProperty().unbind();
+        refrigerator_label.setText("Refrigerator");
+
+        conditioning_label.textProperty().bind(room.hasAirConditioningProperty());
+        if(conditioning_label.getText().equals("1")) hasAirConditioning_image.setImage(doneImage);
+        else hasAirConditioning_image.setImage(noImage);
+        conditioning_label.textProperty().unbind();
+        conditioning_label.setText("Conditioning");
 
         status_label.textProperty().bind(room.statusProperty());
         switch (status_label.getText()) {
             case "Available" -> status_circle.setStyle("-fx-fill: #00FF00;");
             case "Occupied" -> status_circle.setStyle("-fx-fill: #708090;");
             case "Reserved" -> status_circle.setStyle("-fx-fill: #1E90FF;");}
+    }
+    private void fillstar(int countStars){
+        Image goldStar = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/star.png"));
+        Image blackStar = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/greyStar.png"));
+        List<ImageView> stars = new ArrayList<>(List.of(star_1_image, star_2_image, star_3_image, star_4_image, star_5_image));
+        for (int i = 0; i < stars.size(); i++) {
+            if (i < countStars) stars.get(i).setImage(goldStar);
+            else stars.get(i).setImage(blackStar);
+        }
     }
 }

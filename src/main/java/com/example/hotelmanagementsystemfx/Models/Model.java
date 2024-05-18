@@ -58,8 +58,9 @@ public class Model {
                 if(profile.equals("1")) profile = "Manager";
                 if(profile.equals("2")) profile = "Administrator";
                 if(profile.equals("3")) profile = "Maid";
+                String gender = resultSet.getString(Const.EMPLOYEE_GENDER);
                 String status = resultSet.getString(Const.EMPLOYEE_STATUS);
-                employees.add(new Employee(fName + " " + lName, email, phoneNumber, profile, status));
+                employees.add(new Employee(fName + " " + lName, email, phoneNumber, profile, gender, status));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -79,8 +80,9 @@ public class Model {
                 if (profile.equals("1")) profile = "Manager";
                 if (profile.equals("2")) profile = "Administrator";
                 if (profile.equals("3")) profile = "Maid";
+                String gender = resultSet.getString(Const.EMPLOYEE_GENDER);
                 String status = resultSet.getString(Const.EMPLOYEE_STATUS);
-                searchResults.add(new Employee(fName + " " + lName, email, phoneNumber, profile, status));
+                searchResults.add(new Employee(fName + " " + lName, email, phoneNumber, profile, gender, status));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
