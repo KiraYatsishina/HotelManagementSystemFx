@@ -1,15 +1,396 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Manager.AddRoomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1000.0" style="-fx-background-color: #f0f6f6;" stylesheets="@../../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.Manager.AddRoomController">
    <children>
-      <Text layoutX="387.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="add Room">
+      <VBox prefHeight="75.0" prefWidth="1000.0">
+         <children>
+            <Line endX="992.0" endY="1.0000025033950806" startX="-6.99999475479126" startY="1.0000025033950806" stroke="#cccccc" strokeWidth="0.8" />
+            <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #fefefe;">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #1e7f78; -fx-border-radius: 10; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/plusWhite.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add room">
+                           <font>
+                              <Font name="Yu Gothic Bold" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Text fill="#4a625e" strokeType="OUTSIDE" strokeWidth="0.0" text="Club Marine">
+                     <font>
+                        <Font name="Yu Gothic Medium" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="670.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
+         </children>
+      </VBox>
+      <ImageView fitHeight="470.0" fitWidth="948.0" layoutX="26.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/hotel2.jpg" />
+         </image>
+      </ImageView>
+      <Line endX="873.0000610351562" layoutX="100.0" layoutY="375.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
+      <HBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="83.0" prefHeight="246.0" prefWidth="948.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create room:">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="15.0" top="10.0" />
+                     </VBox.margin>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox prefHeight="267.0" prefWidth="162.0">
+               <children>
+                  <Label text="Type">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Standard">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Lux">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Improved">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Executive suite">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Apartments">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+               </children>
+               <HBox.margin>
+                  <Insets left="35.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Capacity">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="1">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="2">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="3">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="4">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="5">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="6">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+               </children>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Flor">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="1">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="2">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="3">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="4">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="5">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+               </children>
+               <HBox.margin>
+                  <Insets left="40.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="258.0" prefWidth="125.0">
+               <children>
+                  <Label text="Number">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="1">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="2">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="3">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="4">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="5">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+               </children>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="230.0" prefWidth="192.0">
+               <children>
+                  <HBox alignment="BOTTOM_LEFT" prefHeight="27.0" prefWidth="163.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+                           <font>
+                              <Font name="Yu Gothic Bold" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="firstName_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="0.0" prefHeight="30.0" prefWidth="129.0" styleClass="text_field">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <Label text="*">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <Label text="* Price must be a positive number.">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <CheckBox fx:id="employed_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Refrigerator">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="manager_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Air conditioning">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="97.0" prefWidth="192.0">
+                     <children>
+                        <Button fx:id="search_button" alignment="CENTER" contentDisplay="RIGHT" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #12413b; -fx-background-radius: 10; -fx-label-padding: 0 0 0 15;" text="Create" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/create.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="430.0" layoutY="341.0" text="New room is saved ✔">
          <font>
-            <Font name="Yu Gothic Regular" size="45.0" />
+            <Font name="Yu Gothic Regular" size="16.0" />
          </font>
-      </Text>
+      </Label>
    </children>
 </AnchorPane>
