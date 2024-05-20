@@ -1,6 +1,7 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
 import com.example.hotelmanagementsystemfx.Models.Employee;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -45,7 +46,7 @@ public class EmployeeCellController implements Initializable {
         Image maleImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/maleAcc.png"));
         if(employee.genderProperty().get().equals("Female")) account_image.setImage(femaleImage);
         else if(employee.genderProperty().get().equals("Male")) account_image.setImage(maleImage);
-        fullName_label.textProperty().bind(employee.fullNameProperty());
+        fullName_label.textProperty().bind(Bindings.concat(employee.lastNameProperty(), " ", employee.firstNameProperty()));
         email_label.textProperty().bind(employee.emailProperty());
         phoneNumber_label.textProperty().bind(employee.phoneNumberProperty());
         profile_label.textProperty().bind(employee.profileProperty());

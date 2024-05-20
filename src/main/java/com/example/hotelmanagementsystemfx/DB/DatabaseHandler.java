@@ -1,10 +1,11 @@
 package com.example.hotelmanagementsystemfx.DB;
 
+import com.example.hotelmanagementsystemfx.Models.Employee;
+
 import java.sql.*;
 import java.time.LocalDate;
 
 import static com.example.hotelmanagementsystemfx.DB.Const.*;
-
 
 public class DatabaseHandler extends Configs{
     Connection dbConnection;
@@ -35,6 +36,49 @@ public class DatabaseHandler extends Configs{
         return search("SELECT * FROM " + EMPLOYEE_TABLE + ";");
     }
 
+    public boolean existEmployee(String column, String value){
+        ResultSet resultSet = search("SELECT * FROM " + EMPLOYEE_TABLE + " WHERE " + column + " = '" + value + "';");
+        boolean exist = false;
+        try{
+            while (resultSet.next()){
+                exist = true;
+            }
+        }catch (SQLException e) { e.printStackTrace();}
+        return exist;
+    }
+    public void createEmployee(Employee employee){
+        String query = "INSERT INTO " + EMPLOYEE_TABLE +
+                " (firstName, lastName, email, phoneNumber, idEmployeeType, gender, login, password, status) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection connection = getDbConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, employee.firstNameProperty().get());
+            preparedStatement.setString(2, employee.lastNameProperty().get());
+            preparedStatement.setString(3, employee.emailProperty().get());
+            preparedStatement.setString(4, employee.phoneNumberProperty().get());
+            preparedStatement.setString(5, employee.profileProperty().get());
+            preparedStatement.setString(6, employee.genderProperty().get());
+            preparedStatement.setString(7, employee.loginProperty().get());
+            preparedStatement.setString(8, employee.passwordProperty().get());
+            preparedStatement.setString(9, employee.statusProperty().get());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteEmployee(String password){
+        String query = "DELETE FROM " + EMPLOYEE_TABLE + " WHERE password = ?";
+        try (Connection connection = getDbConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, password);
+            preparedStatement.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     /*
      * Administrator Section

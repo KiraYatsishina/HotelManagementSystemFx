@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 
 public class Model {
@@ -60,7 +59,9 @@ public class Model {
                 if(profile.equals("3")) profile = "Maid";
                 String gender = resultSet.getString(Const.EMPLOYEE_GENDER);
                 String status = resultSet.getString(Const.EMPLOYEE_STATUS);
-                employees.add(new Employee(fName + " " + lName, email, phoneNumber, profile, gender, status));
+                String login = resultSet.getString(Const.EMPLOYEE_LOGIN);
+                String password = resultSet.getString(Const.EMPLOYEE_PASSWORD);
+                employees.add(new Employee(fName, lName, email, phoneNumber, profile, gender, login, password, status));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -82,13 +83,16 @@ public class Model {
                 if (profile.equals("3")) profile = "Maid";
                 String gender = resultSet.getString(Const.EMPLOYEE_GENDER);
                 String status = resultSet.getString(Const.EMPLOYEE_STATUS);
-                searchResults.add(new Employee(fName + " " + lName, email, phoneNumber, profile, gender, status));
+                String login = resultSet.getString(Const.EMPLOYEE_LOGIN);
+                String password = resultSet.getString(Const.EMPLOYEE_PASSWORD);
+                searchResults.add(new Employee(fName, lName, email, phoneNumber, profile, gender, login, password, status));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return searchResults;
     }
+
 
     /*
      * Administrator Section
