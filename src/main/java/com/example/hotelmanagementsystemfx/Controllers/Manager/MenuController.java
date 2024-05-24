@@ -1,5 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
+import com.example.hotelmanagementsystemfx.Models.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.ManagerMenuOptions;
 import javafx.fxml.FXML;
@@ -53,6 +54,11 @@ public class MenuController implements Initializable {
     private Button settings_button;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Employee employee = Model.getInstance().getViewFactory().getEmployeeAccount();
+        String fullName = employee.firstNameProperty().get() + " " + employee.lastNameProperty().get();
+        String profile = employee.profileProperty().get();
+        fullName_label.setText(fullName);
+        profile_label.setText(profile);
         addListeners();
     }
 

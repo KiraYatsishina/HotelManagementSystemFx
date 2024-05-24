@@ -3,6 +3,7 @@ package com.example.hotelmanagementsystemfx.Views;
 import com.example.hotelmanagementsystemfx.Controllers.Administrator.AdministratorController;
 import com.example.hotelmanagementsystemfx.Controllers.Maid.MaidController;
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ManagerController;
+import com.example.hotelmanagementsystemfx.Models.Employee;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
@@ -36,12 +37,22 @@ public class ViewFactory {
     private AnchorPane serviceOrdersView;
     private AnchorPane roomsView;
     private AnchorPane settingsView;
+    Employee employeeAccount;
 
     public ViewFactory(){
         this.managerSelectedMenuItem = new SimpleObjectProperty<>();
         this.administratorSelectedMenuItem = new SimpleObjectProperty<>();
         this.maidSelectedMenuItem = new SimpleObjectProperty<>();
     }
+
+    public Employee getEmployeeAccount() {
+        return employeeAccount;
+    }
+
+    public void setEmployeeAccount(Employee employeeAccount) {
+        this.employeeAccount = employeeAccount;
+    }
+
     public ObjectProperty<ManagerMenuOptions> getManagerSelectedMenuItem() {
         return managerSelectedMenuItem;
     }

@@ -21,12 +21,12 @@
                <children>
                   <VBox alignment="CENTER" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #1e7f78; -fx-border-radius: 10; -fx-background-radius: 10;">
                      <children>
-                        <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Images/employees.png" />
+                              <Image url="@../Images/serviceOrderWhite.png" />
                            </image>
                            <VBox.margin>
-                              <Insets />
+                              <Insets bottom="8.0" />
                            </VBox.margin>
                         </ImageView>
                      </children>

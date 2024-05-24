@@ -3,6 +3,7 @@ package com.example.hotelmanagementsystemfx.Controllers;
 
 import com.example.hotelmanagementsystemfx.Animations.Shake;
 import com.example.hotelmanagementsystemfx.DB.Const;
+import com.example.hotelmanagementsystemfx.Models.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.AccountType;
 import javafx.fxml.FXML;
@@ -53,17 +54,32 @@ public class LoginController implements Initializable {
                 new Shake(password_field).playAnim();
                 error_label.setText("Error: No such login credentials.");
                 return;
-            }else{
-                Statement statement = Model.getInstance().getDatabaseHandler().getDbConnection().createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM " + EMPLOYEE_TYPE_TABLE + " WHERE " + EMPLOYEE_TYPE_ID + "='" + account.getString(Const.EMPLOYEE_ID_EMPLOYEE_TYPE) + "';");
-                if (resultSet.next()) {
-                    accountType = AccountType.valueOf(resultSet.getString(EMPLOYEE_TYPE_NAME));
-                } else {
-                    error_label.setText("Error: No employee type found for this account.");
-                    return;
-                }
             }
-        } catch (SQLException | ClassNotFoundException e) {
+
+            ResultSet resultSet = Model.getInstance().getDatabaseHandler().search("SELECT * FROM " + EMPLOYEE_TYPE_TABLE +
+                    " WHERE " + EMPLOYEE_TYPE_ID + "='" + account.getString(Const.EMPLOYEE_ID_EMPLOYEE_TYPE) + "';");
+            if (!resultSet.next()){
+                error_label.setText("Error: No employee type found for this account.");
+                return;
+            }
+
+            accountType = AccountType.valueOf(resultSet.getString(EMPLOYEE_TYPE_NAME));
+            String fName = account.getString(EMPLOYEE_FIRSTNAME);
+            String lName = account.getString(EMPLOYEE_LASTNAME);
+            String email = account.getString(EMPLOYEE_EMAIL);
+            String phoneNumber = account.getString(EMPLOYEE_PHONE_NUMBER);
+            String profile = account.getString(EMPLOYEE_ID_EMPLOYEE_TYPE);
+            if(profile.equals("1")) profile = "Manager";
+            if(profile.equals("2")) profile = "Administrator";
+            if(profile.equals("3")) profile = "Maid";
+            String gender = account.getString(EMPLOYEE_GENDER);
+            String status = account.getString(EMPLOYEE_STATUS);
+            String login = account.getString(EMPLOYEE_LOGIN);
+            String password = account.getString(EMPLOYEE_PASSWORD);
+            Employee employeeAcc = new Employee(fName, lName, email, phoneNumber, profile, gender, login, password, status);
+            Model.getInstance().getViewFactory().setEmployeeAccount(employeeAcc);
+
+        }catch (SQLException e) {
              e.printStackTrace();
         }
         switch (accountType){

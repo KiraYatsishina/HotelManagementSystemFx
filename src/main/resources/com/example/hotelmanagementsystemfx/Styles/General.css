@@ -34,7 +34,7 @@
     -fx-label-padding: 0 0 0 35;
     -fx-font-weight: bold;
 }
-.selected {
+.menu_button_pressed{
     -fx-label-padding: 0 0 0 35;
     -fx-background-color: #383d47;
     -fx-border-image-width: 0 10 0 0;

@@ -26,7 +26,7 @@
             </ImageView>
             <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="191.0">
                <children>
-                  <Label fx:id="fullName_label" text="Firstname Lastname" textFill="WHITE">
+                  <Label fx:id="fullName_label" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Bold" size="16.0" />
                      </font>
@@ -34,9 +34,9 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="profile_label" text="profile" textFill="WHITE">
+                  <Label fx:id="profile_label" textFill="WHITE">
                      <font>
-                        <Font name="Yu Gothic Regular" size="16.0" />
+                        <Font name="Yu Gothic Regular" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -64,7 +64,7 @@
                </cursor>
                <styleClass>
                   <String fx:value="menu_button" />
-                  <String fx:value="selected" />
+                  <String fx:value="menu_button_pressed" />
                </styleClass>
             </Button>
             <Button fx:id="employees_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" styleClass="menu_button" text="Employees" textFill="WHITE" textOverrun="CLIP">
@@ -192,6 +192,21 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="addEmployee_button1" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style=": ;" styleClass="menu_button" text="Add service orders type" textFill="WHITE" textOverrun="CLIP">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Images/plusWhite.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Yu Gothic Regular" size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             <Line endX="199.29286193847656" endY="5.672375482390635E-5" startX="-100.0" stroke="WHITE" strokeWidth="0.7">
                <VBox.margin>
                   <Insets bottom="15.0" top="15.0" />
@@ -226,7 +241,7 @@
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
                <VBox.margin>
-                  <Insets left="60.0" top="220.0" />
+                  <Insets left="60.0" top="180.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />

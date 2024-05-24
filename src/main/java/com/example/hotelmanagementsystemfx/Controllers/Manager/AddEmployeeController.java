@@ -2,7 +2,6 @@ package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
 import com.example.hotelmanagementsystemfx.Animations.Shake;
 import com.example.hotelmanagementsystemfx.DB.Const;
-import com.example.hotelmanagementsystemfx.DB.DatabaseHandler;
 import com.example.hotelmanagementsystemfx.Models.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.fxml.FXML;
