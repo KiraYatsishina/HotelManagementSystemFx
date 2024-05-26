@@ -79,7 +79,57 @@ public class DatabaseHandler extends Configs{
             e.printStackTrace();
         }
     }
-
+    public ResultSet getRoomMostOccupied(){
+        return search("SELECT room.roomNumber as rNumb, count(*) as countReserv " +
+                "FROM Reservation INNER JOIN Room ON Room.idRoom = Reservation.idRoom " +
+                "WHERE Reservation.status <> 'Cancelled' " +
+                "group by rNumb " +
+                "order by countReserv desc " +
+                "limit 1;");
+    }
+    public ResultSet getClientMostCheckedIn(){
+        return search("SELECT Client.idClient, Client.firstName as fName, Client.lastName as lName, count(*) as countcheckin \n" +
+                "FROM Reservation INNER JOIN Client ON Client.idClient = Reservation.idClient\n" +
+                "WHERE Reservation.status <> 'Cancelled' AND Reservation.status <> 'No-show' AND Reservation.status <> 'Invalid' \n" +
+                "group by Client.idClient\n" +
+                "order by countcheckin desc\n" +
+                "limit 1;");
+    }
+    public ResultSet getServiceOrderOrderedMost(){
+        return search("SELECT Service_type.name as nameServiceType, Count(*) as countOrders\n" +
+                "FROM complete_service_order INNER JOIN service_type \n" +
+                "On service_type.idServiceType = complete_service_order.idServiceType\n" +
+                "GROUP BY nameServiceType\n" +
+                "ORDER BY countOrders desc\n" +
+                "LIMIT 1;");
+    }
+    public ResultSet getReservationHifhestPrice(){
+        return search("SELECT idReservation, price\n" +
+                "FROM Reservation\n" +
+                "where price = (select Max(price) FROM Reservation);");
+    }
+    public ResultSet getReservationLongestTenure(){
+        return search("SELECT idReservation, DATEDIFF(checkOutDate, checkInDate) AS stayDuration\n" +
+                "FROM Reservation\n" +
+                "ORDER BY stayDuration DESC\n" +
+                "LIMIT 1;\n");
+    }
+    public ResultSet getMaidMostserviceOrders(){
+        return search("SELECT employee.idEmployee, employee.firstName, employee.lastName, COUNT(*) AS countServiceOrders\n" +
+                "FROM complete_service_order\n" +
+                "INNER JOIN employee ON employee.idEmployee = complete_service_order.idEmployeeComplete\n" +
+                "GROUP BY employee.idEmployee, employee.firstName, employee.lastName\n" +
+                "ORDER BY countServiceOrders DESC\n" +
+                "LIMIT 1;");
+    }
+    public ResultSet getAdministratorMostReservations(){
+        return search("SELECT employee.idEmployee, employee.firstName, employee.lastName, COUNT(*) AS countReservations\n" +
+                "FROM reservation\n" +
+                "INNER JOIN employee ON employee.idEmployee = reservation.idEmployee\n" +
+                "GROUP BY employee.idEmployee, employee.firstName, employee.lastName\n" +
+                "ORDER BY countReservations DESC\n" +
+                "LIMIT 1;");
+    }
     /*
      * Administrator Section
      * */
