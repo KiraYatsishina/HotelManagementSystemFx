@@ -124,4 +124,14 @@ public class DatabaseHandler extends Configs{
             e.printStackTrace();}
         return status;
     }
+    public String getCount(String tableName){
+        ResultSet resultSet = search("SELECT count(*) FROM " + tableName + ";");
+        String count = null;
+        try {
+            if(resultSet.next()){
+                count = resultSet.getString(1);
+            }
+        } catch (SQLException e) {throw new RuntimeException(e);}
+        return count;
+    }
 }

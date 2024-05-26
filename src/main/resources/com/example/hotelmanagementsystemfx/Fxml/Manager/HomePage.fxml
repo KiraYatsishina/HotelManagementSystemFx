@@ -85,7 +85,7 @@
                         <Font name="Yu Gothic Regular" size="20.0" />
                      </font>
                   </Label>
-                  <Label text="Lana Anderson">
+                  <Label fx:id="fullName_label">
                      <font>
                         <Font name="Yu Gothic Bold" size="20.0" />
                      </font>
@@ -124,7 +124,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="countEmployees_label" text="45" textFill="WHITE">
+                  <Label fx:id="countEmployees_label" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Bold" size="36.0" />
                      </font>
@@ -155,7 +155,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="countRooms_label" text="25">
+                  <Label fx:id="countRooms_label">
                      <font>
                         <Font name="Yu Gothic Bold" size="36.0" />
                      </font>
@@ -186,7 +186,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="countServiceOrders_label" text="30" textFill="WHITE">
+                  <Label fx:id="countServiceOrders_label" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Bold" size="36.0" />
                      </font>
@@ -217,7 +217,7 @@
                   <Insets right="30.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="countClients_label" text="20" textFill="WHITE">
+                  <Label fx:id="countClients_label" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Bold" size="36.0" />
                      </font>
@@ -245,7 +245,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="235.0" prefWidth="270.0" style="-fx-background-color: #343b57; -fx-background-radius: 10;">
                <children>
-                  <Label fx:id="countReservations_label" text="47" textFill="WHITE">
+                  <Label fx:id="countReservations_label" textFill="WHITE">
                      <font>
                         <Font name="Yu Gothic Bold" size="36.0" />
                      </font>
@@ -298,7 +298,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="22.0" prefWidth="350.0" text="room">
+                  <Label fx:id="roomMostOccupied_label" prefHeight="22.0" prefWidth="350.0" text="room">
                      <font>
                         <Font name="Yu Gothic Bold" size="18.0" />
                      </font>
@@ -337,7 +337,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="22.0" prefWidth="350.0" text="client">
+                  <Label fx:id="clientMostCheckedIn_label" prefHeight="22.0" prefWidth="350.0" text="client">
                      <font>
                         <Font name="Yu Gothic Bold" size="18.0" />
                      </font>
@@ -376,7 +376,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="22.0" prefWidth="350.0" text="service order">
+                  <Label fx:id="serviceOrderMostOrdered_label" prefHeight="22.0" prefWidth="350.0" text="service order">
                      <font>
                         <Font name="Yu Gothic Bold" size="18.0" />
                      </font>
@@ -415,7 +415,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="22.0" prefWidth="350.0" text="reservation">
+                  <Label fx:id="reservationHighestPrice_label" prefHeight="22.0" prefWidth="350.0" text="reservation">
                      <font>
                         <Font name="Yu Gothic Bold" size="18.0" />
                      </font>
@@ -454,7 +454,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label prefHeight="22.0" prefWidth="350.0" text="reservation">
+                  <Label fx:id="reservationLongestTenure_label" prefHeight="22.0" prefWidth="350.0" text="reservation">
                      <font>
                         <Font name="Yu Gothic Bold" size="18.0" />
                      </font>
@@ -493,12 +493,12 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label prefWidth="350.0" text="maid">
+                  <Label fx:id="maidMostServiceOrders_label" prefWidth="350.0" text="maid">
                      <font>
                         <Font name="Yu Gothic Bold" size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="20.0" />
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -532,7 +532,7 @@
                         <Insets />
                      </HBox.margin>
                   </Label>
-                  <Label prefWidth="350.0" text="administrator">
+                  <Label fx:id="administratorRegisteredMostReservations_label" prefWidth="350.0" text="administrator">
                      <font>
                         <Font name="Yu Gothic Bold" size="18.0" />
                      </font>

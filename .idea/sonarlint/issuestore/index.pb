@@ -85,3 +85,9 @@ Bsrc/main/java/com/example/hotelmanagementsystemfx/Models/Room.java,5\9\59ea81a
 Lsrc/main/java/com/example/hotelmanagementsystemfx/Views/RoomCellFactory.java,9\d\9de7fa95f9d64a3c1c2f839985d84c25cf778d3c
 …
 Usrc/main/java/com/example/hotelmanagementsystemfx/Controllers/RoomCellController.java,7\7\77d0f666f7faa75faafe7b9d82bd853580cbeef6
+t
+Dsrc/main/java/com/example/hotelmanagementsystemfx/Models/Client.java,7\b\7bdfc694ea8a8a7c00999da7612c3468220be061
+y
+Isrc/main/java/com/example/hotelmanagementsystemfx/Models/Reservation.java,3\1\31f947868b678c7bfe0647f17b3c053a21b6c16f
+z
+Jsrc/main/java/com/example/hotelmanagementsystemfx/Models/ServiceOrder.java,9\b\9b5d6d28b41b0d39afb7c159b475c8ab2376341b
