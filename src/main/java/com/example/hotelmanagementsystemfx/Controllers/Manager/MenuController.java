@@ -49,7 +49,8 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button serviceOrders_button;
-
+    @FXML
+    private Button addServiceOrdersType_button;
     @FXML
     private Button settings_button;
     @Override
@@ -71,9 +72,12 @@ public class MenuController implements Initializable {
         rooms_button.setOnAction(actionEvent -> onRooms());
         addRoom_button.setOnAction(actionEvent -> onAddRoom());
         addEmployee_button.setOnAction(actionEvent -> onAddEmployee());
+        addServiceOrdersType_button.setOnAction(actionEvent -> onAddServiceOrdersType());
         settings_button.setOnAction(actionEvent -> onSettings());
         logOut_button.setOnAction(actionEvent -> onLogOut());
     }
+
+
 
     private void onLogOut(){
         Stage stage = (Stage) home_button.getScene().getWindow();
@@ -115,6 +119,10 @@ public class MenuController implements Initializable {
         clearStylesOnButton(addEmployee_button);
         Model.getInstance().getViewFactory().getManagerSelectedMenuItem().set(ManagerMenuOptions.ADD_EMPLOYEE);
     }
+    private void onAddServiceOrdersType() {
+        clearStylesOnButton(addServiceOrdersType_button);
+        Model.getInstance().getViewFactory().getManagerSelectedMenuItem().set(ManagerMenuOptions.ADD_SERVICE_ORDERS_TYPE);
+    }
     private void onSettings(){
         clearStylesOnButton(settings_button);
         Model.getInstance().getViewFactory().getManagerSelectedMenuItem().set(ManagerMenuOptions.SETTINGS);
@@ -129,6 +137,7 @@ public class MenuController implements Initializable {
                 rooms_button,
                 addEmployee_button,
                 addRoom_button,
+                addServiceOrdersType_button,
                 settings_button
         );
     }

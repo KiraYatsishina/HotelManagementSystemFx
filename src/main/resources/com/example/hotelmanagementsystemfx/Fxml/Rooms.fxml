@@ -78,7 +78,7 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ListView fx:id="rooms_listView" layoutX="26.0" layoutY="174.0" maxHeight="630.0" maxWidth="950.0" prefHeight="700.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
+      <ListView fx:id="rooms_listView" layoutX="24.0" layoutY="174.0" maxHeight="630.0" maxWidth="950.0" prefHeight="700.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
       <HBox alignment="CENTER_LEFT" layoutX="31.0" layoutY="87.0" prefHeight="45.0" prefWidth="940.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sort by: ">

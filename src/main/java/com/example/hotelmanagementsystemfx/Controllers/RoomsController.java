@@ -56,20 +56,11 @@ public class RoomsController implements Initializable {
 
         String sortBy;
         switch (selectedSort) {
-            case "Price":
-                sortBy = "pricePerNight";
-                break;
-            case "Capacity":
-                sortBy = "capacity";
-                break;
-            case "Floor":
-                sortBy = "floor";
-                break;
-            case "Room type":
-                sortBy = "roomType";
-                break;
-            default:
-                sortBy = "price"; // Default sort option
+            case "Price" -> sortBy = "pricePerNight";
+            case "Capacity" -> sortBy = "capacity";
+            case "Floor" -> sortBy = "floor";
+            case "Room type" -> sortBy = "roomType";
+            default -> sortBy = "price";
         }
 
         return "SELECT * FROM room ORDER BY " + sortBy + " " + order;

@@ -2,6 +2,7 @@ package com.example.hotelmanagementsystemfx.DB;
 
 import com.example.hotelmanagementsystemfx.Models.Employee;
 import com.example.hotelmanagementsystemfx.Models.Room;
+import com.example.hotelmanagementsystemfx.Models.ServiceOrdersType;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -35,6 +36,9 @@ public class DatabaseHandler extends Configs{
     * */
     public ResultSet getAllEmployeesData(){
         return search("SELECT * FROM " + EMPLOYEE_TABLE + ";");
+    }
+    public ResultSet getAllServiceOrdersTypeData(){
+        return search("SELECT * FROM " + SERVICE_TYPE_TABLE + ";");
     }
 
     public boolean existEmployee(String column, String value){
@@ -161,6 +165,22 @@ public class DatabaseHandler extends Configs{
                 "ORDER BY countReservations DESC\n" +
                 "LIMIT 1;");
     }
+
+    public void createServiceOrdersType(String name, String description, double price){
+        String query = "INSERT INTO " + SERVICE_TYPE_TABLE +
+                " (name, description, price, status) " +
+                "VALUES (?, ?, ?, ?)";
+        try (Connection connection = getDbConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, description);
+            preparedStatement.setDouble(3, price);
+            preparedStatement.setString(4, "Active");
+            preparedStatement.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     /*
      * Administrator Section
      * */
@@ -214,5 +234,20 @@ public class DatabaseHandler extends Configs{
             }
         } catch (SQLException e) {throw new RuntimeException(e);}
         return count;
+    }
+
+    public int getOrderCountOfServiceOrdersType(String serviceTypeId) {
+        ResultSet resultSet = search("SELECT count(*) FROM complete_service_order INNER JOIN service_type\n" +
+                "ON service_type.idServiceType = complete_service_order.idServiceType\n" +
+                "Where service_type.idServiceType = '" + serviceTypeId + "'\n" +
+                "Group By service_type.name ;");
+        try {
+            if(resultSet.next()){
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
     }
 }

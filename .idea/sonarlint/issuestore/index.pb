@@ -91,3 +91,15 @@ y
 Isrc/main/java/com/example/hotelmanagementsystemfx/Models/Reservation.java,3\1\31f947868b678c7bfe0647f17b3c053a21b6c16f
 z
 Jsrc/main/java/com/example/hotelmanagementsystemfx/Models/ServiceOrder.java,9\b\9b5d6d28b41b0d39afb7c159b475c8ab2376341b
+™
+isrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/AddServiceOrdersTypeController.java,b\6\b6192bf3009a90fde70963de9fc239244317426c
+
+Osrc/main/java/com/example/hotelmanagementsystemfx/Models/ServiceOrdersType.java,1\a\1af4368f4e46cc7d50d9dc9e96f8f03bb03a673c
+™
+isrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/ServiceOrderTypeCellController.java,5\1\513a1fa77bb1c446c15b5c50643d5d10927af41c
+…
+Usrc/main/java/com/example/hotelmanagementsystemfx/Views/ServiceOrdersTypeFactory.java,a\0\a0f66a6fd8a698da0ff1d3343e8adebd780fc590
+š
+jsrc/main/java/com/example/hotelmanagementsystemfx/Controllers/Manager/ServiceOrdersTypeCellController.java,0\e\0e3b6304b10ad06394ea3e7d42f95b1a081f866b
+‰
+Ysrc/main/java/com/example/hotelmanagementsystemfx/Views/ServiceOrdersTypeCellFactory.java,f\e\fe80a2fdf119834e7ebda306de66b4ca5608b0d5

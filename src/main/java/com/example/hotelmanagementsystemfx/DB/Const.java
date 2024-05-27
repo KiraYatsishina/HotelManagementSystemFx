@@ -66,7 +66,9 @@ public class Const {
     public static final String SERVICE_ORDER_STATUS = "status";
 
     public static final String SERVICE_TYPE_TABLE = "service_type";
+    public static final String SERVICE_TYPE_ID = "idServiceType";
     public static final String SERVICE_TYPE_NAME = "name";
     public static final String SERVICE_TYPE_DESCRIPTION = "description";
     public static final String SERVICE_TYPE_PRICE = "price";
+    public static final String SERVICE_TYPE_STATUS = "status";
 }

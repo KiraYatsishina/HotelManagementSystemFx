@@ -192,7 +192,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="addEmployee_button1" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style=": ;" styleClass="menu_button" text="Add service orders type" textFill="WHITE" textOverrun="CLIP">
+            <Button fx:id="addServiceOrdersType_button" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="300.0" style=": ;" styleClass="menu_button" text="Add service orders type" textFill="WHITE" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -17,12 +17,14 @@ public class Model {
 
     private final ObservableList<Employee> employees;
     private final ObservableList<Room> rooms;
+    private final ObservableList<ServiceOrdersType> ordersTypes;
 
     private Model(){
         this.viewFactory = new ViewFactory();
         this.databaseHandler = new DatabaseHandler();
         this.employees = FXCollections.observableArrayList();
         this.rooms = FXCollections.observableArrayList();
+        this.ordersTypes = FXCollections.observableArrayList();
     }
     public static synchronized Model getInstance(){
         if(model == null){
@@ -44,6 +46,9 @@ public class Model {
     */
     public ObservableList<Employee> getEmployees(){
         return employees;
+    }
+    public ObservableList<ServiceOrdersType> getServiceOrdersTypes(){
+        return ordersTypes;
     }
     public void setEmployees(){
         ResultSet resultSet = databaseHandler.getAllEmployeesData();
@@ -143,6 +148,44 @@ public class Model {
                 String status = Model.getInstance().databaseHandler.determineRoomStatusToday(Const.ROOM_ID);
                 sortResults.add(new Room(roomType, roomNumber, capacity,
                         pricePerNight, floor, hasRefrigerator, hasAirConditioning, status));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return sortResults;
+    }
+
+    public void setServiceOrdersType(){
+        ResultSet resultSet = databaseHandler.getAllServiceOrdersTypeData();
+        try{
+            while (resultSet.next()){
+
+                String id = resultSet.getString(Const.SERVICE_TYPE_ID);
+                String name = resultSet.getString(Const.SERVICE_TYPE_NAME);
+                String description = resultSet.getString(Const.SERVICE_TYPE_DESCRIPTION);
+                double price = resultSet.getDouble(Const.SERVICE_TYPE_PRICE);
+                int orderCount = Model.getInstance().databaseHandler.getOrderCountOfServiceOrdersType(id);
+                String status = resultSet.getString(Const.SERVICE_TYPE_STATUS);
+                ordersTypes.add(new ServiceOrdersType(id, name, description, price, orderCount, status));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<ServiceOrdersType> sortServiceOrdersType(String sqlRequest){
+        ObservableList<ServiceOrdersType> sortResults = FXCollections.observableArrayList();
+        ResultSet resultSet = databaseHandler.search(sqlRequest);
+
+        try{
+            while (resultSet.next()) {
+                String id = resultSet.getString(Const.SERVICE_TYPE_ID);
+                String name = resultSet.getString(Const.SERVICE_TYPE_NAME);
+                String description = resultSet.getString(Const.SERVICE_TYPE_DESCRIPTION);
+                double price = resultSet.getDouble(Const.SERVICE_TYPE_PRICE);
+                int orderCount = Model.getInstance().databaseHandler.getOrderCountOfServiceOrdersType(id);
+                String status = resultSet.getString(Const.SERVICE_TYPE_STATUS);
+                sortResults.add(new ServiceOrdersType(id, name, description, price, orderCount, status));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

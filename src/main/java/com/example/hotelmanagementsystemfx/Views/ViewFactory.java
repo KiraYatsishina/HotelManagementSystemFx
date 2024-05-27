@@ -7,6 +7,7 @@ import com.example.hotelmanagementsystemfx.Models.Employee;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +20,7 @@ public class ViewFactory {
     private AnchorPane employeesView;
     private AnchorPane addRoomView;
     private AnchorPane addEmployeeView;
+    private AnchorPane addServiceOrdersTypeView;
 
     // Administrator Views
     private final ObjectProperty<AdministratorMenuOptions> administratorSelectedMenuItem;
@@ -143,7 +145,16 @@ public class ViewFactory {
         }
         return addEmployeeView;
     }
-
+    public AnchorPane getAddServoceOrdersTypeView() {
+        if(addServiceOrdersTypeView == null){
+            try{
+                addServiceOrdersTypeView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/AddServiceOrdersType.fxml")).load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return addServiceOrdersTypeView;
+    }
     public AnchorPane getSettingsView() {
         if(settingsView == null){
             try{
@@ -254,4 +265,6 @@ public class ViewFactory {
         }
         return myServiceOrdersView;
     }
+
+
 }

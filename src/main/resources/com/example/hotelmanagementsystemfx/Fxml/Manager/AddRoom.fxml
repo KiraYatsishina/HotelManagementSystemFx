@@ -72,7 +72,7 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create room:">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Create room:" underline="true">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>

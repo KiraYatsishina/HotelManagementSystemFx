@@ -9,5 +9,6 @@ public enum ManagerMenuOptions {
     ROOMS,
     ADD_ROOM,
     ADD_EMPLOYEE,
+    ADD_SERVICE_ORDERS_TYPE,
     SETTINGS
 }
