@@ -1,11 +1,12 @@
 package com.example.hotelmanagementsystemfx.DB;
 
 import com.example.hotelmanagementsystemfx.Models.Employee;
+import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Models.Room;
-import com.example.hotelmanagementsystemfx.Models.ServiceOrdersType;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import static com.example.hotelmanagementsystemfx.DB.Const.*;
 
@@ -181,6 +182,19 @@ public class DatabaseHandler extends Configs{
             e.printStackTrace();
         }
     }
+    public ResultSet getMonthCountReservations(){
+        return search("SELECT DATE_FORMAT(reservationDate, '%b') AS month, COUNT(*) / COUNT(DISTINCT YEAR(reservationDate)) AS avgReservations\n" +
+                "    FROM Reservation\n" +
+                "    GROUP BY DATE_FORMAT(reservationDate, '%b'), MONTH(reservationDate)\n" +
+                "    ORDER BY MONTH(reservationDate);");
+    }
+    public ResultSet getMonthCountServiceOrders(){
+        return search("SELECT DATE_FORMAT(orderDate, '%b') AS month, COUNT(*) AS countOrder\n" +
+                "FROM service_order inner JOIN complete_service_order \n" +
+                "ON complete_service_order.idServiceOrder = service_order.idServiceOrder\n" +
+                "GROUP BY DATE_FORMAT(orderDate, '%b'), MONTH(orderDate)\n" +
+                "ORDER BY MONTH(orderDate);");
+    }
     /*
      * Administrator Section
      * */
@@ -229,13 +243,83 @@ public class DatabaseHandler extends Configs{
         ResultSet resultSet = search("SELECT count(*) FROM " + tableName + ";");
         String count = null;
         try {
-            if(resultSet.next()){
+            if(resultSet.next())
                 count = resultSet.getString(1);
-            }
         } catch (SQLException e) {throw new RuntimeException(e);}
         return count;
     }
-
+    public String getCountReservationToday(){
+        LocalDate today = LocalDate.now();
+        String formattedDate = today.format(DateTimeFormatter.ISO_DATE);
+        Employee employee = Model.getInstance().getViewFactory().getEmployeeAccount();
+        String email = employee.emailProperty().get();
+        String query = "SELECT count(*) \n" +
+                "FROM reservation INNER JOIN employee \n" +
+                "ON employee.idEmployee = reservation.idEmployee\n" +
+                "WHERE DATE(reservationDate) = '" + formattedDate + "' \n" +
+                "AND employee.email = '" + email + "';";
+        ResultSet resultSet = search(query);
+        String count = null;
+        try {
+            if (resultSet.next())
+                count = resultSet.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+    public String getCountServiceOrdersToday(){
+        LocalDate today = LocalDate.now();
+        String formattedDate = today.format(DateTimeFormatter.ISO_DATE);
+        Employee employee = Model.getInstance().getViewFactory().getEmployeeAccount();
+        String email = employee.emailProperty().get();
+        String query = "SELECT COUNT(*) \n" +
+                "FROM service_order \n" +
+                "INNER JOIN employee ON employee.idEmployee = service_order.idEmployee\n" +
+                "INNER JOIN complete_service_order ON complete_service_order.idServiceOrder = service_order.idServiceOrder\n" +
+                "WHERE DATE(orderDate) = '" + formattedDate + "' \n" +
+                "AND employee.email = '" + email + "';";
+        ResultSet resultSet = search(query);
+        String count = null;
+        try {
+            if (resultSet.next())
+                count = resultSet.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
+    public String getTotalToday(){
+        LocalDate today = LocalDate.now();
+        String formattedDate = today.format(DateTimeFormatter.ISO_DATE);
+        Employee employee = Model.getInstance().getViewFactory().getEmployeeAccount();
+        String email = employee.emailProperty().get();
+        String query = "SELECT SUM(total_price) AS total_sum\n" +
+                "FROM \n" +
+                "\t(SELECT SUM(service_type.price) AS total_price\n" +
+                "\tFROM service_order \n" +
+                "\tINNER JOIN employee ON employee.idEmployee = service_order.idEmployee\n" +
+                "\tINNER JOIN complete_service_order ON complete_service_order.idServiceOrder = service_order.idServiceOrder\n" +
+                "\tINNER JOIN service_type ON service_type.idServicetype = complete_service_order.idServiceType\n" +
+                "\tWHERE DATE(service_order.orderDate) = '" + formattedDate + "' \n" +
+                "\tAND employee.email = '" + email + "'\n" +
+                "UNION ALL\n" +
+                "\tSELECT SUM(reservation.price) AS total_price FROM reservation INNER JOIN employee ON employee.idEmployee = reservation.idEmployee\n" +
+                "\tWHERE DATE(reservationdate) = '" + formattedDate +"' \n" +
+                "\tAND employee.email = '" + email +"'\n" +
+                "    AND reservation.status <> 'Invalid'\n" +
+                "    AND reservation.status <> 'Cancelled')\n" +
+                "AS combined_prices";
+        ResultSet resultSet = search(query);
+        String count = null;
+        try {
+            if (resultSet.next())
+                count = resultSet.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return count;
+    }
     public int getOrderCountOfServiceOrdersType(String serviceTypeId) {
         ResultSet resultSet = search("SELECT count(*) FROM complete_service_order INNER JOIN service_type\n" +
                 "ON service_type.idServiceType = complete_service_order.idServiceType\n" +

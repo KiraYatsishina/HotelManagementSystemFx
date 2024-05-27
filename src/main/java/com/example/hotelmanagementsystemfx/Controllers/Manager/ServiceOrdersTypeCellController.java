@@ -1,7 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
 import com.example.hotelmanagementsystemfx.Models.ServiceOrdersType;
-import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

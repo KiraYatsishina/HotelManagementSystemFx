@@ -102,5 +102,24 @@
     -fx-border-color: #cccccc;
 }
 
+.chart{
+    -fx-background-color:   #f0f6f6;
+    -fx-font-size: 16;
+    -fx-legend-visible: false;
+    -fx-font-weight: normal;
+    -fx-font-family: "Yu Gothic";
+}
+.default-color0.chart-series-line{
+    -fx-stroke:  #343b57
+
+}
+.default-color1.chart-series-line{
+    -fx-stroke:  #ffa397
+}
+.chart-plot-background {
+    -fx-background-color: #fefefe;
+}
+
+
 
 

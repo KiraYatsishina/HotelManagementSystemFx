@@ -52,9 +52,6 @@ public class HomePageController implements Initializable {
     private Label maidMostServiceOrders_label;
 
     @FXML
-    private Label reservationHighestPriceCount_label;
-
-    @FXML
     private Label reservationHighestPrice_label;
 
     @FXML
