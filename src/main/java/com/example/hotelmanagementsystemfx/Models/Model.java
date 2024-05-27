@@ -110,13 +110,17 @@ public class Model {
         ResultSet resultSet = databaseHandler.getAllRoomsData();
         try{
             while (resultSet.next()){
+
                 String roomNumber = resultSet.getString(Const.ROOM_NUMBER);
                 String roomType = resultSet.getString(Const.ROOM_TYPE);
-                String pricePerNight = String.valueOf(resultSet.getDouble(Const.ROOM_PRICE_PER_NIGHT));
+                int capacity = resultSet.getInt(Const.ROOM_CAPACITY);
+                double pricePerNight = resultSet.getDouble(Const.ROOM_PRICE_PER_NIGHT);
+                int floor = resultSet.getInt(Const.ROOM_FLOOR);
                 String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
                 String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
                 String status = Model.getInstance().databaseHandler.determineRoomStatusToday(Const.ROOM_ID);
-                rooms.add(new Room(roomNumber, roomType, pricePerNight, hasRefrigerator, hasAirConditioning, status));
+                rooms.add(new Room(roomType, roomNumber, capacity,
+                        pricePerNight, floor, hasRefrigerator, hasAirConditioning, status));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -131,11 +135,14 @@ public class Model {
             while (resultSet.next()) {
                 String roomNumber = resultSet.getString(Const.ROOM_NUMBER);
                 String roomType = resultSet.getString(Const.ROOM_TYPE);
-                String pricePerNight = String.valueOf(resultSet.getDouble(Const.ROOM_PRICE_PER_NIGHT));
+                int capacity = resultSet.getInt(Const.ROOM_CAPACITY);
+                double pricePerNight = resultSet.getDouble(Const.ROOM_PRICE_PER_NIGHT);
+                int floor = resultSet.getInt(Const.ROOM_FLOOR);
                 String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
                 String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
                 String status = Model.getInstance().databaseHandler.determineRoomStatusToday(Const.ROOM_ID);
-                sortResults.add(new Room(roomNumber, roomType, pricePerNight, hasRefrigerator, hasAirConditioning, status));
+                sortResults.add(new Room(roomType, roomNumber, capacity,
+                        pricePerNight, floor, hasRefrigerator, hasAirConditioning, status));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

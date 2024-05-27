@@ -1,6 +1,7 @@
 package com.example.hotelmanagementsystemfx.DB;
 
 import com.example.hotelmanagementsystemfx.Models.Employee;
+import com.example.hotelmanagementsystemfx.Models.Room;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -67,6 +68,36 @@ public class DatabaseHandler extends Configs{
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    public void createRoom(Room room){
+        String query = "INSERT INTO " + ROOM_TABLE +
+                " (roomType, capacity, pricePerNight, floor, roomNumber, hasRefrigerator, hasAirConditioning) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        try (Connection connection = getDbConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, room.roomTypeProperty().get());
+            preparedStatement.setInt(2, room.capacityProperty().get());
+            preparedStatement.setDouble(3, room.pricePerNightProperty().get());
+            preparedStatement.setInt(4, room.floorProperty().get());
+            preparedStatement.setString(5, room.roomNumberProperty().get());
+            preparedStatement.setInt(6, Integer.parseInt(room.hasRefrigeratorProperty().get()));
+            preparedStatement.setInt(7, Integer.parseInt(room.hasAirConditioningProperty().get()));
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    public boolean existRoomByNumber(String roomNumber){
+        ResultSet resultSet = search("SELECT * FROM room \n" +
+                "WHERE room.roomNumber = '" + roomNumber + "';");
+        try {
+            return resultSet.next() ? true : false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
     public void deleteEmployee(String password){
         String query = "DELETE FROM " + EMPLOYEE_TABLE + " WHERE password = ?";

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -66,12 +67,7 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ImageView fitHeight="470.0" fitWidth="948.0" layoutX="26.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/hotel2.jpg" />
-         </image>
-      </ImageView>
-      <Line endX="873.0000610351562" layoutX="100.0" layoutY="375.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
+      <Line endX="873.0000610351562" layoutX="100.0" layoutY="345.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
       <HBox alignment="CENTER_LEFT" layoutX="26.0" layoutY="83.0" prefHeight="246.0" prefWidth="948.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0">
@@ -88,7 +84,7 @@
             </VBox>
             <VBox prefHeight="267.0" prefWidth="162.0">
                <children>
-                  <Label text="Type">
+                  <Label fx:id="type_label" text="Type">
                      <font>
                         <Font name="Yu Gothic Bold" size="16.0" />
                      </font>
@@ -96,7 +92,21 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Standard">
+                  <RadioButton fx:id="standard_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Standard">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="roomType" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="lux_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Lux" toggleGroup="$roomType">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -107,7 +117,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Lux">
+                  <RadioButton fx:id="improved_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Improved" toggleGroup="$roomType">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -118,7 +128,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Improved">
+                  <RadioButton fx:id="executiveSuite_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Executive suite" toggleGroup="$roomType">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -129,18 +139,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Executive suite">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="Apartments">
+                  <RadioButton fx:id="apartments_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Apartments" toggleGroup="$roomType">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -158,7 +157,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Capacity">
+                  <Label fx:id="capacity_label" text="Capacity">
                      <font>
                         <Font name="Yu Gothic Bold" size="16.0" />
                      </font>
@@ -166,7 +165,21 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="1">
+                  <RadioButton fx:id="capacity1_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="1">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="capacity" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="capacity2_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="2" toggleGroup="$capacity">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -177,7 +190,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="2">
+                  <RadioButton fx:id="capacity3_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="3" toggleGroup="$capacity">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -188,7 +201,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="3">
+                  <RadioButton fx:id="capacity4_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="4" toggleGroup="$capacity">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -199,7 +212,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="4">
+                  <RadioButton fx:id="capacity5_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="5" toggleGroup="$capacity">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -210,18 +223,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="5">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="6">
+                  <RadioButton fx:id="capacity6_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="6" toggleGroup="$capacity">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -239,7 +241,7 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <Label text="Flor">
+                  <Label fx:id="floor_label" text="Floor">
                      <font>
                         <Font name="Yu Gothic Bold" size="16.0" />
                      </font>
@@ -247,7 +249,21 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="1">
+                  <RadioButton fx:id="floor1_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="1">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="flor" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="floor2_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="2" toggleGroup="$flor">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -258,7 +274,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="2">
+                  <RadioButton fx:id="floor3_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="3" toggleGroup="$flor">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -269,7 +285,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="3">
+                  <RadioButton fx:id="floor4_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="4" toggleGroup="$flor">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -280,18 +296,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="4">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="5">
+                  <RadioButton fx:id="floor5_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="5" toggleGroup="$flor">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -309,7 +314,7 @@
             </VBox>
             <VBox prefHeight="258.0" prefWidth="125.0">
                <children>
-                  <Label text="Number">
+                  <Label fx:id="number_label" text="Number">
                      <font>
                         <Font name="Yu Gothic Bold" size="16.0" />
                      </font>
@@ -317,7 +322,21 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="1">
+                  <RadioButton fx:id="number1_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="1">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="number" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="number2_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="2" toggleGroup="$number">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -328,7 +347,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="2">
+                  <RadioButton fx:id="number3_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="3" toggleGroup="$number">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -339,7 +358,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="3">
+                  <RadioButton fx:id="number4_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="4" toggleGroup="$number">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -350,18 +369,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="4">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" styleClass="custom-radio" text="5">
+                  <RadioButton fx:id="number5_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="5" toggleGroup="$number">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -389,7 +397,7 @@
                               <Insets />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="firstName_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="0.0" prefHeight="30.0" prefWidth="129.0" styleClass="text_field">
+                        <TextField fx:id="price_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="0.0" prefHeight="30.0" prefWidth="129.0" styleClass="text_field">
                            <font>
                               <Font name="Yu Gothic Regular" size="16.0" />
                            </font>
@@ -406,7 +414,7 @@
                         <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <CheckBox fx:id="employed_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Refrigerator">
+                  <CheckBox fx:id="hasRefrigerator_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Refrigerator">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -417,7 +425,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </CheckBox>
-                  <CheckBox fx:id="manager_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Air conditioning">
+                  <CheckBox fx:id="hasAirConditioning_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Air conditioning">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -430,7 +438,7 @@
                   </CheckBox>
                   <HBox alignment="BOTTOM_RIGHT" prefHeight="97.0" prefWidth="192.0">
                      <children>
-                        <Button fx:id="search_button" alignment="CENTER" contentDisplay="RIGHT" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #12413b; -fx-background-radius: 10; -fx-label-padding: 0 0 0 15;" text="Create" textFill="WHITE">
+                        <Button fx:id="create_button" alignment="CENTER" contentDisplay="RIGHT" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #12413b; -fx-background-radius: 10; -fx-label-padding: 0 0 0 15;" text="Create" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -460,7 +468,7 @@
             </VBox>
          </children>
       </HBox>
-      <Label layoutX="430.0" layoutY="341.0" text="New room is saved ✔">
+      <Label fx:id="create_label" layoutX="420.0" layoutY="361.0">
          <font>
             <Font name="Yu Gothic Regular" size="16.0" />
          </font>

@@ -64,7 +64,7 @@ public class RoomCellController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         roomNumber_label.textProperty().bind(room.roomNumberProperty());
-        pricePerNight_label.textProperty().bind(room.pricePerNightProperty());
+        pricePerNight_label.textProperty().bind(room.pricePerNightProperty().asString());
         Image doneImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/done.png"));
         Image noImage = new Image(getClass().getResourceAsStream("/com/example/hotelmanagementsystemfx/Images/no.png"));
 
