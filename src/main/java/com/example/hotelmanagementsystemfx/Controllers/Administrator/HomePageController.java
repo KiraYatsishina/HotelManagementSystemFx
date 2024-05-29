@@ -43,7 +43,7 @@ public class HomePageController implements Initializable {
         countServiceOrdersToday_lable.setText(Model.getInstance().getDatabaseHandler()
                 .getCountServiceOrdersToday() + " Service orders");
         countEarning_label.setText("$  " + Model.getInstance().getDatabaseHandler()
-                .getCountServiceOrdersToday());
+                .getTotalToday());
         chartCompletion();
     }
 

@@ -3,6 +3,8 @@ package com.example.hotelmanagementsystemfx.DB;
 import com.example.hotelmanagementsystemfx.Models.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Models.Room;
+import com.example.hotelmanagementsystemfx.Models.ServiceOrder;
+import javafx.beans.property.StringProperty;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -42,6 +44,7 @@ public class DatabaseHandler extends Configs{
     public ResultSet getAllReservationsData(){
         return search("SELECT * FROM reservation;");
     }
+    public ResultSet getAllServiceOrdersData(){return search("SELECT * FROM service_order;");}
 
     public ResultSet getClientById(String id){
         return search("SELECT *\n" +
@@ -383,5 +386,22 @@ public class DatabaseHandler extends Configs{
                 count = resultSet.getInt(1);
         } catch (SQLException e) {throw new RuntimeException(e);}
         return count;
+    }
+    public double getPriceServiceOrderById(String id){
+        ResultSet resultSet = search("SELECT SUM(service_type.price) \n" +
+                "FROM complete_service_order \n" +
+                "INNER JOIN service_type \n" +
+                "ON service_type.idServiceType = complete_service_order.idServiceType\n" +
+                "Where complete_service_order.idServiceOrder = '" + id + "'");
+        double price = 0;
+        try {
+            if(resultSet.next())
+                price = resultSet.getDouble(1);
+        } catch (SQLException e) {throw new RuntimeException(e);}
+        return price;
+    }
+
+    public String getStatusServiceOrderById(StringProperty stringProperty) {
+        return "0";
     }
 }

@@ -60,6 +60,7 @@ public class Const {
     public static final String ROOM_TYPE_DESCRIPTION = "description";
 
     public static final String SERVICE_ORDER_TABLE = "service_order";
+    public static final String SERVICE_ORDER_ID = "idServiceOrder";
     public static final String SERVICE_ORDER_ID_CLIENT = "idClient";
     public static final String SERVICE_ORDER_ID_EMPLOYEE = "idEmployee";
     public static final String SERVICE_ORDER_DATE = "orderDate";

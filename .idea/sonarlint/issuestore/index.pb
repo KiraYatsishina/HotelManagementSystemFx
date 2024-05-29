@@ -107,3 +107,7 @@ Nsrc/main/java/com/example/hotelmanagementsystemfx/Views/ClientCellFactory.java
 \src/main/java/com/example/hotelmanagementsystemfx/Controllers/ReservationCellController.java,1\7\17b3995bf75a0355343ba415c9e57e4e6a7841e7
 É
 Ssrc/main/java/com/example/hotelmanagementsystemfx/Views/ReservationCellFactory.java,2\c\2c91005aaf23c144a5df192c9cdd207529d223f5
+ç
+]src/main/java/com/example/hotelmanagementsystemfx/Controllers/ServiceOrderCellController.java,9\d\9d378688a4d486a16bcf3d9cd006e09f45fcdb95
+Ñ
+Tsrc/main/java/com/example/hotelmanagementsystemfx/Views/ServiceOrderCellFactory.java,9\b\9ba9373ed287d1ea56407b3c3421ba3b498ba04e

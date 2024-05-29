@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="50.0" maxWidth="600.0" minHeight="50.0" minWidth="600.0" prefHeight="50.0" prefWidth="600.0" styleClass="listCell" stylesheets="@../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="account_image" fitHeight="30.0" fitWidth="30.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="12.0">
+         <image>
+            <Image url="@../Images/serviceOrderBlack.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="edit_button" layoutX="534.0" layoutY="10.0" maxHeight="30.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="30.0" style="-fx-background-color: #e09037;" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/edit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="306.0" layoutY="30.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
+      <Line endX="-99.17167663574219" endY="-20.957857131958008" layoutX="428.0" layoutY="31.0" startX="-99.17166137695312" startY="11.001692771911621" strokeWidth="0.3" />
+      <Label fx:id="clientFullName_label" layoutX="56.0" layoutY="16.0" style="-fx-text-fill: black;">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="orderDate_label" layoutX="227.0" layoutY="16.0" style="-fx-text-fill: black;">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="price_label" layoutX="351.0" layoutY="15.0" style="-fx-text-fill: black;">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="status_label" layoutX="441.0" layoutY="15.0" style="-fx-text-fill: black;">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
+      <Circle fx:id="status_circle" fill="DODGERBLUE" layoutX="426.0" layoutY="25.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>

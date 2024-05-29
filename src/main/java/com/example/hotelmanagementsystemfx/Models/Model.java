@@ -23,6 +23,7 @@ public class Model {
     private final ObservableList<ServiceOrdersType> ordersTypes;
     private final ObservableList<Client> clients;
     private final ObservableList<Reservation> reservations;
+    private final ObservableList<ServiceOrder> serviceOrders;
 
     private Model(){
         this.viewFactory = new ViewFactory();
@@ -32,6 +33,7 @@ public class Model {
         this.ordersTypes = FXCollections.observableArrayList();
         this.clients = FXCollections.observableArrayList();
         this.reservations = FXCollections.observableArrayList();
+        this.serviceOrders = FXCollections.observableArrayList();
     }
     public static synchronized Model getInstance(){
         if(model == null){
@@ -63,6 +65,7 @@ public class Model {
     public ObservableList<ServiceOrdersType> getServiceOrdersTypes(){
         return ordersTypes;
     }
+    public ObservableList<ServiceOrder> getServiceOrders(){return serviceOrders;}
 
 
     public void setEmployees(){
@@ -286,6 +289,39 @@ public class Model {
                 searchResults.add(new Reservation(idReservation, idClient, idRoom, idEmployee,
                         numberOfGuests, reservationDate, checkInDate, checkOutDate,
                         price, status, tenure));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return searchResults;
+    }
+
+    public void setServiceOrders(){
+        ResultSet resultSet = databaseHandler.getAllServiceOrdersData();
+
+        try{
+            while (resultSet.next()){
+                String idServiceOrder = resultSet.getString(Const.SERVICE_ORDER_ID);
+                String idClient = resultSet.getString(Const.SERVICE_ORDER_ID_CLIENT);
+                String idEmployee = resultSet.getString(Const.SERVICE_ORDER_ID_EMPLOYEE);
+                String orderDate = resultSet.getString(Const.SERVICE_ORDER_DATE);
+
+                serviceOrders.add(new ServiceOrder(idServiceOrder, idClient, idEmployee, orderDate));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public ObservableList<ServiceOrder> searchServiceOrders(String sqlRequest){
+        ObservableList<ServiceOrder> searchResults = FXCollections.observableArrayList();
+        ResultSet resultSet = databaseHandler.search(sqlRequest);
+        try{
+            while (resultSet.next()) {
+                String idServiceOrder = resultSet.getString(Const.SERVICE_ORDER_ID);
+                String idClient = resultSet.getString(Const.SERVICE_ORDER_ID_CLIENT);
+                String idEmployee = resultSet.getString(Const.SERVICE_ORDER_ID_EMPLOYEE);
+                String orderDate = resultSet.getString(Const.SERVICE_ORDER_DATE);
+                searchResults.add(new ServiceOrder(idServiceOrder, idClient, idEmployee, orderDate));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

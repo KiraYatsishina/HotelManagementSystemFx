@@ -75,16 +75,17 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ListView fx:id="serviceOrders_listView" layoutX="25.0" layoutY="296.0" maxHeight="500.0" maxWidth="950.0" prefHeight="500.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
-      <HBox layoutX="31.0" layoutY="87.0" prefHeight="180.0" prefWidth="940.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
+      <ListView fx:id="serviceOrders_listView" layoutX="361.0" layoutY="89.0" maxHeight="702.0" maxWidth="950.0" prefHeight="702.0" prefWidth="615.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: #fefefe;" />
+      <Line endX="558.3333740234375" endY="-142.6666717529297" layoutX="-224.0" layoutY="232.0" startX="558.3333740234375" startY="558.0" stroke="#cccccc" strokeWidth="0.4" />
+      <VBox layoutX="32.0" layoutY="87.0" prefHeight="707.0" prefWidth="269.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by: ">
                <font>
                   <Font name="Yu Gothic Bold" size="16.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
+               <VBox.margin>
+                  <Insets left="15.0" top="15.0" />
+               </VBox.margin>
             </Text>
             <Button fx:id="search_button" alignment="CENTER" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #151b26; -fx-background-radius: 10;" text="Search" textFill="WHITE">
                <graphic>
@@ -97,9 +98,11 @@
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="15.0" top="50.0" />
+               </VBox.margin>
             </Button>
          </children>
-      </HBox>
-      <Line endX="873.0000610351562" layoutX="101.0" layoutY="281.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
+      </VBox>
    </children>
 </AnchorPane>
