@@ -187,24 +187,21 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Line>
-                  <RadioButton fx:id="women_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Women">
+                  <RadioButton fx:id="woman_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Woman">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
-                     <toggleGroup>
-                        <ToggleGroup fx:id="sex" />
-                     </toggleGroup>
                      <VBox.margin>
                         <Insets top="20.0" />
                      </VBox.margin>
-                  </RadioButton>
-                  <RadioButton fx:id="man_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Man">
-                     <font>
-                        <Font name="Yu Gothic Regular" size="16.0" />
-                     </font>
                      <toggleGroup>
                         <ToggleGroup fx:id="sex" />
                      </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="man_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Man" toggleGroup="$sex">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
                      <VBox.margin>
                         <Insets right="20.0" top="10.0" />
                      </VBox.margin>

@@ -20,7 +20,6 @@ public class ClientsController implements Initializable {
     @FXML
     private DatePicker checkOutDate_datePicker;
 
-
     @FXML
     private TextField firstName_textField;
 
@@ -40,7 +39,7 @@ public class ClientsController implements Initializable {
     private ToggleGroup sex;
 
     @FXML
-    private RadioButton women_radioButton;
+    private RadioButton woman_radioButton;
 
     @FXML
     private ListView<Client> clients_listView;
@@ -50,6 +49,7 @@ public class ClientsController implements Initializable {
         clients_listView.setItems(Model.getInstance().getClients());
         clients_listView.setCellFactory(e -> new ClientCellFactory());
         search_button.setOnAction(actionEvent -> onClientSearch());
+
     }
     private void onClientSearch(){
         String sqlRequest = makeRequest();
@@ -70,7 +70,7 @@ public class ClientsController implements Initializable {
 
         if (man_radioButton.isSelected())
             request.append(" AND client.gender = 'Male'");
-        else if (women_radioButton.isSelected())
+        else if (woman_radioButton.isSelected())
             request.append(" AND client.gender = 'Female'");
 
         if (checkInDate_datePicker.getValue() != null)
