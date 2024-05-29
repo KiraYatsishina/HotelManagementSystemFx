@@ -15,10 +15,11 @@ public class Reservation {
 
     private final DoubleProperty price;
     private final StringProperty status;
+    private final IntegerProperty tenure;
 
     public Reservation(String idReservation, String idClient, String idRoom,String idEmployee,
                        int numberOfGuests, String reservationDate, String checkInDate,String checkOutDate,
-                       double price,String status) {
+                       double price,String status, int tenure) {
         this.idReservation = new SimpleStringProperty(this, "idReservation", idReservation);
         this.idClient = new SimpleStringProperty(this, "idClient", idClient);
         this.idRoom = new SimpleStringProperty(this, "idRoom", idRoom);
@@ -29,6 +30,7 @@ public class Reservation {
         this.checkOutDate = new SimpleStringProperty(this, "checkOutDate", checkOutDate);
         this.price = new SimpleDoubleProperty(this, "price", price);
         this.status = new SimpleStringProperty(this, "status", status);
+        this.tenure = new SimpleIntegerProperty(this, "tenure", tenure);
     }
 
     public StringProperty idReservationProperty() {
@@ -58,7 +60,10 @@ public class Reservation {
     public DoubleProperty priceProperty() {
         return this.price;
     }
-    public StringProperty status() {
+    public StringProperty statusProperty() {
         return this.status;
+    }
+    public IntegerProperty tenureProperty() {
+        return this.tenure;
     }
 }

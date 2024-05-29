@@ -22,6 +22,7 @@ public class Model {
     private final ObservableList<Room> rooms;
     private final ObservableList<ServiceOrdersType> ordersTypes;
     private final ObservableList<Client> clients;
+    private final ObservableList<Reservation> reservations;
 
     private Model(){
         this.viewFactory = new ViewFactory();
@@ -30,6 +31,7 @@ public class Model {
         this.rooms = FXCollections.observableArrayList();
         this.ordersTypes = FXCollections.observableArrayList();
         this.clients = FXCollections.observableArrayList();
+        this.reservations = FXCollections.observableArrayList();
     }
     public static synchronized Model getInstance(){
         if(model == null){
@@ -55,9 +57,14 @@ public class Model {
     public ObservableList<Client> getClients(){
         return clients;
     }
+    public ObservableList<Room> getRooms(){
+        return rooms;
+    }
     public ObservableList<ServiceOrdersType> getServiceOrdersTypes(){
         return ordersTypes;
     }
+
+
     public void setEmployees(){
         ResultSet resultSet = databaseHandler.getAllEmployeesData();
         try{
@@ -231,8 +238,58 @@ public class Model {
         }
         return sortResults;
     }
+    public ObservableList<Reservation> getReservations(){return reservations;}
 
-    public ObservableList<Room> getRooms() {
-        return rooms;
+
+    public void setReservations(){
+        ResultSet reservationsData = databaseHandler.getAllReservationsData();
+
+        try{
+            while (reservationsData.next()){
+                String idReservation = reservationsData.getString(Const.RESERVATION_ID);
+                String idClient = reservationsData.getString(Const.RESERVATION_ID_CLIENT);
+                String idRoom = reservationsData.getString(Const.RESERVATION_ID_ROOM);
+                String idEmployee = reservationsData.getString(Const.RESERVATION_ID_EMPLOYEE);
+                int numberOfGuests = reservationsData.getInt(Const.RESERVATION_NUMBER_OF_GUESTS);
+                String reservationDate = reservationsData.getString(Const.RESERVATION_DATE);
+                String checkInDate = reservationsData.getString(Const.RESERVATION_CHECK_IN_DATE);
+                String checkOutDate = reservationsData.getString(Const.RESERVATION_CHECK_OUT_DATE);
+                double price = reservationsData.getDouble(Const.RESERVATION_PRICE);
+                String status = reservationsData.getString(Const.RESERVATION_STATUS);
+                int tenure = Model.getInstance().databaseHandler.getStayDuration(idReservation);
+
+
+                reservations.add(new Reservation(idReservation, idClient, idRoom, idEmployee,
+                        numberOfGuests, reservationDate, checkInDate, checkOutDate,
+                        price, status, tenure));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public ObservableList<Reservation> searchReservations(String sqlRequest){
+        ObservableList<Reservation> searchResults = FXCollections.observableArrayList();
+        ResultSet resultSet = databaseHandler.search(sqlRequest);
+        try{
+            while (resultSet.next()) {
+                String idReservation = resultSet.getString(Const.RESERVATION_ID);
+                String idClient = resultSet.getString(Const.RESERVATION_ID_CLIENT);
+                String idRoom = resultSet.getString(Const.RESERVATION_ID_ROOM);
+                String idEmployee = resultSet.getString(Const.RESERVATION_ID_EMPLOYEE);
+                int numberOfGuests = resultSet.getInt(Const.RESERVATION_NUMBER_OF_GUESTS);
+                String reservationDate = resultSet.getString(Const.RESERVATION_DATE);
+                String checkInDate = resultSet.getString(Const.RESERVATION_CHECK_IN_DATE);
+                String checkOutDate = resultSet.getString(Const.RESERVATION_CHECK_OUT_DATE);
+                double price = resultSet.getDouble(Const.RESERVATION_PRICE);
+                String status = resultSet.getString(Const.RESERVATION_STATUS);
+                int tenure = Model.getInstance().databaseHandler.getStayDuration(idReservation);
+                searchResults.add(new Reservation(idReservation, idClient, idRoom, idEmployee,
+                        numberOfGuests, reservationDate, checkInDate, checkOutDate,
+                        price, status, tenure));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return searchResults;
     }
 }

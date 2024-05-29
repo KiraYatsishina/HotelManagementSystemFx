@@ -2,6 +2,13 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -47,7 +54,7 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Text fill="#a2d7d4" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #26807d;" text="Calendar" wrappingWidth="72.8306884765625">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar" wrappingWidth="72.8306884765625">
                                        <font>
                                           <Font name="Yu Gothic Medium" size="16.0" />
                                        </font>
@@ -58,7 +65,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Text>
-                                    <Line endX="-35.41419982910156" startX="-100.0" stroke="#26817e" strokeWidth="2.0">
+                                    <Line endX="-35.41419982910156" startX="-100.0" strokeWidth="2.0">
                                        <VBox.margin>
                                           <Insets top="7.0" />
                                        </VBox.margin>
@@ -67,7 +74,7 @@
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="List">
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #26807d;" text="List">
                                        <font>
                                           <Font name="Yu Gothic Medium" size="16.0" />
                                        </font>
@@ -78,7 +85,7 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Text>
-                                    <Line endX="-72.0" startX="-100.0" strokeWidth="2.0">
+                                    <Line endX="-72.0" startX="-100.0" stroke="#26807d" strokeWidth="2.0">
                                        <VBox.margin>
                                           <Insets top="7.0" />
                                        </VBox.margin>
@@ -108,5 +115,217 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
+      <ListView fx:id="reservations_listView" layoutX="25.0" layoutY="366.0" maxHeight="630.0" maxWidth="950.0" prefHeight="435.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
+      <Line endX="873.0000610351562" layoutX="100.0" layoutY="351.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
+      <HBox layoutX="30.0" layoutY="86.0" prefHeight="249.0" prefWidth="940.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by: " underline="true">
+               <font>
+                  <Font name="Yu Gothic Bold" size="16.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Text>
+            <VBox prefHeight="122.0" prefWidth="227.0">
+               <children>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="31.0" prefWidth="216.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of guests">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="numberOfGuests_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="89.0" prefHeight="30.0" prefWidth="89.0" styleClass="text_field">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <ChoiceBox fx:id="administrator_name_choiceBox" prefHeight="33.0" prefWidth="250.0">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="clientName_choiceBox" prefWidth="250.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="roomNumber_choiceBox" prefHeight="33.0" prefWidth="119.0">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" right="25.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="180.0" prefWidth="201.0">
+               <HBox.margin>
+                  <Insets right="25.0" />
+               </HBox.margin>
+               <children>
+                  <DatePicker fx:id="reservationDate_datePicker" prefHeight="31.0" prefWidth="192.0" promptText="Reservation date" styleClass="datePicker">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <DatePicker fx:id="checkIn_datePicker" prefHeight="31.0" prefWidth="192.0" promptText="Check in date" styleClass="datePicker">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <DatePicker fx:id="checkOut_datePicker" prefHeight="26.0" prefWidth="192.0" promptText="Check out date" styleClass="datePicker">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <HBox alignment="CENTER" prefHeight="31.0" prefWidth="216.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="\$">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="priceFrom_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="80.0" prefHeight="30.0" prefWidth="80.0" promptText="from" styleClass="text_field">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="priceTo_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="80.0" prefHeight="30.0" prefWidth="80.0" promptText="to" styleClass="text_field">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button fx:id="search_button" alignment="CENTER" maxHeight="40.0" maxWidth="140.0" minHeight="39.0" minWidth="134.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #151b26; -fx-background-radius: 10;" text="Search" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/search_white.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="40.0" top="25.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox prefHeight="180.0" prefWidth="131.0">
+               <children>
+                  <CheckBox fx:id="completed_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Completed">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="noShow_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="No-show">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="invalid_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Invalid">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="occupied_checkBox" mnemonicParsing="false" prefHeight="23.0" prefWidth="129.0" styleClass="custom-checkbox" text="Occupied">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="reserved_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Reserved">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <CheckBox fx:id="cancelled_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Cancelled">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+               </children>
+               <HBox.margin>
+                  <Insets right="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="180.0" prefWidth="202.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sort by: " underline="true">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Text>
+                  <ChoiceBox fx:id="sort_choiceBox" prefHeight="33.0" prefWidth="191.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <CheckBox fx:id="reverseSort_checkBox" mnemonicParsing="false" styleClass="custom-checkbox" text="Reverse sorting ">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </CheckBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label fx:id="error_label" layoutX="376.0" layoutY="366.0" text="Filling error! Check the entry data" visible="false">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -38,6 +38,21 @@ public class DatabaseHandler extends Configs{
     public ResultSet getAllEmployeesData(){
         return search("SELECT * FROM " + EMPLOYEE_TABLE + ";");
     }
+
+    public ResultSet getAllReservationsData(){
+        return search("SELECT * FROM reservation;");
+    }
+
+    public ResultSet getClientById(String id){
+        return search("SELECT *\n" +
+                "FROM client WHERE idClient = '" + id + "';");
+    }
+    public ResultSet getAdministratorNames() {
+        return search("SELECT CONCAT(firstName, ' ', lastName) " +
+                "AS fullName FROM " + EMPLOYEE_TABLE +
+                " WHERE idEmployeeType = 2 AND status <> 'Terminated';");
+    }
+
     public ResultSet getAllServiceOrdersTypeData(){
         return search("SELECT * FROM " + SERVICE_TYPE_TABLE + ";");
     }
@@ -348,7 +363,6 @@ public class DatabaseHandler extends Configs{
         }
         return 0;
     }
-
     public int countServiceOrdersOfClient(String phoneNumber) {
         ResultSet resultSet = search("SELECT Count(*) FROM service_order INNER JOIN client ON client.idClient = service_order.idClient\n" +
                 "INNER JOIN complete_service_order ON complete_service_order.idServiceOrder = service_order.idServiceOrder\n" +
@@ -359,5 +373,15 @@ public class DatabaseHandler extends Configs{
             throw new RuntimeException(e);
         }
         return 0;
+    }
+    public int getStayDuration(String reservationId) {
+        ResultSet resultSet = search("SELECT DATEDIFF(checkOutDate, checkInDate) AS stay_duration " +
+                "FROM reservation WHERE idReservation = '" + reservationId + "'");
+        int count = 0;
+        try {
+            if(resultSet.next())
+                count = resultSet.getInt(1);
+        } catch (SQLException e) {throw new RuntimeException(e);}
+        return count;
     }
 }

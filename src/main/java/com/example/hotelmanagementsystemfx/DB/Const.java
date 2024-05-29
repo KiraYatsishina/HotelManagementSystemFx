@@ -33,10 +33,11 @@ public class Const {
     public static final String EMPLOYEE_TYPE_SALARY = "salary";
 
     public static final String RESERVATION_TABLE = "reservation";
+    public static final String RESERVATION_ID = "idReservation";
     public static final String RESERVATION_ID_CLIENT = "idClient";
     public static final String RESERVATION_ID_ROOM = "idRoom";
     public static final String RESERVATION_ID_EMPLOYEE = "idEmployee";
-    public static final String RESERVATION_NUMBER_OF_GUESTS = "numderOfGuests";
+    public static final String RESERVATION_NUMBER_OF_GUESTS = "numberOfGuests";
     public static final String RESERVATION_DATE = "reservationDate";
     public static final String RESERVATION_CHECK_IN_DATE = "checkInDate";
     public static final String RESERVATION_CHECK_OUT_DATE = "checkOutDate";
