@@ -21,6 +21,7 @@ public class Model {
     private final ObservableList<Employee> employees;
     private final ObservableList<Room> rooms;
     private final ObservableList<ServiceOrdersType> ordersTypes;
+    private final ObservableList<Client> clients;
 
     private Model(){
         this.viewFactory = new ViewFactory();
@@ -28,6 +29,7 @@ public class Model {
         this.employees = FXCollections.observableArrayList();
         this.rooms = FXCollections.observableArrayList();
         this.ordersTypes = FXCollections.observableArrayList();
+        this.clients = FXCollections.observableArrayList();
     }
     public static synchronized Model getInstance(){
         if(model == null){
@@ -49,6 +51,9 @@ public class Model {
     */
     public ObservableList<Employee> getEmployees(){
         return employees;
+    }
+    public ObservableList<Client> getClients(){
+        return clients;
     }
     public ObservableList<ServiceOrdersType> getServiceOrdersTypes(){
         return ordersTypes;
@@ -100,7 +105,38 @@ public class Model {
         }
         return searchResults;
     }
+    public void setClients(){
+        ResultSet resultSet = databaseHandler.getAllClientsData();
+        try{
+            while (resultSet.next()){
+                String fName = resultSet.getString(Const.CLIENT_FIRSTNAME);
+                String lName = resultSet.getString(Const.CLIENT_LASTNAME);
+                String phoneNumber = resultSet.getString(Const.CLIENT_PHONE_NUMBER);
+                String gender = resultSet.getString(Const.CLIENT_GENDER);
 
+                clients.add(new Client(fName, lName, phoneNumber, gender));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public ObservableList<Client> searchClients(String sqlRequest){
+        ObservableList<Client> searchResults = FXCollections.observableArrayList();
+        ResultSet resultSet = databaseHandler.search(sqlRequest);
+        try{
+            while (resultSet.next()) {
+                String fName = resultSet.getString(Const.CLIENT_FIRSTNAME);
+                String lName = resultSet.getString(Const.CLIENT_LASTNAME);
+                String phoneNumber = resultSet.getString(Const.CLIENT_PHONE_NUMBER);
+                String gender = resultSet.getString(Const.CLIENT_GENDER);
+                searchResults.add(new Client(fName, lName, phoneNumber, gender));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return searchResults;
+    }
 
     /*
      * Administrator Section

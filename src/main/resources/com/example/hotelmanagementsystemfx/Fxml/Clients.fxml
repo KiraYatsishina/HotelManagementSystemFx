@@ -3,7 +3,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -76,34 +81,155 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ListView fx:id="clients_listView" layoutX="25.0" layoutY="290.0" maxHeight="500.0" maxWidth="950.0" prefHeight="500.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
-      <HBox layoutX="31.0" layoutY="87.0" prefHeight="180.0" prefWidth="940.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
+      <ListView fx:id="clients_listView" layoutX="370.0" layoutY="83.0" maxHeight="716.0" maxWidth="950.0" prefHeight="715.0" prefWidth="600.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
+      <Line endX="336.3333435058594" endY="194.0" layoutX="21.0" layoutY="604.0" startX="336.3333435058594" startY="-520.3333129882812" stroke="#cccccc" strokeWidth="0.4" />
+      <VBox alignment="TOP_CENTER" layoutX="35.0" layoutY="83.0" prefHeight="421.0" prefWidth="301.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by: ">
                <font>
                   <Font name="Yu Gothic Bold" size="16.0" />
                </font>
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
             </Text>
-            <Button fx:id="search_button" alignment="CENTER" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #151b26; -fx-background-radius: 10;" text="Search" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/search_white.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <VBox prefHeight="95.0" prefWidth="263.0">
+               <children>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="30.0" prefWidth="272.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First name">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="firstName_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="0.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="20.0" prefWidth="199.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last name">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="lastName_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="31.0" prefWidth="216.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="phoneNumber_textField" maxHeight="30.0" maxWidth="150.0" minHeight="30.0" minWidth="150.0" prefHeight="30.0" prefWidth="150.0" styleClass="text_field">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <Line endX="255.81776428222656" endY="167.66668701171875" startX="518.3333740234375" startY="167.66668701171875" stroke="#cccccc" strokeWidth="0.4">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Line>
+            <Label text="Tenure">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <DatePicker fx:id="checkInDate_datePicker" promptText="Check in date" styleClass="datePicker">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </DatePicker>
+            <DatePicker fx:id="checkOutDate_datePicker" promptText="Check out date" styleClass="datePicker">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </DatePicker>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Line endX="255.81776428222656" endY="167.66668701171875" startX="518.3333740234375" startY="167.66668701171875" stroke="#cccccc" strokeWidth="0.4">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Line>
+                  <RadioButton fx:id="women_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Women">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sex" />
+                     </toggleGroup>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="man_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Man">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sex" />
+                     </toggleGroup>
+                     <VBox.margin>
+                        <Insets right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <Button fx:id="search_button" alignment="CENTER" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #151b26; -fx-background-radius: 10;" text="Search" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/search_white.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
          </children>
-      </HBox>
-      <Line endX="873.0000610351562" layoutX="101.0" layoutY="281.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
+      </VBox>
    </children>
 </AnchorPane>

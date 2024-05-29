@@ -41,7 +41,9 @@ public class DatabaseHandler extends Configs{
     public ResultSet getAllServiceOrdersTypeData(){
         return search("SELECT * FROM " + SERVICE_TYPE_TABLE + ";");
     }
-
+    public ResultSet getAllClientsData(){
+        return search("SELECT * FROM " + CLIENT_TABLE + ";");
+    }
     public boolean existEmployee(String column, String value){
         ResultSet resultSet = search("SELECT * FROM " + EMPLOYEE_TABLE + " WHERE " + column + " = '" + value + "';");
         boolean exist = false;
@@ -329,6 +331,30 @@ public class DatabaseHandler extends Configs{
             if(resultSet.next()){
                 return resultSet.getInt(1);
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+    public int countReservationsOfClient(String phoneNumber){
+        ResultSet resultSet = search("SELECT Count(*) FROM reservation \n" +
+                "INNER join client \n" +
+                "ON client.idClient = reservation.idClient \n" +
+                "WHERE phoneNumber = '" + phoneNumber + "'");
+        try {
+            if(resultSet.next()) return resultSet.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0;
+    }
+
+    public int countServiceOrdersOfClient(String phoneNumber) {
+        ResultSet resultSet = search("SELECT Count(*) FROM service_order INNER JOIN client ON client.idClient = service_order.idClient\n" +
+                "INNER JOIN complete_service_order ON complete_service_order.idServiceOrder = service_order.idServiceOrder\n" +
+                "WHERE client.phoneNumber = '" + phoneNumber + "'\n");
+        try {
+            if(resultSet.next()) return resultSet.getInt(1);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

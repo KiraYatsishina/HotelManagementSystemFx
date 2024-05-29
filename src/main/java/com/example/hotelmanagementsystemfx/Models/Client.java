@@ -1,5 +1,6 @@
 package com.example.hotelmanagementsystemfx.Models;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
