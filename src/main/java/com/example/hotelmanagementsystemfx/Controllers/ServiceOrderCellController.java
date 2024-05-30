@@ -60,7 +60,7 @@ public class ServiceOrderCellController implements Initializable {
         double price = Model.getInstance().getDatabaseHandler().getPriceServiceOrderById(serviceOrder.idServiceOrderProperty().get());
         price_label.setText(price + " $");
         orderDate_label.textProperty().bind(serviceOrder.orderDateProperty());
-        String status = Model.getInstance().getDatabaseHandler().getStatusServiceOrderById(serviceOrder.idServiceOrderProperty());
+        String status = Model.getInstance().getDatabaseHandler().getStatusServiceOrderById(serviceOrder.idServiceOrderProperty().get());
         status_label.setText(status);
         switch (status_label.getText()) {
             case "Complete" -> status_circle.setStyle("-fx-fill: #00FF00;");

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -75,34 +77,23 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <ListView fx:id="serviceOrders_listView" layoutX="361.0" layoutY="89.0" maxHeight="702.0" maxWidth="950.0" prefHeight="702.0" prefWidth="615.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: #fefefe;" />
-      <Line endX="558.3333740234375" endY="-142.6666717529297" layoutX="-224.0" layoutY="232.0" startX="558.3333740234375" startY="558.0" stroke="#cccccc" strokeWidth="0.4" />
-      <VBox layoutX="32.0" layoutY="87.0" prefHeight="707.0" prefWidth="269.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Search by: ">
-               <font>
-                  <Font name="Yu Gothic Bold" size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="15.0" top="15.0" />
-               </VBox.margin>
-            </Text>
-            <Button fx:id="search_button" alignment="CENTER" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="140.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #151b26; -fx-background-radius: 10;" text="Search" textFill="WHITE">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/search_white.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Yu Gothic Regular" size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="15.0" top="50.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-      </VBox>
+      <ListView fx:id="serviceOrders_listView" layoutX="32.0" layoutY="85.0" maxHeight="712.0" maxWidth="950.0" prefHeight="712.0" prefWidth="615.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: #fefefe;" />
+      <Label fx:id="error_label" layoutX="42.0" layoutY="639.0" text="Filling error! Check the entry data" visible="false">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="update_button" layoutX="907.0" layoutY="85.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="67.0" style="-fx-background-radius: 10; -fx-background-color: #7090f6;" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/update.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

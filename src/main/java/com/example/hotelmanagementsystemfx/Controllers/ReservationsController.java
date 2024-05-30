@@ -239,7 +239,7 @@ public class ReservationsController implements Initializable {
     private void fillChoiceBoxes () {
         sort_choiceBox.getItems().addAll("Price", "Reservation date", "Tenure", "Number of guests");
         ResultSet administrators = Model.getInstance().getDatabaseHandler().getAdministratorNames();
-        administrator_name_choiceBox.getItems().add("All");
+        administrator_name_choiceBox.getItems().add("All administrators");
         try {
             while (administrators.next()) {
                 String fullName = administrators.getString("fullName");
@@ -248,10 +248,10 @@ public class ReservationsController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        administrator_name_choiceBox.setValue("All");
+        administrator_name_choiceBox.setValue("All administrators");
 
         ResultSet clients = Model.getInstance().getDatabaseHandler().getAllClientsData();
-        clientName_choiceBox.getItems().add("All");
+        clientName_choiceBox.getItems().add("All clients");
         try {
             while (clients.next()) {
                 String fullName = clients.getString("firstName") + " " + clients.getString("lastName");
@@ -260,10 +260,10 @@ public class ReservationsController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        clientName_choiceBox.setValue("All");
+        clientName_choiceBox.setValue("All clients");
 
         ResultSet roomsNumber = Model.getInstance().getDatabaseHandler().getAllRoomsData();
-        roomNumber_choiceBox.getItems().add("All");
+        roomNumber_choiceBox.getItems().add("All room numbers");
         try {
             while (roomsNumber.next()) {
                 String roomNumber = roomsNumber.getString("roomNumber");
@@ -272,6 +272,6 @@ public class ReservationsController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        roomNumber_choiceBox.setValue("All");
+        roomNumber_choiceBox.setValue("All room numbers");
     }
 }

@@ -401,7 +401,24 @@ public class DatabaseHandler extends Configs{
         return price;
     }
 
-    public String getStatusServiceOrderById(StringProperty stringProperty) {
-        return "0";
+    public String getStatusServiceOrderById(String id) {
+        ResultSet resultSet = search("SELECT CASE \n" +
+                "        WHEN COUNT(complete_service_order.idCompleteServiceOrder) = \n" +
+                "\t\t\tSUM(CASE WHEN complete_service_order.status = 'Complete' THEN 1 ELSE 0 END) THEN 'Complete'\n" +
+                "        WHEN COUNT(complete_service_order.idCompleteServiceOrder) = \n" +
+                "\t\t\tSUM(CASE WHEN complete_service_order.status = 'Cancelled' THEN 1 ELSE 0 END) THEN 'Cancelled'\n" +
+                "        ELSE 'Accepted'\n" +
+                "    END AS service_order_status\n" +
+                "FROM service_order\n" +
+                "LEFT JOIN complete_service_order \n" +
+                "ON service_order.idServiceOrder = complete_service_order.idServiceOrder \n" +
+                "WHERE service_order.idServiceOrder = '" + id + "'\n" +
+                "GROUP BY service_order.idServiceOrder;");
+        try {
+            if(resultSet.next()) return resultSet.getString(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return "";
     }
 }
