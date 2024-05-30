@@ -103,7 +103,7 @@ public class ReservationsController implements Initializable {
         boolean hasError = false;
         if (administrator_name_choiceBox.getValue() != null
                 && !administrator_name_choiceBox.getValue().isEmpty()
-                && !administrator_name_choiceBox.getValue().equals("All")) {
+                && !administrator_name_choiceBox.getValue().equals("All administrators")) {
             request.append(" AND CONCAT(employee.firstName, ' ', employee.lastName) = '").append(administrator_name_choiceBox.getValue()).append("'");
         }
 
@@ -115,7 +115,7 @@ public class ReservationsController implements Initializable {
 
         if (clientName_choiceBox.getValue() != null
                 && !clientName_choiceBox.getValue().isEmpty()
-                && !clientName_choiceBox.getValue().equals("All")) {
+                && !clientName_choiceBox.getValue().equals("All clients")) {
             request.append(" AND CONCAT(client.firstName, ' ', client.lastName) = '").append(clientName_choiceBox.getValue()).append("'");
         }
 
@@ -210,7 +210,7 @@ public class ReservationsController implements Initializable {
         if (reservationDate_datePicker.getValue() != null)
             request.append(" AND reservationDate = '").append(reservationDate_datePicker.getValue()).append("'");
 
-        if (roomNumber_choiceBox.getValue() != null && !roomNumber_choiceBox.getValue().isEmpty() && !roomNumber_choiceBox.getValue().equals("All"))
+        if (roomNumber_choiceBox.getValue() != null && !roomNumber_choiceBox.getValue().isEmpty() && !roomNumber_choiceBox.getValue().equals("All room numbers"))
             request.append(" AND room.roomNumber = '").append(roomNumber_choiceBox.getValue()).append("'");
 
 

@@ -78,6 +78,8 @@ public class ClientsController implements Initializable {
         if (checkOutDate_datePicker.getValue() != null)
             request.append(" AND reservation.checkOutDate <= '").append(checkOutDate_datePicker.getValue()).append("'");
 
+
+
         return request.toString();
     }
 
