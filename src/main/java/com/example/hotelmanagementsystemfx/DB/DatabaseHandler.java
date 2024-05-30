@@ -421,4 +421,15 @@ public class DatabaseHandler extends Configs{
         }
         return "";
     }
+
+    public void updateEmployeeColById(String email, String col, String newVal) {
+        String sql = "UPDATE employee SET " + col + " = ? WHERE email = ?";
+        try (PreparedStatement statement = dbConnection.prepareStatement(sql)) {
+            statement.setString(1, newVal);
+            statement.setString(2, email);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

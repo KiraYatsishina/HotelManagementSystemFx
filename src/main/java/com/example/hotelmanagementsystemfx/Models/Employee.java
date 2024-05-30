@@ -55,4 +55,9 @@ public class Employee {
     public StringProperty statusProperty() {
         return this.status;
     }
+
+    public void updatePassword(String newPassword) {
+        this.password.set(newPassword);
+        Model.getInstance().getDatabaseHandler().updateEmployeeColById(email.get(), "password", newPassword);
+    }
 }
