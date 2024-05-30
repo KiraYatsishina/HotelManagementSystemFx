@@ -236,28 +236,29 @@ public class DatabaseHandler extends Configs{
         return search("SELECT * FROM " + ROOM_TABLE + ";");
     }
     public String determineRoomStatusToday(String roomId) {
+
         LocalDate today = LocalDate.now();
         String status = "Available";
         String date = String.valueOf(java.sql.Date.valueOf(today));
         String query = "SELECT " + Const.RESERVATION_STATUS +
                 " FROM " + Const.RESERVATION_TABLE +
-                " WHERE " + Const.ROOM_ID + " = " + roomId +
-                " AND " + date + " BETWEEN " + Const.RESERVATION_CHECK_IN_DATE + " AND " + Const.RESERVATION_CHECK_OUT_DATE + ";";
+                " WHERE " + Const.ROOM_ID + " = '" + roomId + "'" +
+                " AND '" + date + "' BETWEEN " + Const.RESERVATION_CHECK_IN_DATE + " AND " + Const.RESERVATION_CHECK_OUT_DATE + ";";
 
         ResultSet resultSet = search(query);
         try {
             while (resultSet.next()) {
                 String reservationStatus = resultSet.getString(Const.RESERVATION_STATUS);
-                if ("Checked-In".equals(reservationStatus)) {
+                if ("Checked-in".equals(reservationStatus)) {
                     status = "Occupied";
                     break;
-                } else if ("Pre-booked".equals(reservationStatus)) {
-                    status = "Reserved";
                 }
             }
-        }catch (SQLException e){
-            e.printStackTrace();}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return status;
+
     }
     public String getCount(String tableName){
         ResultSet resultSet = search("SELECT count(*) FROM " + tableName + ";");
@@ -431,5 +432,15 @@ public class DatabaseHandler extends Configs{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ResultSet getAllRoomTypes() {
+        ResultSet roomTypes = search("SELECT distinct room.roomType FROM room");
+        return roomTypes;
+    }
+
+    public ResultSet getAllNumberOfGuests() {
+        ResultSet roomTypes = search("SELECT distinct capacity FROM room order by capacity asc");
+        return roomTypes;
     }
 }

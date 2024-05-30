@@ -172,7 +172,7 @@ public class Model {
                 int floor = resultSet.getInt(Const.ROOM_FLOOR);
                 String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
                 String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
-                String status = Model.getInstance().databaseHandler.determineRoomStatusToday(Const.ROOM_ID);
+                String status = Model.getInstance().databaseHandler.determineRoomStatusToday(resultSet.getString(Const.ROOM_ID));
                 rooms.add(new Room(roomType, roomNumber, capacity,
                         pricePerNight, floor, hasRefrigerator, hasAirConditioning, status));
             }
@@ -194,7 +194,7 @@ public class Model {
                 int floor = resultSet.getInt(Const.ROOM_FLOOR);
                 String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
                 String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
-                String status = Model.getInstance().databaseHandler.determineRoomStatusToday(Const.ROOM_ID);
+                String status = Model.getInstance().databaseHandler.determineRoomStatusToday(resultSet.getString(Const.ROOM_ID));
                 sortResults.add(new Room(roomType, roomNumber, capacity,
                         pricePerNight, floor, hasRefrigerator, hasAirConditioning, status));
             }
@@ -328,4 +328,5 @@ public class Model {
         }
         return searchResults;
     }
+
 }
