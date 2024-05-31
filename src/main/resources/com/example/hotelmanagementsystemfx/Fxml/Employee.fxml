@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="825.0" prefWidth="1000.0" style="-fx-background-color: #f0f6f6;" stylesheets="@../Styles/General.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotelmanagementsystemfx.Controllers.ReservationsController">
+   <children>
+      <VBox prefHeight="75.0" prefWidth="1000.0">
+         <children>
+            <Line endX="992.0" endY="1.0000025033950806" startX="-6.99999475479126" startY="1.0000025033950806" stroke="#cccccc" strokeWidth="0.8" />
+            <HBox alignment="CENTER_LEFT" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: #fefefe;">
+               <children>
+                  <VBox alignment="CENTER" maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #1e7f78; -fx-border-radius: 10; -fx-background-radius: 10;">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/whiteAccount.png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
+                           <font>
+                              <Font name="Yu Gothic Bold" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="12.0" />
+                           </VBox.margin>
+                        </Text>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #26807d;" text="Account">
+                                       <font>
+                                          <Font name="Yu Gothic Medium" size="16.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="8.0" />
+                                       </VBox.margin>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Text>
+                                    <Line endX="-38.747562408447266" startX="-100.0" stroke="#26807d" strokeWidth="2.0">
+                                       <VBox.margin>
+                                          <Insets top="7.0" />
+                                       </VBox.margin>
+                                    </Line>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Text fill="#4a625e" strokeType="OUTSIDE" strokeWidth="0.0" text="Club Marine">
+                     <font>
+                        <Font name="Yu Gothic Medium" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="670.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
+         </children>
+      </VBox>
+      <Label fx:id="error_label" layoutX="376.0" layoutY="366.0" text="Filling error! Check the entry data" visible="false">
+         <font>
+            <Font name="Yu Gothic Regular" size="16.0" />
+         </font>
+      </Label>
+      <ListView fx:id="work_listView" layoutX="25.0" layoutY="210.0" maxHeight="630.0" maxWidth="950.0" prefHeight="435.0" prefWidth="950.0" style="-fx-border-color: rgba(0, 0, 0, 0); -fx-background-color: rgba(0, 0, 0, 0);" />
+      <Line endX="873.0000610351562" layoutX="100.0" layoutY="198.0" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4" />
+      <HBox alignment="CENTER_LEFT" layoutX="34.0" layoutY="88.0" prefHeight="97.0" prefWidth="497.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/femaleAccBig.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </ImageView>
+            <VBox prefHeight="97.0" prefWidth="168.0">
+               <children>
+                  <HBox prefHeight="10.0" prefWidth="242.0">
+                     <children>
+                        <Label fx:id="fullName_label" text="Phillips Vanessa">
+                           <font>
+                              <Font name="Yu Gothic Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="profile_label" text="Administrator">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="242.0">
+                     <children>
+                        <Circle fx:id="status_circle" fill="DODGERBLUE" radius="6.0" stroke="BLACK" strokeType="INSIDE">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Circle>
+                        <Label fx:id="status_label" text="Employed">
+                           <font>
+                              <Font name="Yu Gothic Regular" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox alignment="BOTTOM_LEFT" prefHeight="97.0" prefWidth="249.0">
+               <children>
+                  <Label fx:id="email_label" text="PhillipsVanessa@gmail.com">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="phoneNumber_label" text="0932286654">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
