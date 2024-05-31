@@ -1,9 +1,6 @@
 package com.example.hotelmanagementsystemfx.DB;
 
-import com.example.hotelmanagementsystemfx.Models.Employee;
-import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Models.Room;
-import com.example.hotelmanagementsystemfx.Models.ServiceOrder;
+import com.example.hotelmanagementsystemfx.Models.*;
 import javafx.beans.property.StringProperty;
 
 import java.sql.*;
@@ -49,6 +46,10 @@ public class DatabaseHandler extends Configs{
     public ResultSet getClientById(String id){
         return search("SELECT *\n" +
                 "FROM client WHERE idClient = '" + id + "';");
+    }
+    public ResultSet getIdClientByPhoneNumber(String phoneNumber){
+        return search("SELECT idClient\n" +
+                "FROM client WHERE phoneNumber = '" + phoneNumber + "';");
     }
     public ResultSet getAdministratorNames() {
         return search("SELECT CONCAT(firstName, ' ', lastName) " +
@@ -114,6 +115,66 @@ public class DatabaseHandler extends Configs{
             e.printStackTrace();
         }
     }
+
+    public String createReservation(Reservation reservation) {
+        String id = null;
+        try {
+            String sql = "INSERT INTO reservation (idClient, idRoom, idEmployee, numberOfGuests, reservationDate, checkInDate, checkOutDate, price, status) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            PreparedStatement statement = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            statement.setString(1, reservation.idClientProperty().get());
+            statement.setString(2, reservation.idRoomProperty().get());
+            statement.setString(3, reservation.idEmployeeProperty().get());
+            statement.setInt(4, reservation.numberOfGuestsProperty().get());
+            statement.setString(5, reservation.reservationDateProperty().get());
+            statement.setString(6, reservation.checkInDateProperty().get());
+            statement.setString(7, reservation.checkOutDateProperty().get());
+            statement.setDouble(8, reservation.priceProperty().get());
+            statement.setString(9, reservation.statusProperty().get());
+
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows == 1) {
+                ResultSet generatedKeys = statement.getGeneratedKeys();
+                if (generatedKeys.next())
+                    id = generatedKeys.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public String createClient(Client client) {
+        String clientId = null;
+        try {
+            String sql = "INSERT INTO client (firstName, lastName, phoneNumber, gender) " +
+                    "VALUES (?, ?, ?, ?)";
+
+            PreparedStatement statement = dbConnection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            statement.setString(1, client.firstNameProperty().get());
+            statement.setString(2, client.lastNameProperty().get());
+            statement.setString(3, client.phoneNumberProperty().get());
+            statement.setString(4, client.genderProperty().get());
+
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("Вставка клиента не удалась, нет строк, затронутых операцией.");
+            }
+
+            ResultSet generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) clientId = generatedKeys.getString(1);
+            else throw new SQLException("Не удалось получить идентификатор созданного клиента.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return clientId;
+    }
+
     public boolean existRoomByNumber(String roomNumber){
         ResultSet resultSet = search("SELECT * FROM room \n" +
                 "WHERE room.roomNumber = '" + roomNumber + "';");
@@ -124,6 +185,31 @@ public class DatabaseHandler extends Configs{
         }
 
     }
+    public String existClient(Client client) {
+        try {
+            String sql = "SELECT idClient FROM client WHERE " +
+                    "firstName = ? AND " +
+                    "lastName = ? AND " +
+                    "phoneNumber = ? AND " +
+                    "gender = ?";
+
+            PreparedStatement statement = dbConnection.prepareStatement(sql);
+
+            statement.setString(1, client.firstNameProperty().get());
+            statement.setString(2, client.lastNameProperty().get());
+            statement.setString(3, client.phoneNumberProperty().get());
+            statement.setString(4, client.genderProperty().get());
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) return resultSet.getString("idClient");
+            else return null;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public void deleteEmployee(String password){
         String query = "DELETE FROM " + EMPLOYEE_TABLE + " WHERE password = ?";
         try (Connection connection = getDbConnection();
@@ -443,4 +529,6 @@ public class DatabaseHandler extends Configs{
         ResultSet roomTypes = search("SELECT distinct capacity FROM room order by capacity asc");
         return roomTypes;
     }
+
+
 }

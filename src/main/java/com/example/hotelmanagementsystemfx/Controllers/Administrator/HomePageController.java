@@ -48,10 +48,12 @@ public class HomePageController implements Initializable {
     }
 
     private void chartCompletion(){
+        totalSum_lineChart.getData().clear();
         createSeries(Model.getInstance().getDatabaseHandler().getMonthCountReservations());
         createSeries(Model.getInstance().getDatabaseHandler().getMonthCountServiceOrders());
     }
     private void createSeries(ResultSet resultSet){
+
         XYChart.Series<String, Integer> seriesHigh = new XYChart.Series<>();
         try {
             while (resultSet.next())

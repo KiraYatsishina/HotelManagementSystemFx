@@ -2,6 +2,7 @@ package com.example.hotelmanagementsystemfx.DB;
 
 public class Const {
     public static final String CLIENT_TABLE = "client";
+    public static final String CLIENT_ID = "idClient";
     public static final String CLIENT_FIRSTNAME = "firstName";
     public static final String CLIENT_LASTNAME = "lastName";
     public static final String CLIENT_PHONE_NUMBER = "phoneNumber";
@@ -15,6 +16,7 @@ public class Const {
     public static final String COMPLETE_SERVICE_ORDER_COMPLETE_DATE = "completeDate";
 
     public static final String EMPLOYEE_TABLE = "employee";
+    public static final String EMPLOYEE_ID = "idEmployee";
     public static final String EMPLOYEE_ID_EMPLOYEE_TYPE = "idEmployeeType";
     public static final String EMPLOYEE_FIRSTNAME = "firstName";
     public static final String EMPLOYEE_LASTNAME = "lastName";

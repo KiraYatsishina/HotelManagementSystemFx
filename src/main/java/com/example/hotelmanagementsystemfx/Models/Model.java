@@ -72,6 +72,7 @@ public class Model {
         ResultSet resultSet = databaseHandler.getAllEmployeesData();
         try{
             while (resultSet.next()){
+                String id = resultSet.getString(Const.EMPLOYEE_ID);
                 String fName = resultSet.getString(Const.EMPLOYEE_FIRSTNAME);
                 String lName = resultSet.getString(Const.EMPLOYEE_LASTNAME);
                 String email = resultSet.getString(Const.EMPLOYEE_EMAIL);
@@ -84,7 +85,7 @@ public class Model {
                 String status = resultSet.getString(Const.EMPLOYEE_STATUS);
                 String login = resultSet.getString(Const.EMPLOYEE_LOGIN);
                 String password = resultSet.getString(Const.EMPLOYEE_PASSWORD);
-                employees.add(new Employee(fName, lName, email, phoneNumber, profile, gender, login, password, status));
+                employees.add(new Employee(id, fName, lName, email, phoneNumber, profile, gender, login, password, status));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -96,6 +97,7 @@ public class Model {
         ResultSet resultSet = databaseHandler.search(sqlRequest);
         try{
             while (resultSet.next()) {
+                String id = resultSet.getString(Const.EMPLOYEE_ID);
                 String fName = resultSet.getString(Const.EMPLOYEE_FIRSTNAME);
                 String lName = resultSet.getString(Const.EMPLOYEE_LASTNAME);
                 String email = resultSet.getString(Const.EMPLOYEE_EMAIL);
@@ -108,7 +110,7 @@ public class Model {
                 String status = resultSet.getString(Const.EMPLOYEE_STATUS);
                 String login = resultSet.getString(Const.EMPLOYEE_LOGIN);
                 String password = resultSet.getString(Const.EMPLOYEE_PASSWORD);
-                searchResults.add(new Employee(fName, lName, email, phoneNumber, profile, gender, login, password, status));
+                searchResults.add(new Employee(id,fName, lName, email, phoneNumber, profile, gender, login, password, status));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -119,12 +121,13 @@ public class Model {
         ResultSet resultSet = databaseHandler.getAllClientsData();
         try{
             while (resultSet.next()){
+                String id = resultSet.getString(Const.CLIENT_ID);
                 String fName = resultSet.getString(Const.CLIENT_FIRSTNAME);
                 String lName = resultSet.getString(Const.CLIENT_LASTNAME);
                 String phoneNumber = resultSet.getString(Const.CLIENT_PHONE_NUMBER);
                 String gender = resultSet.getString(Const.CLIENT_GENDER);
 
-                clients.add(new Client(fName, lName, phoneNumber, gender));
+                clients.add(new Client(id, fName, lName, phoneNumber, gender));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -136,11 +139,12 @@ public class Model {
         ResultSet resultSet = databaseHandler.search(sqlRequest);
         try{
             while (resultSet.next()) {
+                String id = resultSet.getString(Const.CLIENT_ID);
                 String fName = resultSet.getString(Const.CLIENT_FIRSTNAME);
                 String lName = resultSet.getString(Const.CLIENT_LASTNAME);
                 String phoneNumber = resultSet.getString(Const.CLIENT_PHONE_NUMBER);
                 String gender = resultSet.getString(Const.CLIENT_GENDER);
-                searchResults.add(new Client(fName, lName, phoneNumber, gender));
+                searchResults.add(new Client(id, fName, lName, phoneNumber, gender));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -164,7 +168,7 @@ public class Model {
         ResultSet resultSet = databaseHandler.getAllRoomsData();
         try{
             while (resultSet.next()){
-
+                String id = resultSet.getString(Const.ROOM_ID);
                 String roomNumber = resultSet.getString(Const.ROOM_NUMBER);
                 String roomType = resultSet.getString(Const.ROOM_TYPE);
                 int capacity = resultSet.getInt(Const.ROOM_CAPACITY);
@@ -173,7 +177,7 @@ public class Model {
                 String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
                 String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
                 String status = Model.getInstance().databaseHandler.determineRoomStatusToday(resultSet.getString(Const.ROOM_ID));
-                rooms.add(new Room(roomType, roomNumber, capacity,
+                rooms.add(new Room(id, roomNumber, roomType, capacity,
                         pricePerNight, floor, hasRefrigerator, hasAirConditioning, status));
             }
         }catch (Exception e){
@@ -187,6 +191,7 @@ public class Model {
 
         try{
             while (resultSet.next()) {
+                String id = resultSet.getString(Const.ROOM_ID);
                 String roomNumber = resultSet.getString(Const.ROOM_NUMBER);
                 String roomType = resultSet.getString(Const.ROOM_TYPE);
                 int capacity = resultSet.getInt(Const.ROOM_CAPACITY);
@@ -195,7 +200,7 @@ public class Model {
                 String hasRefrigerator = resultSet.getString(Const.ROOM_HAS_REFRIGERATOR);
                 String hasAirConditioning = resultSet.getString(Const.ROOM_HAS_AIR_CONDITIONING);
                 String status = Model.getInstance().databaseHandler.determineRoomStatusToday(resultSet.getString(Const.ROOM_ID));
-                sortResults.add(new Room(roomType, roomNumber, capacity,
+                sortResults.add(new Room(id, roomNumber, roomType, capacity,
                         pricePerNight, floor, hasRefrigerator, hasAirConditioning, status));
             }
         } catch (SQLException e) {
@@ -259,12 +264,10 @@ public class Model {
                 String checkOutDate = reservationsData.getString(Const.RESERVATION_CHECK_OUT_DATE);
                 double price = reservationsData.getDouble(Const.RESERVATION_PRICE);
                 String status = reservationsData.getString(Const.RESERVATION_STATUS);
-                int tenure = Model.getInstance().databaseHandler.getStayDuration(idReservation);
-
 
                 reservations.add(new Reservation(idReservation, idClient, idRoom, idEmployee,
                         numberOfGuests, reservationDate, checkInDate, checkOutDate,
-                        price, status, tenure));
+                        price, status));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -285,10 +288,9 @@ public class Model {
                 String checkOutDate = resultSet.getString(Const.RESERVATION_CHECK_OUT_DATE);
                 double price = resultSet.getDouble(Const.RESERVATION_PRICE);
                 String status = resultSet.getString(Const.RESERVATION_STATUS);
-                int tenure = Model.getInstance().databaseHandler.getStayDuration(idReservation);
                 searchResults.add(new Reservation(idReservation, idClient, idRoom, idEmployee,
                         numberOfGuests, reservationDate, checkInDate, checkOutDate,
-                        price, status, tenure));
+                        price, status));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

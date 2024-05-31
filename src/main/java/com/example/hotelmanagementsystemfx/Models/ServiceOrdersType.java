@@ -19,7 +19,9 @@ public class ServiceOrdersType {
         this.orderCount = new SimpleIntegerProperty(this, "orderCount", orderCount);
         this.status = new SimpleStringProperty(this, "status", status);
     }
-
+    public void setId(String id){
+        this.id.set(id);
+    }
     public StringProperty nameProperty() {
         return this.name;
     }

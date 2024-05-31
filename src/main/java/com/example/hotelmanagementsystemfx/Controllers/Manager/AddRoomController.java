@@ -200,7 +200,7 @@ public class AddRoomController implements Initializable {
         String roomNumber = "#" + floor + number;
         boolean exist = Model.getInstance().getDatabaseHandler().existRoomByNumber(roomNumber);
         if(!hasError && !exist){
-            Room room = new Room(type, roomNumber, capacity, price, floor,
+            Room room = new Room("", type, roomNumber, capacity, price, floor,
                     hasRefrigerator, hasAirConditioning, "Available");
             Model.getInstance().getDatabaseHandler().createRoom(room);
             create_label.setText("New room is saved ✔");

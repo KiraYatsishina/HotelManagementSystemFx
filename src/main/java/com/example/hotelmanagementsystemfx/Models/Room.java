@@ -3,6 +3,7 @@ package com.example.hotelmanagementsystemfx.Models;
 import javafx.beans.property.*;
 
 public class Room {
+    private final StringProperty idRoom;
     private final StringProperty roomNumber;
     private final StringProperty roomType;
     private final IntegerProperty capacity;
@@ -12,8 +13,9 @@ public class Room {
     private final StringProperty hasAirConditioning;
     private final StringProperty status;
 
-    public Room(String roomType,String roomNumber, Integer capacity, double pricePerNight,
+    public Room(String idRoom,String roomNumber,String roomType, Integer capacity, double pricePerNight,
                 int floor, String hasRefrigerator, String hasAirConditioning, String status) {
+        this.idRoom = new SimpleStringProperty(this, "idRoom", idRoom);
         this.roomNumber = new SimpleStringProperty(this, "roomNumber", roomNumber);
         this.roomType = new SimpleStringProperty(this, "roomType", roomType);
         this.capacity = new SimpleIntegerProperty(this, "capacity", capacity);
@@ -24,6 +26,12 @@ public class Room {
         this.status = new SimpleStringProperty(this, "status", status);
     }
 
+    public void setIdRoom(String id){
+        this.idRoom.set(id);
+    }
+    public StringProperty idRoomProperty() {
+        return this.idRoom;
+    }
     public StringProperty roomNumberProperty() {
         return this.roomNumber;
     }

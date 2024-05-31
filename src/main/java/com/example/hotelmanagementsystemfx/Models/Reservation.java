@@ -2,6 +2,9 @@ package com.example.hotelmanagementsystemfx.Models;
 
 import javafx.beans.property.*;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 public class Reservation {
     private final StringProperty idReservation;
     private final StringProperty idClient;
@@ -19,7 +22,7 @@ public class Reservation {
 
     public Reservation(String idReservation, String idClient, String idRoom,String idEmployee,
                        int numberOfGuests, String reservationDate, String checkInDate,String checkOutDate,
-                       double price,String status, int tenure) {
+                       double price,String status) {
         this.idReservation = new SimpleStringProperty(this, "idReservation", idReservation);
         this.idClient = new SimpleStringProperty(this, "idClient", idClient);
         this.idRoom = new SimpleStringProperty(this, "idRoom", idRoom);
@@ -30,7 +33,13 @@ public class Reservation {
         this.checkOutDate = new SimpleStringProperty(this, "checkOutDate", checkOutDate);
         this.price = new SimpleDoubleProperty(this, "price", price);
         this.status = new SimpleStringProperty(this, "status", status);
-        this.tenure = new SimpleIntegerProperty(this, "tenure", tenure);
+        this.tenure = new SimpleIntegerProperty(this, "tenure", getTenure());
+    }
+
+    private int getTenure() {
+        LocalDate checkIn = LocalDate.parse(checkInDate.get());
+        LocalDate checkOut = LocalDate.parse(checkOutDate.get());
+        return (int) ChronoUnit.DAYS.between(checkIn, checkOut);
     }
 
     public StringProperty idReservationProperty() {
@@ -65,5 +74,9 @@ public class Reservation {
     }
     public IntegerProperty tenureProperty() {
         return this.tenure;
+    }
+
+    public void setIdReservation(String id){
+        this.idReservation.set(id);
     }
 }

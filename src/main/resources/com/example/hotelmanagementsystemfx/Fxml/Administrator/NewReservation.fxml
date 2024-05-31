@@ -7,7 +7,9 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -169,7 +171,7 @@
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets right="50.0" top="10.0" />
+                  <Insets right="50.0" top="8.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="20.0" prefWidth="199.0">
@@ -192,7 +194,7 @@
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets right="50.0" top="15.0" />
+                  <Insets right="50.0" top="8.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="31.0" prefWidth="216.0">
@@ -215,7 +217,39 @@
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets right="50.0" top="15.0" />
+                  <Insets right="50.0" top="8.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <RadioButton fx:id="women_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Women">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                     </toggleGroup>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </RadioButton>
+                  <RadioButton fx:id="man_radioButton" mnemonicParsing="false" styleClass="custom-radio" text="Man">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="gender" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
                </VBox.margin>
             </HBox>
             <Label fx:id="clientError_label">
@@ -228,11 +262,48 @@
             </Label>
          </children>
       </VBox>
-      <VBox fx:id="save_VB" alignment="TOP_CENTER" layoutX="32.0" layoutY="549.0" minWidth="330.0" prefHeight="221.0" prefWidth="935.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;" visible="false">
+      <VBox fx:id="save_VB" alignment="TOP_CENTER" layoutX="32.0" layoutY="549.0" minWidth="330.0" prefHeight="255.0" prefWidth="935.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;" visible="false">
          <children>
             <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="935.0">
                <children>
+                  <Label fx:id="period_label" text="2024-05-13   2024-07-01">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="935.0">
+               <children>
+                  <Label text="Tenure:">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="tenure_label" text="10 days">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="935.0">
+               <children>
                   <Label text="Price:">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text=" ">
                      <font>
                         <Font name="Yu Gothic Regular" size="16.0" />
                      </font>
@@ -245,9 +316,14 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
+                  <Label text=" $">
+                     <font>
+                        <Font name="Yu Gothic Regular" size="16.0" />
+                     </font>
+                  </Label>
                </children>
                <VBox.margin>
-                  <Insets top="15.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="20.0" prefWidth="199.0">
@@ -269,6 +345,9 @@
                      </cursor>
                   </TextField>
                </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="935.0">
                <children>
@@ -287,12 +366,12 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="15.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </HBox>
             <Line endX="228.29290771484375" startX="-73.66667938232422" stroke="#cccccc" strokeWidth="0.4">
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
             </Line>
             <Button fx:id="save_button" alignment="CENTER" contentDisplay="RIGHT" maxHeight="40.0" maxWidth="140.0" minHeight="40.0" minWidth="115.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" style="-fx-background-color: #151b26; -fx-background-radius: 10; -fx-label-padding: 0 0 0 15;" text="Save" textFill="WHITE">
@@ -310,7 +389,7 @@
                   <Insets />
                </opaqueInsets>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="15.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />

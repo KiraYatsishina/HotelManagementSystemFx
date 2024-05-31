@@ -64,6 +64,7 @@ public class LoginController implements Initializable {
             }
 
             accountType = AccountType.valueOf(resultSet.getString(EMPLOYEE_TYPE_NAME));
+            String id = account.getString(EMPLOYEE_ID);
             String fName = account.getString(EMPLOYEE_FIRSTNAME);
             String lName = account.getString(EMPLOYEE_LASTNAME);
             String email = account.getString(EMPLOYEE_EMAIL);
@@ -76,7 +77,7 @@ public class LoginController implements Initializable {
             String status = account.getString(EMPLOYEE_STATUS);
             String login = account.getString(EMPLOYEE_LOGIN);
             String password = account.getString(EMPLOYEE_PASSWORD);
-            Employee employeeAcc = new Employee(fName, lName, email, phoneNumber, profile, gender, login, password, status);
+            Employee employeeAcc = new Employee(id, fName, lName, email, phoneNumber, profile, gender, login, password, status);
             Model.getInstance().getViewFactory().setEmployeeAccount(employeeAcc);
 
         }catch (SQLException e) {

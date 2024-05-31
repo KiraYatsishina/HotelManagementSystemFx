@@ -159,7 +159,7 @@ public class AddEmployeeController implements Initializable {
             hasError = true;
         }
         if(!hasError){
-            Employee employee = new Employee(firstName, lastName, email, phoneNumber, employeeType,
+            Employee employee = new Employee("", firstName, lastName, email, phoneNumber, employeeType,
                     gender, lastName+firstName, password, "Employed");
             Model.getInstance().getDatabaseHandler().createEmployee(employee);
             createMessage_label.setText("A new employee account has been created ✔");

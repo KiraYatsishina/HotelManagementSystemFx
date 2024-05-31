@@ -16,7 +16,9 @@ public class ServiceOrder {
         this.idEmployee = new SimpleStringProperty(this, "idEmployee", idEmployee);
         this.orderDate = new SimpleStringProperty(this, "orderDate", orderDate);
     }
-
+    public void setIdServiceOrder(String id){
+        this.idServiceOrder.set(id);
+    }
     public StringProperty idServiceOrderProperty() {
         return this.idServiceOrder;
     }
