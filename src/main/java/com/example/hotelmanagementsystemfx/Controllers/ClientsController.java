@@ -1,10 +1,8 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
-import com.example.hotelmanagementsystemfx.Models.Client;
-import com.example.hotelmanagementsystemfx.Models.Employee;
+import com.example.hotelmanagementsystemfx.Entities.Client;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.ClientCellFactory;
-import com.example.hotelmanagementsystemfx.Views.EmployeeCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

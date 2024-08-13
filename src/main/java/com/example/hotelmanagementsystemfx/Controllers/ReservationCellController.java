@@ -1,15 +1,13 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
 import com.example.hotelmanagementsystemfx.DB.Const;
-import com.example.hotelmanagementsystemfx.Models.Client;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Models.Reservation;
+import com.example.hotelmanagementsystemfx.Entities.Reservation;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 

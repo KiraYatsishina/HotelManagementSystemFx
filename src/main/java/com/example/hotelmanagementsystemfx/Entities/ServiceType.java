@@ -1,31 +1,26 @@
-package com.example.hotelmanagementsystemfx.Models;
+package com.example.hotelmanagementsystemfx.Entities;
 
 import javafx.beans.property.*;
 
-public class ServiceOrdersType {
-    private final StringProperty id;
+public class ServiceType {
+    private final IntegerProperty id;
     private final StringProperty name;
     private final StringProperty description;
     private final DoubleProperty price;
-    private final IntegerProperty orderCount;
     private final StringProperty status;
 
-    public ServiceOrdersType(String id, String name,String description, double price,
-                int orderCount, String status) {
-        this.id = new SimpleStringProperty(this, "id", id);
+    public ServiceType(int id, String name, String description, double price, String status) {
+        this.id = new SimpleIntegerProperty(this, "idServiceType", id);
         this.name = new SimpleStringProperty(this, "name", name);
         this.description = new SimpleStringProperty(this, "description", description);
         this.price = new SimpleDoubleProperty(this, "price", price);
-        this.orderCount = new SimpleIntegerProperty(this, "orderCount", orderCount);
         this.status = new SimpleStringProperty(this, "status", status);
     }
-    public void setId(String id){
-        this.id.set(id);
-    }
+
     public StringProperty nameProperty() {
         return this.name;
     }
-    public StringProperty idProperty() {
+    public IntegerProperty idProperty() {
         return this.id;
     }
     public StringProperty descriptionProperty() {
@@ -34,7 +29,6 @@ public class ServiceOrdersType {
     public DoubleProperty priceProperty() {
         return this.price;
     }
-    public IntegerProperty orderCountProperty() {return this.orderCount;}
     public StringProperty statusProperty() {
         return this.status;
     }

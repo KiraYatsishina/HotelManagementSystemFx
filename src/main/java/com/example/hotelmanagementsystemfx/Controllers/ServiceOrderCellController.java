@@ -2,7 +2,7 @@ package com.example.hotelmanagementsystemfx.Controllers;
 
 import com.example.hotelmanagementsystemfx.DB.Const;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Models.ServiceOrder;
+import com.example.hotelmanagementsystemfx.Entities.ServiceOrder;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

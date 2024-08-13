@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
-import com.example.hotelmanagementsystemfx.Models.ServiceOrdersType;
+import com.example.hotelmanagementsystemfx.Entities.ServiceType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -32,8 +32,8 @@ public class ServiceOrdersTypeCellController implements Initializable {
 
     @FXML
     private Label status_label;
-    private final ServiceOrdersType serviceOrdersType;
-    public ServiceOrdersTypeCellController(ServiceOrdersType serviceOrdersType){
+    private final ServiceType serviceOrdersType;
+    public ServiceOrdersTypeCellController(ServiceType serviceOrdersType){
         this.serviceOrdersType = serviceOrdersType;
     }
     @Override

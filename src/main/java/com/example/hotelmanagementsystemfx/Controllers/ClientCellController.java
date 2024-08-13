@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
-import com.example.hotelmanagementsystemfx.Models.Client;
+import com.example.hotelmanagementsystemfx.Entities.Client;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;

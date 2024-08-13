@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
-import com.example.hotelmanagementsystemfx.Models.Employee;
+import com.example.hotelmanagementsystemfx.Entities.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.ManagerMenuOptions;
 import javafx.fxml.FXML;
@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;

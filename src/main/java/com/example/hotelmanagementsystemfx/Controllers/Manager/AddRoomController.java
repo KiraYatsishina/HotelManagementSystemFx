@@ -2,7 +2,7 @@ package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
 import com.example.hotelmanagementsystemfx.Animations.Shake;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Models.Room;
+import com.example.hotelmanagementsystemfx.Entities.Room;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;

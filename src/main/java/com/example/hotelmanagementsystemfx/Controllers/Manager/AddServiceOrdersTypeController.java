@@ -2,7 +2,7 @@ package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
 import com.example.hotelmanagementsystemfx.Animations.Shake;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Models.ServiceOrdersType;
+import com.example.hotelmanagementsystemfx.Entities.ServiceType;
 import com.example.hotelmanagementsystemfx.Views.ServiceOrdersTypeCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,7 +29,7 @@ public class AddServiceOrdersTypeController implements Initializable {
     private TextField price_textField;
 
     @FXML
-    private ListView<ServiceOrdersType> serviceOrdersTupe_listView;
+    private ListView<ServiceType> serviceOrdersTupe_listView;
 
     @FXML
     private ChoiceBox<String> sort_choiceBox;
@@ -84,7 +84,7 @@ public class AddServiceOrdersTypeController implements Initializable {
 
     private void onTypeSort() {
         String sqlRequest = makeRequest();
-        ObservableList<ServiceOrdersType> searchResults = Model.getInstance().sortServiceOrdersType(sqlRequest);
+        ObservableList<ServiceType> searchResults = Model.getInstance().sortServiceOrdersType(sqlRequest);
         serviceOrdersTupe_listView.setItems(searchResults);
         serviceOrdersTupe_listView.setCellFactory(e -> new ServiceOrdersTypeCellFactory());
 

@@ -1,9 +1,7 @@
 package com.example.hotelmanagementsystemfx.Views;
 
-import com.example.hotelmanagementsystemfx.Controllers.Manager.EmployeeCellController;
 import com.example.hotelmanagementsystemfx.Controllers.RoomCellController;
-import com.example.hotelmanagementsystemfx.Models.Employee;
-import com.example.hotelmanagementsystemfx.Models.Room;
+import com.example.hotelmanagementsystemfx.Entities.Room;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 

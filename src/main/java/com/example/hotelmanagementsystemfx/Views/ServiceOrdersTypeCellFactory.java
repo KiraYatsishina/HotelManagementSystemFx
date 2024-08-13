@@ -1,13 +1,13 @@
 package com.example.hotelmanagementsystemfx.Views;
 
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ServiceOrdersTypeCellController;
-import com.example.hotelmanagementsystemfx.Models.ServiceOrdersType;
+import com.example.hotelmanagementsystemfx.Entities.ServiceType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 
-public class ServiceOrdersTypeCellFactory extends ListCell<ServiceOrdersType> {
+public class ServiceOrdersTypeCellFactory extends ListCell<ServiceType> {
     @Override
-    protected void updateItem(ServiceOrdersType ordersType, boolean empty) {
+    protected void updateItem(ServiceType ordersType, boolean empty) {
         super.updateItem(ordersType, empty);
         if (empty) {
             setText(null);

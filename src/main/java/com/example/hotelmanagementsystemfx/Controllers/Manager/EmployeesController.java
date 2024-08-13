@@ -1,7 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
-import com.example.hotelmanagementsystemfx.Animations.Shake;
-import com.example.hotelmanagementsystemfx.Models.Employee;
+import com.example.hotelmanagementsystemfx.Entities.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.AdministratorMenuOptions;
 import com.example.hotelmanagementsystemfx.Views.EmployeeCellFactory;
@@ -11,8 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;

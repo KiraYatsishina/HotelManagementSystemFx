@@ -2,7 +2,7 @@ package com.example.hotelmanagementsystemfx.Controllers;
 
 import com.example.hotelmanagementsystemfx.Animations.Shake;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Models.Reservation;
+import com.example.hotelmanagementsystemfx.Entities.Reservation;
 import com.example.hotelmanagementsystemfx.Views.ReservationCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

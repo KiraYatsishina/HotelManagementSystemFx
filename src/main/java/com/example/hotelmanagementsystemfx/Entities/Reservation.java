@@ -1,4 +1,4 @@
-package com.example.hotelmanagementsystemfx.Models;
+package com.example.hotelmanagementsystemfx.Entities;
 
 import javafx.beans.property.*;
 
@@ -6,10 +6,10 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class Reservation {
-    private final StringProperty idReservation;
-    private final StringProperty idClient;
-    private final StringProperty idRoom;
-    private final StringProperty idEmployee;
+    private final IntegerProperty idReservation;
+    private final IntegerProperty idClient;
+    private final IntegerProperty idRoom;
+    private final IntegerProperty idEmployee;
     private final IntegerProperty numberOfGuests;
 
     private final StringProperty reservationDate;
@@ -20,13 +20,13 @@ public class Reservation {
     private final StringProperty status;
     private final IntegerProperty tenure;
 
-    public Reservation(String idReservation, String idClient, String idRoom,String idEmployee,
+    public Reservation(int idReservation, int idClient, int idRoom,int idEmployee,
                        int numberOfGuests, String reservationDate, String checkInDate,String checkOutDate,
                        double price,String status) {
-        this.idReservation = new SimpleStringProperty(this, "idReservation", idReservation);
-        this.idClient = new SimpleStringProperty(this, "idClient", idClient);
-        this.idRoom = new SimpleStringProperty(this, "idRoom", idRoom);
-        this.idEmployee = new SimpleStringProperty(this, "idEmployee", idEmployee);
+        this.idReservation = new SimpleIntegerProperty(this, "idReservation", idReservation);
+        this.idClient = new SimpleIntegerProperty(this, "idClient", idClient);
+        this.idRoom = new SimpleIntegerProperty(this, "idRoom", idRoom);
+        this.idEmployee = new SimpleIntegerProperty(this, "idEmployee", idEmployee);
         this.numberOfGuests = new SimpleIntegerProperty(this, "numberOfGuests", numberOfGuests);
         this.reservationDate = new SimpleStringProperty(this, "reservationDate", reservationDate);
         this.checkInDate = new SimpleStringProperty(this, "checkInDate", checkInDate);
@@ -42,16 +42,16 @@ public class Reservation {
         return (int) ChronoUnit.DAYS.between(checkIn, checkOut);
     }
 
-    public StringProperty idReservationProperty() {
+    public IntegerProperty idReservationProperty() {
         return this.idReservation;
     }
-    public StringProperty idClientProperty() {
+    public IntegerProperty idClientProperty() {
         return this.idClient;
     }
-    public StringProperty idRoomProperty() {
+    public IntegerProperty idRoomProperty() {
         return this.idRoom;
     }
-    public StringProperty idEmployeeProperty() {
+    public IntegerProperty idEmployeeProperty() {
         return this.idEmployee;
     }
     public IntegerProperty numberOfGuestsProperty() {
@@ -76,7 +76,4 @@ public class Reservation {
         return this.tenure;
     }
 
-    public void setIdReservation(String id){
-        this.idReservation.set(id);
-    }
 }

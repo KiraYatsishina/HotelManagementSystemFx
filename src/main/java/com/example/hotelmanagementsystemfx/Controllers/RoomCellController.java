@@ -1,7 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
-import com.example.hotelmanagementsystemfx.Models.Employee;
-import com.example.hotelmanagementsystemfx.Models.Room;
+import com.example.hotelmanagementsystemfx.Entities.Room;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
