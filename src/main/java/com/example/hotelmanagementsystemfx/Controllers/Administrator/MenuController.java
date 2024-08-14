@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Administrator;
 
-import com.example.hotelmanagementsystemfx.Entities.Employee;
+import com.example.hotelmanagementsystemfx.Models.Entities.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.AdministratorMenuOptions;
 import javafx.fxml.FXML;

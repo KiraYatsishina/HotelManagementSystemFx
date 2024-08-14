@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
-import com.example.hotelmanagementsystemfx.Entities.Client;
+import com.example.hotelmanagementsystemfx.Models.Entities.Client;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.ClientCellFactory;
 import javafx.collections.ObservableList;

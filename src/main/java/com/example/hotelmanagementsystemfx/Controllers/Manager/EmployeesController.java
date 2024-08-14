@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
-import com.example.hotelmanagementsystemfx.Entities.Employee;
+import com.example.hotelmanagementsystemfx.Models.Entities.Employee;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import com.example.hotelmanagementsystemfx.Views.AdministratorMenuOptions;
 import com.example.hotelmanagementsystemfx.Views.EmployeeCellFactory;
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.example.hotelmanagementsystemfx.DB.Const.EMPLOYEE_TABLE;
 
 public class EmployeesController implements Initializable {
     @FXML
@@ -135,7 +134,7 @@ public class EmployeesController implements Initializable {
         if (!employeeTypeConditions.isEmpty())
             conditions.add(employeeTypeConditions);
 
-        StringBuilder sqlRequestBuilder = new StringBuilder("SELECT * FROM " + EMPLOYEE_TABLE);
+        StringBuilder sqlRequestBuilder = new StringBuilder("SELECT * FROM " );
 
         if (!conditions.isEmpty()) {
             sqlRequestBuilder.append(" WHERE ");

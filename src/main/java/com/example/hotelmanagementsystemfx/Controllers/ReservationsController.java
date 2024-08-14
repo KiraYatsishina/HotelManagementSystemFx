@@ -1,8 +1,11 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
 import com.example.hotelmanagementsystemfx.Animations.Shake;
+import com.example.hotelmanagementsystemfx.Models.Entities.Client;
+import com.example.hotelmanagementsystemfx.Models.Entities.Employee;
+import com.example.hotelmanagementsystemfx.Models.Entities.Room;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Entities.Reservation;
+import com.example.hotelmanagementsystemfx.Models.Entities.Reservation;
 import com.example.hotelmanagementsystemfx.Views.ReservationCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +15,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ReservationsController implements Initializable {
@@ -238,39 +242,29 @@ public class ReservationsController implements Initializable {
     }
     private void fillChoiceBoxes () {
         sort_choiceBox.getItems().addAll("Price", "Reservation date", "Tenure", "Number of guests");
-        ResultSet administrators = Model.getInstance().getDatabaseHandler().getAdministratorNames();
+        List<Employee> employees = Model.getInstance().getDatabaseHandler().getEmployeeDAO().getEmployeesByType("Administrator");
         administrator_name_choiceBox.getItems().add("All administrators");
-        try {
-            while (administrators.next()) {
-                String fullName = administrators.getString("fullName");
-                administrator_name_choiceBox.getItems().add(fullName);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Employee employee : employees) {
+            String fullName = employee.firstNameProperty().get() + " " + employee.lastNameProperty().get();
+            administrator_name_choiceBox.getItems().add(fullName);
         }
         administrator_name_choiceBox.setValue("All administrators");
 
-        ResultSet clients = Model.getInstance().getDatabaseHandler().getAllClientsData();
+
+        List<Client> clients = Model.getInstance().getDatabaseHandler().getClientDAO().getAll();
         clientName_choiceBox.getItems().add("All clients");
-        try {
-            while (clients.next()) {
-                String fullName = clients.getString("firstName") + " " + clients.getString("lastName");
-                clientName_choiceBox.getItems().add(fullName);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Client client:clients){
+            String fullName = client.firstNameProperty().get() + " " + client.lastNameProperty().get();
+            clientName_choiceBox.getItems().add(fullName);
         }
         clientName_choiceBox.setValue("All clients");
 
-        ResultSet roomsNumber = Model.getInstance().getDatabaseHandler().getAllRoomsData();
+
+        List<Room> rooms = Model.getInstance().getDatabaseHandler().getRoomDAO().getAll();
         roomNumber_choiceBox.getItems().add("All room numbers");
-        try {
-            while (roomsNumber.next()) {
-                String roomNumber = roomsNumber.getString("roomNumber");
-                roomNumber_choiceBox.getItems().add(roomNumber);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Room room : rooms){
+            String roomNumber = room.roomNumberProperty().get();
+            roomNumber_choiceBox.getItems().add(roomNumber);
         }
         roomNumber_choiceBox.setValue("All room numbers");
     }

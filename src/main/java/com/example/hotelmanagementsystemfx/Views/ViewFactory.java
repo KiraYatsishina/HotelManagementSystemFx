@@ -3,7 +3,7 @@ package com.example.hotelmanagementsystemfx.Views;
 import com.example.hotelmanagementsystemfx.Controllers.Administrator.AdministratorController;
 import com.example.hotelmanagementsystemfx.Controllers.Maid.MaidController;
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ManagerController;
-import com.example.hotelmanagementsystemfx.Entities.Employee;
+import com.example.hotelmanagementsystemfx.Models.Entities.Employee;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.fxml.FXMLLoader;

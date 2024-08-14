@@ -1,7 +1,7 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Entities.Room;
+import com.example.hotelmanagementsystemfx.Models.Entities.Room;
 import com.example.hotelmanagementsystemfx.Views.RoomCellFactory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,7 +38,7 @@ public class RoomsController implements Initializable {
 
     private void onRoomSearch() {
         String sqlRequest = makeRequest();
-        ObservableList<Room> searchResults = Model.getInstance().sortRooms(sqlRequest);
+        ObservableList<Room> searchResults = Model.getInstance().getDatabaseHandler().getRoomDAO().searchByRequest(sqlRequest);
         rooms_listView.setItems(searchResults);
         rooms_listView.setCellFactory(e -> new RoomCellFactory());
 

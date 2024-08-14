@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Models.DAO;
 
-import com.example.hotelmanagementsystemfx.Entities.ServiceOrder;
+import com.example.hotelmanagementsystemfx.Models.Entities.ServiceOrder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -117,6 +117,14 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
             e.printStackTrace();
         }
         return serviceOrders;
+    }
+
+    public double getPriceServiceOrderById(int i) {
+        return 0;
+    }
+
+    public String getStatusServiceOrderById(int i) {
+        return null;
     }
 
 //    public String getStatusServiceOrderById(String id) {

@@ -1,7 +1,7 @@
 package com.example.hotelmanagementsystemfx.Views;
 
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ServiceOrdersTypeCellController;
-import com.example.hotelmanagementsystemfx.Entities.ServiceType;
+import com.example.hotelmanagementsystemfx.Models.Entities.ServiceType;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 

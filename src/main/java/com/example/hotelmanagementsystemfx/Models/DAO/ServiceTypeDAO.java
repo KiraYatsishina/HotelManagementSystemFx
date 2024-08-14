@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Models.DAO;
 
-import com.example.hotelmanagementsystemfx.Entities.ServiceType;
+import com.example.hotelmanagementsystemfx.Models.Entities.ServiceType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

@@ -1,8 +1,8 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
-import com.example.hotelmanagementsystemfx.DB.Const;
+import com.example.hotelmanagementsystemfx.Models.Entities.Client;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Entities.Reservation;
+import com.example.hotelmanagementsystemfx.Models.Entities.Reservation;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,8 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ReservationCellController implements Initializable {
@@ -52,17 +51,10 @@ public class ReservationCellController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ResultSet client = Model.getInstance().getDatabaseHandler().getClientById(reservation.idClientProperty().get());
-        String firstName = null;
-        String lastName = null;
-        try {
-            if(client.next()){
-                firstName = client.getString(Const.CLIENT_FIRSTNAME);
-                lastName = client.getString(Const.CLIENT_LASTNAME);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        Optional<Client> client = Model.getInstance().getDatabaseHandler().getClientDAO().get(reservation.idClientProperty().get());
+        String firstName = client.get().firstNameProperty().get();
+        String lastName = client.get().lastNameProperty().get();
+
         clientFullName_label.textProperty().bind(Bindings.concat(firstName + " " + lastName));
         reservationDate_label.textProperty().bind(reservation.reservationDateProperty());
         checkInDate_label.textProperty().bind(reservation.checkInDateProperty());

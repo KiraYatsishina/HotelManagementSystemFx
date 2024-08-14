@@ -16,24 +16,59 @@ public class DatabaseHandler extends Configs{
     }
 
     public ClientDAO getClientDAO(){
-        return new ClientDAO(dbConnection);
+        try {
+            return new ClientDAO(getDbConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public CompleteServiceOrderDAO getCompleteServiceOrderDAO(){
-        return new CompleteServiceOrderDAO(dbConnection);
+        try {
+            return new CompleteServiceOrderDAO(getDbConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public EmployeeDAO getEmployeeDAO(){
-        return new EmployeeDAO(dbConnection);
+        try {
+            return new EmployeeDAO(getDbConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public ReservationDAO getReservationDAO(){
-        return new ReservationDAO(dbConnection);
+        try {
+            return new ReservationDAO(getDbConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public RoomDAO getRoomDAO(){
-        return new RoomDAO(dbConnection);
+        try {
+            return new RoomDAO(getDbConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public ServiceOrderDAO getServiceOrderDAO(){
-        return new ServiceOrderDAO(dbConnection);
+        try {
+            return new ServiceOrderDAO(getDbConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     public ServiceTypeDAO getServiceTypeDAO(){
-        return new ServiceTypeDAO(dbConnection);
+        try {
+            return new ServiceTypeDAO(getDbConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

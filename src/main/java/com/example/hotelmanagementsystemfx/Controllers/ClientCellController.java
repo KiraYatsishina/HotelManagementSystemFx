@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
-import com.example.hotelmanagementsystemfx.Entities.Client;
+import com.example.hotelmanagementsystemfx.Models.Entities.Client;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -44,9 +44,9 @@ public class ClientCellController implements Initializable {
         else if(client.genderProperty().get().equals("Male")) gender_image.setImage(maleImage);
         fullName_label.textProperty().bind(Bindings.concat(client.lastNameProperty(), " ", client.firstNameProperty()));
         phoneNumber_label.textProperty().bind(client.phoneNumberProperty());
-        int countReserv = Model.getInstance().getDatabaseHandler().countReservationsOfClient(client.phoneNumberProperty().get());
-        countReservations_label.setText(String.valueOf(countReserv));
-        int countServiceOrders = Model.getInstance().getDatabaseHandler().countServiceOrdersOfClient(client.phoneNumberProperty().get());
-        countServiceOrders_label.setText(String.valueOf(countServiceOrders));
+//        int countReserv = Model.getInstance().getDatabaseHandler().countReservationsOfClient(client.phoneNumberProperty().get());
+//        countReservations_label.setText(String.valueOf(countReserv));
+//        int countServiceOrders = Model.getInstance().getDatabaseHandler().countServiceOrdersOfClient(client.phoneNumberProperty().get());
+//        countServiceOrders_label.setText(String.valueOf(countServiceOrders));
     }
 }

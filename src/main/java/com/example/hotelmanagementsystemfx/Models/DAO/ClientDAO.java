@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Models.DAO;
 
-import com.example.hotelmanagementsystemfx.Entities.Client;
+import com.example.hotelmanagementsystemfx.Models.Entities.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -8,7 +8,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.PrimitiveIterator;
 
 public class ClientDAO implements Dao<Client> {
 

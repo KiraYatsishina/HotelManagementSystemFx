@@ -1,13 +1,10 @@
 package com.example.hotelmanagementsystemfx.Models;
 
 import com.example.hotelmanagementsystemfx.DB.DatabaseHandler;
-import com.example.hotelmanagementsystemfx.Entities.*;
+import com.example.hotelmanagementsystemfx.Models.Entities.*;
 import com.example.hotelmanagementsystemfx.Views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 
 public class Model {

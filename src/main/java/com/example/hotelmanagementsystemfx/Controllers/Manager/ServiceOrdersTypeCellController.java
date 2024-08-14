@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
-import com.example.hotelmanagementsystemfx.Entities.ServiceType;
+import com.example.hotelmanagementsystemfx.Models.Entities.ServiceType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -41,7 +41,7 @@ public class ServiceOrdersTypeCellController implements Initializable {
 
         name_label.textProperty().bind(serviceOrdersType.nameProperty());
         price_label.textProperty().bind(serviceOrdersType.priceProperty().asString().concat("$"));
-        orderCount_label.textProperty().bind(serviceOrdersType.orderCountProperty().asString().concat(" times"));
+       // orderCount_label.textProperty().bind(serviceOrdersType.orderCountProperty().asString().concat(" times"));
         status_label.textProperty().bind(serviceOrdersType.statusProperty());
         switch (status_label.getText()) {
             case "Active" -> status_circle.setStyle("-fx-fill: #00FF00;");

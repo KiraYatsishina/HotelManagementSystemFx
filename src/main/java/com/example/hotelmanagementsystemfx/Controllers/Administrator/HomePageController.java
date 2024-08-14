@@ -1,6 +1,5 @@
 package com.example.hotelmanagementsystemfx.Controllers.Administrator;
 
-import com.example.hotelmanagementsystemfx.DB.Const;
 import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,8 +10,6 @@ import javafx.scene.control.Label;
 
 import java.net.URL;
 import java.sql.ResultSet;
-import java.util.Calendar;
-import java.util.Comparator;
 import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
@@ -38,19 +35,19 @@ public class HomePageController implements Initializable {
         String firstName = Model.getInstance().getViewFactory().getEmployeeAccount().firstNameProperty().get();
         String lastName = Model.getInstance().getViewFactory().getEmployeeAccount().lastNameProperty().get();
         fullName_label.setText(firstName + " " + lastName);
-        countReservationsToday_label.setText(Model.getInstance().getDatabaseHandler()
-                .getCountReservationToday() + " Reservations");
-        countServiceOrdersToday_lable.setText(Model.getInstance().getDatabaseHandler()
-                .getCountServiceOrdersToday() + " Service orders");
-        countEarning_label.setText("$  " + Model.getInstance().getDatabaseHandler()
-                .getTotalToday());
+//        countReservationsToday_label.setText(Model.getInstance().getDatabaseHandler()
+//                .getCountReservationToday() + " Reservations");
+//        countServiceOrdersToday_lable.setText(Model.getInstance().getDatabaseHandler()
+//                .getCountServiceOrdersToday() + " Service orders");
+//        countEarning_label.setText("$  " + Model.getInstance().getDatabaseHandler()
+//                .getTotalToday());
         chartCompletion();
     }
 
     private void chartCompletion(){
         totalSum_lineChart.getData().clear();
-        createSeries(Model.getInstance().getDatabaseHandler().getMonthCountReservations());
-        createSeries(Model.getInstance().getDatabaseHandler().getMonthCountServiceOrders());
+//        createSeries(Model.getInstance().getDatabaseHandler().getMonthCountReservations());
+//        createSeries(Model.getInstance().getDatabaseHandler().getMonthCountServiceOrders());
     }
     private void createSeries(ResultSet resultSet){
 

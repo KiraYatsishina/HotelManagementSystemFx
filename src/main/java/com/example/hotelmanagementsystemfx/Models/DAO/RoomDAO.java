@@ -1,6 +1,8 @@
 package com.example.hotelmanagementsystemfx.Models.DAO;
 
-import com.example.hotelmanagementsystemfx.Entities.Room;
+import com.example.hotelmanagementsystemfx.Models.Entities.Room;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -135,6 +137,10 @@ public class RoomDAO implements Dao<Room>{
             e.printStackTrace();
         }
         return rooms;
+    }
+
+    public ObservableValue<String> getRoomStatus(int id) {
+        return null;
     }
 
 

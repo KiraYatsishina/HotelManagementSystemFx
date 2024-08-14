@@ -1,6 +1,7 @@
 package com.example.hotelmanagementsystemfx.Controllers;
 
-import com.example.hotelmanagementsystemfx.Entities.Room;
+import com.example.hotelmanagementsystemfx.Models.Entities.Room;
+import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
+import org.controlsfx.control.PropertySheet;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -73,19 +75,19 @@ public class RoomCellController implements Initializable {
         else if(room.roomTypeProperty().get().equals("Executive suite")) fillstar(4);
         else if(room.roomTypeProperty().get().equals("Apartments")) fillstar(5);
 
-        refrigerator_label.textProperty().bind(room.hasRefrigeratorProperty());
+        refrigerator_label.textProperty().bind(room.hasRefrigeratorProperty().asString());
         if(refrigerator_label.getText().equals("1")) hasRefrigerator_image.setImage(doneImage);
         else hasRefrigerator_image.setImage(noImage);
         refrigerator_label.textProperty().unbind();
         refrigerator_label.setText("Refrigerator");
 
-        conditioning_label.textProperty().bind(room.hasAirConditioningProperty());
+        conditioning_label.textProperty().bind(room.hasAirConditioningProperty().asString());
         if(conditioning_label.getText().equals("1")) hasAirConditioning_image.setImage(doneImage);
         else hasAirConditioning_image.setImage(noImage);
         conditioning_label.textProperty().unbind();
         conditioning_label.setText("Conditioning");
 
-        status_label.textProperty().bind(room.statusProperty());
+        status_label.textProperty().bind(Model.getInstance().getDatabaseHandler().getRoomDAO().getRoomStatus(room.idRoomProperty().get()));
         switch (status_label.getText()) {
             case "Available" -> status_circle.setStyle("-fx-fill: #00FF00;");
             case "Occupied" -> status_circle.setStyle("-fx-fill: #708090;");

@@ -1,4 +1,4 @@
-package com.example.hotelmanagementsystemfx.Entities;
+package com.example.hotelmanagementsystemfx.Models.Entities;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

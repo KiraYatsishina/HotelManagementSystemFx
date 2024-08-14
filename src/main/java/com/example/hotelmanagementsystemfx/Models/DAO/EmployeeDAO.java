@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Models.DAO;
 
-import com.example.hotelmanagementsystemfx.Entities.Employee;
+import com.example.hotelmanagementsystemfx.Models.Entities.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -19,19 +19,13 @@ public class EmployeeDAO implements Dao<Employee> {
 
     @Override
     public Optional<Employee> get(int id) {
-        String sql = "SELECT * FROM employee WHERE idEmployee = ?";
+        String sql = "SELECT * FROM employee INNER JOIN employee_type ON employee.idEmployeeType = employee_type.idEmployeeType WHERE idEmployee = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                String profile = rs.getString("idEmployeeType");
-
-                if (profile.equals("1")) profile = "Manager";
-                if (profile.equals("2")) profile = "Administrator";
-                if (profile.equals("3")) profile = "Maid";
-
                 Employee employee = new Employee(
-                        rs.getInt("idEmployee"), profile,
+                        rs.getInt("idEmployee"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("email"),
@@ -39,7 +33,10 @@ public class EmployeeDAO implements Dao<Employee> {
                         rs.getString("gender"),
                         rs.getString("login"),
                         rs.getString("password"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getString("name"),
+                        rs.getDouble("salary")
+
                 );
                 return Optional.of(employee);
             }
@@ -52,20 +49,14 @@ public class EmployeeDAO implements Dao<Employee> {
     @Override
     public List<Employee> getAll() {
         List<Employee> employees = new ArrayList<>();
-        String sql = "SELECT * FROM employee";
+        String sql = "SELECT * FROM employee INNER JOIN employee_type ON employee.idEmployeeType = employee_type.idEmployeeType;";
 
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                String profile = rs.getString("idEmployeeType");
-
-                if (profile.equals("1")) profile = "Manager";
-                if (profile.equals("2")) profile = "Administrator";
-                if (profile.equals("3")) profile = "Maid";
-
                 Employee employee = new Employee(
-                        rs.getInt("idEmployee"), profile,
+                        rs.getInt("idEmployee"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("email"),
@@ -73,9 +64,10 @@ public class EmployeeDAO implements Dao<Employee> {
                         rs.getString("gender"),
                         rs.getString("login"),
                         rs.getString("password"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getString("name"),
+                        rs.getDouble("salary")
                 );
-
                 employees.add(employee);
             }
         } catch (SQLException e) {
@@ -161,13 +153,8 @@ public class EmployeeDAO implements Dao<Employee> {
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery(sqlRequest);
             while (rs.next()) {
-                String profile = rs.getString("idEmployeeType");
-                if (profile.equals("1")) profile = "Manager";
-                if (profile.equals("2")) profile = "Administrator";
-                if (profile.equals("3")) profile = "Maid";
-
                 Employee employee = new Employee(
-                        rs.getInt("idEmployee"), profile,
+                        rs.getInt("idEmployee"),
                         rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("email"),
@@ -175,7 +162,67 @@ public class EmployeeDAO implements Dao<Employee> {
                         rs.getString("gender"),
                         rs.getString("login"),
                         rs.getString("password"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getString("name"),
+                        rs.getDouble("salary")
+                );
+                employees.add(employee);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return employees;
+    }
+
+    public Optional<Employee> getAccountData(String login, String password) {
+        String sql = "SELECT * FROM employee INNER JOIN employee_type ON employee.idEmployeeType = employee_type.idEmployeeType WHERE login = ? AND password = ?;";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, login);
+            stmt.setString(2, password);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Employee employee = new Employee(
+                        rs.getInt("idEmployee"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("email"),
+                        rs.getString("phoneNumber"),
+                        rs.getString("gender"),
+                        rs.getString("login"),
+                        rs.getString("password"),
+                        rs.getString("status"),
+                        rs.getString("employee_type.name"),
+                        rs.getDouble("salary")
+                );
+                return Optional.of(employee);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return Optional.empty();
+    }
+
+    public List<Employee> getEmployeesByType(String profile) {
+        List<Employee> employees = new ArrayList<>();
+        String sql = "SELECT * FROM employee INNER JOIN employee_type ON employee.idEmployeeType = employee_type.idEmployeeType WHERE name = ?;";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setString(1, profile);
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                Employee employee = new Employee(
+                        rs.getInt("idEmployee"),
+                        rs.getString("firstName"),
+                        rs.getString("lastName"),
+                        rs.getString("email"),
+                        rs.getString("phoneNumber"),
+                        rs.getString("gender"),
+                        rs.getString("login"),
+                        rs.getString("password"),
+                        rs.getString("status"),
+                        rs.getString("name"),
+                        rs.getDouble("salary")
                 );
                 employees.add(employee);
             }

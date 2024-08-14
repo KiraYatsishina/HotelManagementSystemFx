@@ -1,6 +1,6 @@
 package com.example.hotelmanagementsystemfx.Models.DAO;
 
-import com.example.hotelmanagementsystemfx.Entities.CompleteServiceOrder;
+import com.example.hotelmanagementsystemfx.Models.Entities.CompleteServiceOrder;
 import javafx.collections.ObservableList;
 
 import java.sql.Connection;

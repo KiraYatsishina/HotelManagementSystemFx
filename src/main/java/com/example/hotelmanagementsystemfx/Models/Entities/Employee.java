@@ -1,14 +1,10 @@
-package com.example.hotelmanagementsystemfx.Entities;
+package com.example.hotelmanagementsystemfx.Models.Entities;
 
 import com.example.hotelmanagementsystemfx.Models.Model;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class Employee {
     private final IntegerProperty idEmployee;
-    private final StringProperty profile;
 
     private final StringProperty firstName;
     private final StringProperty lastName;
@@ -18,18 +14,24 @@ public class Employee {
     private final StringProperty login;
     private final StringProperty password;
     private final StringProperty status;
+    private final StringProperty profile;
+    private final DoubleProperty salary;
 
-    public Employee(int idEmployee, String profile, String firstName, String lastName, String email, String phoneNumber,String gender,String login,String password, String status) {
+
+    public Employee(int idEmployee, String firstName, String lastName, String email, String phoneNumber,
+                    String gender,String login,String password, String status, String profile, double salary) {
         this.idEmployee = new SimpleIntegerProperty(this, "idEmployee", idEmployee);
         this.firstName = new SimpleStringProperty(this, "firstName", firstName);
         this.lastName = new SimpleStringProperty(this, "lastName", lastName);
         this.email = new SimpleStringProperty(this, "email", email);
         this.phoneNumber = new SimpleStringProperty(this, "phoneNumber", phoneNumber);
-        this.profile = new SimpleStringProperty(this, "profile", profile);
         this.gender = new SimpleStringProperty(this, "gender", gender);
         this.login = new SimpleStringProperty(this, "login", login);
         this.password = new SimpleStringProperty(this, "password", password);
         this.status = new SimpleStringProperty(this, "status", status);
+        this.profile = new SimpleStringProperty(this, "profile", profile);
+        this.salary = new SimpleDoubleProperty(this, "salary", salary);
+
     }
     public IntegerProperty idEmployeeProperty() {
         return this.idEmployee;
@@ -63,6 +65,10 @@ public class Employee {
     public StringProperty statusProperty() {
         return this.status;
     }
+    public DoubleProperty salaryProperty() {
+        return this.salary;
+    }
+
 
     public void updatePassword(String newPassword) {
         this.password.set(newPassword);

@@ -24,6 +24,6 @@ module com.example.hotelmanagementsystemfx {
     opens com.example.hotelmanagementsystemfx.Controllers.Manager;
     opens com.example.hotelmanagementsystemfx.Controllers.Administrator;
     opens com.example.hotelmanagementsystemfx.Controllers.Maid;
-    exports com.example.hotelmanagementsystemfx.Entities;
+    exports com.example.hotelmanagementsystemfx.Models.Entities;
 
 }

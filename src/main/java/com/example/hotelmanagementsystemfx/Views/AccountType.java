@@ -4,4 +4,5 @@ public enum AccountType {
     MANAGER,
     ADMINISTRATOR,
     MAID
+
 }
