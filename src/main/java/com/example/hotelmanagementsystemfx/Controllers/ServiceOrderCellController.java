@@ -48,8 +48,8 @@ public class ServiceOrderCellController implements Initializable {
         String firstName = client.get().firstNameProperty().get();
         String lastName = client.get().lastNameProperty().get();
         clientFullName_label.textProperty().bind(Bindings.concat(firstName + " " + lastName));
-        double price = Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getPriceServiceOrderById(serviceOrder.idServiceOrderProperty().get());
-        price_label.setText(price + " $");
+        //double price = Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getPriceServiceOrderById(serviceOrder.idServiceOrderProperty().get());
+        //price_label.setText(price + " $");
         orderDate_label.textProperty().bind(serviceOrder.orderDateProperty());
         String status = Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getStatusServiceOrderById(serviceOrder.idServiceOrderProperty().get());
         status_label.setText(status);

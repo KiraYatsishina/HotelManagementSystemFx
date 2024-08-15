@@ -191,6 +191,7 @@
             <TreeTableColumn fx:id="type_treeTableCol" prefWidth="65.99998474121094" text="Type" />
             <TreeTableColumn fx:id="employee_treeTableCol" prefWidth="105.33331298828125" text="Employee" />
             <TreeTableColumn fx:id="price_treeTableCol" prefWidth="83.33331298828125" text="Price" />
+            <TreeTableColumn fx:id="count_treeTableCol" prefWidth="83.33331298828125" text="Count" />
             <TreeTableColumn fx:id="status_treeTableCol" prefWidth="71.33340454101562" text="Status" />
             <TreeTableColumn fx:id="completeDate_treeTableCol" prefWidth="148.00006103515625" text="Complete date" />
          </columns>

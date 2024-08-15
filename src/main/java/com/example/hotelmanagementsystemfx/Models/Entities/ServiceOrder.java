@@ -1,10 +1,7 @@
 package com.example.hotelmanagementsystemfx.Models.Entities;
 
 import com.example.hotelmanagementsystemfx.Models.Model;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import org.controlsfx.control.PropertySheet;
 
 import java.util.List;
@@ -14,15 +11,17 @@ public class ServiceOrder {
     private final IntegerProperty idClient;
     private final IntegerProperty idEmployee;
     private final StringProperty orderDate;
+    private final DoubleProperty price;
     private final Client client;
     private final Employee employee;
     private final List<CompleteServiceOrder> completeServiceOrders;
 
-    public ServiceOrder(int idServiceOrder, int idClient, int idEmployee,String orderDate) {
+    public ServiceOrder(int idServiceOrder, int idClient, int idEmployee,String orderDate, double price) {
         this.idServiceOrder = new SimpleIntegerProperty(this, "idServiceOrder", idServiceOrder);
         this.idClient = new SimpleIntegerProperty(this, "idClient", idClient);
         this.idEmployee = new SimpleIntegerProperty(this, "idEmployee", idEmployee);
         this.orderDate = new SimpleStringProperty(this, "orderDate", orderDate);
+        this.price = new SimpleDoubleProperty(this, "price", price);
         client = Model.getInstance().getDatabaseHandler().getClientDAO().get(idClient).get();
         employee = Model.getInstance().getDatabaseHandler().getEmployeeDAO().get(idEmployee).get();
         completeServiceOrders = Model.getInstance().getDatabaseHandler().getCompleteServiceOrderDAO().getByField("idServiceOrder", idServiceOrder);
@@ -53,6 +52,16 @@ public class ServiceOrder {
     public StringProperty orderDateProperty() {
         return this.orderDate;
     }
+    public DoubleProperty priceProperty() {
+        return this.price;
+    }
 
 
+    public String getStatus() {
+        return Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getStatusServiceOrderById(idServiceOrder.get());
+    }
+
+    public String getCompleteDate() {
+        return Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getCompleteDateById(idServiceOrder.get());
+    }
 }

@@ -3,7 +3,6 @@ package com.example.hotelmanagementsystemfx.Views;
 public enum ManagerMenuOptions {
     HOMEPAGE,
     EMPLOYEES,
-    EMPLOYEE,
     CLIENTS,
     RESERVATIONS,
     SERVICE_ORDERS,

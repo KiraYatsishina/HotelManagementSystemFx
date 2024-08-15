@@ -29,7 +29,8 @@ public class ServiceTypeDAO implements Dao<ServiceType>{
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getDouble("price"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getBoolean("assigned")
                 );
                 return Optional.of(serviceType);
             }
@@ -51,7 +52,8 @@ public class ServiceTypeDAO implements Dao<ServiceType>{
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getDouble("price"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getBoolean("assigned")
                 );
                 serviceTypes.add(serviceType);
             }
@@ -63,12 +65,13 @@ public class ServiceTypeDAO implements Dao<ServiceType>{
 
     @Override
     public void save(ServiceType serviceType) {
-        String sql = "INSERT INTO service_type (name, description, price, status) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO service_type (name, description, price, status, assigned) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, serviceType.nameProperty().get());
             stmt.setString(2, serviceType.descriptionProperty().get());
             stmt.setDouble(3, serviceType.priceProperty().get());
             stmt.setString(4, serviceType.statusProperty().get());
+            stmt.setBoolean(5, serviceType.assignedsProperty().get());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,13 +80,14 @@ public class ServiceTypeDAO implements Dao<ServiceType>{
 
     @Override
     public void update(ServiceType serviceType, String[] params) {
-        String sql = "UPDATE service_type SET name = ?, description = ?, price = ?, status = ? WHERE idServiceType = ?";
+        String sql = "UPDATE service_type SET name = ?, description = ?, price = ?, status = ?, assigned = ? WHERE idServiceType = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, params[0]); // name
             stmt.setString(2, params[1]); // description
             stmt.setDouble(3, Double.parseDouble(params[2])); // price
             stmt.setString(4, params[3]); // status
-            stmt.setInt(5, serviceType.idProperty().get());
+            stmt.setBoolean(5, Boolean.parseBoolean(params[4]));
+            stmt.setInt(6, serviceType.idProperty().get());
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -112,7 +116,8 @@ public class ServiceTypeDAO implements Dao<ServiceType>{
                         rs.getString("name"),
                         rs.getString("description"),
                         rs.getDouble("price"),
-                        rs.getString("status")
+                        rs.getString("status"),
+                        rs.getBoolean("assigned")
                 );
                 serviceTypes.add(serviceType);
             }

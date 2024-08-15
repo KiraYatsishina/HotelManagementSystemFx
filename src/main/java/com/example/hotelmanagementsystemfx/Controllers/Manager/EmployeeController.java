@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EmployeeController implements Initializable {
@@ -57,8 +58,7 @@ public class EmployeeController implements Initializable {
     @FXML
     private Label salary_label;
 
-    @FXML
-    private TreeTableView<CompleteServiceOrder> serviceOrders_treeTableView;
+
 
     @FXML
     private Circle status_circle;
@@ -70,25 +70,31 @@ public class EmployeeController implements Initializable {
     private TableView<CompleteServiceOrder> completeServiceOrders_tableView;
 
     @FXML
-    private TreeTableColumn<ServiceOrder, String> client_treeTableCol;
+    private TreeTableView<CompleteServiceOrder> serviceOrders_treeTableView;
 
     @FXML
-    private TreeTableColumn<ServiceOrder, String> completeDate_treeTableCol;
+    private TreeTableColumn<CompleteServiceOrder, String> client_treeTableCol;
 
     @FXML
-    private TreeTableColumn<ServiceOrder, String> employee_treeTableCol;
+    private TreeTableColumn<CompleteServiceOrder, String> completeDate_treeTableCol;
 
     @FXML
-    private TreeTableColumn<ServiceOrder, String> orderDate_treeTableCol;
+    private TreeTableColumn<CompleteServiceOrder, String> employee_treeTableCol;
 
     @FXML
-    private TreeTableColumn<ServiceOrder, Double> price_treeTableCol;
+    private TreeTableColumn<CompleteServiceOrder, String> orderDate_treeTableCol;
 
     @FXML
-    private TreeTableColumn<ServiceOrder, String> status_treeTableCol;
+    private TreeTableColumn<CompleteServiceOrder, Double> price_treeTableCol;
 
     @FXML
-    private TreeTableColumn<ServiceOrder, String> type_treeTableCol;
+    private TreeTableColumn<CompleteServiceOrder, String> status_treeTableCol;
+
+    @FXML
+    private TreeTableColumn<CompleteServiceOrder, String> type_treeTableCol;
+
+    @FXML
+    private TreeTableColumn<CompleteServiceOrder, Integer> count_treeTableCol;
 
     private Employee employee;
 
@@ -113,23 +119,71 @@ public class EmployeeController implements Initializable {
             fullServiceOrdersForMaid(employee);
         }else{
             fullTableView();
-            //fullTreeTableView();
+            fullTreeTableView();
         }
     }
 
     private void fullTreeTableView() {
+        fillingColumns();
+
+        TreeItem<CompleteServiceOrder> invisibleRoot = new TreeItem<>(null);
+        invisibleRoot.setExpanded(true);
+
         List<ServiceOrder> serviceOrders = Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getAll();
         for (ServiceOrder serviceOrder : serviceOrders){
             List<TreeItem<CompleteServiceOrder>> treeItemList = new ArrayList<>();
             for (CompleteServiceOrder completeServiceOrder : serviceOrder.getCompleteServiceOrders()) {
-
+                TreeItem<CompleteServiceOrder> item = new TreeItem<>(completeServiceOrder);
+                treeItemList.add(item);
             }
+            CompleteServiceOrder rootServiceOrderItem  = new CompleteServiceOrder(
+                    0, serviceOrder.idServiceOrderProperty().get(), 0, treeItemList.size(), serviceOrder.idEmployeeProperty().get(),
+                    serviceOrder.getStatus(), serviceOrder.getCompleteDate()
+            );
+            rootServiceOrderItem.setClientName(serviceOrder.idClientProperty().get());
+            rootServiceOrderItem.setOrderDate(serviceOrder.orderDateProperty().get());
+            TreeItem<CompleteServiceOrder> root = new TreeItem<>(rootServiceOrderItem);
+            root.getChildren().setAll(treeItemList);
+            invisibleRoot.getChildren().add(root);
         }
+        serviceOrders_treeTableView.setRoot(invisibleRoot);
+        serviceOrders_treeTableView.setShowRoot(false);
+    }
 
-//        client_treeTableCol.setCellValueFactory(
-//                (TreeTableColumn.CellDataFeatures<CompleteServiceOrder, String> param) ->
-//                        new ReadOnlyStringWrapper(param.getValue().getValue().)
-//        );
+    private void fillingColumns(){
+        client_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().clientNameProperty());
+        completeDate_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().completeDateProperty());
+        employee_treeTableCol.setCellValueFactory(cellData -> {
+            Employee maid = cellData.getValue().getValue().getMaid();
+            ServiceType serviceType = cellData.getValue().getValue().getServiceType();
+            if(serviceType != null){
+                boolean assigned = serviceType.assignedsProperty().get();
+                if(!assigned) return new SimpleStringProperty("");
+            }
+            return new SimpleStringProperty(maid != null ? maid.getFullName() : "Unassigned");
+        });
+        orderDate_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().orderDateProperty());
+        price_treeTableCol.setCellValueFactory(cellData -> {
+            ServiceType serviceType = cellData.getValue().getValue().getServiceType();
+            int idServiceOrder = cellData.getValue().getValue().idServiceOrderProperty().get();
+
+            Optional<ServiceOrder> optionalServiceOrder = Model.getInstance().getDatabaseHandler().getServiceOrderDAO().get(idServiceOrder);
+            double price;
+            if (serviceType != null) {
+                price = serviceType.priceProperty().get();
+            } else if (optionalServiceOrder.isPresent()) {
+                price = optionalServiceOrder.get().priceProperty().get();
+            } else {
+                price = 2;
+            }
+            return new SimpleDoubleProperty(price).asObject();
+        });
+        status_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().statusProperty());
+        type_treeTableCol.setCellValueFactory(cellData -> {
+            ServiceType serviceType = cellData.getValue().getValue().getServiceType();
+            return new SimpleStringProperty(serviceType != null ? serviceType.nameProperty().get() : "");
+        });
+        count_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().countProperty().asObject());
     }
 
     private void fullServiceOrdersForMaid(Employee employee) {

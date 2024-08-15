@@ -28,7 +28,8 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
                         rs.getInt("idServiceOrder"),
                         rs.getInt("idClient"),
                         rs.getInt("idEmployee"),
-                        rs.getString("orderDate")
+                        rs.getString("orderDate"),
+                        rs.getDouble("price")
                 );
                 return Optional.of(serviceOrder);
             }
@@ -50,7 +51,8 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
                         rs.getInt("idServiceOrder"),
                         rs.getInt("idClient"),
                         rs.getInt("idEmployee"),
-                        rs.getString("orderDate")
+                        rs.getString("orderDate"),
+                        rs.getDouble("price")
                 );
                 serviceOrders.add(serviceOrder);
             }
@@ -62,11 +64,12 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
 
     @Override
     public void save(ServiceOrder serviceOrder) {
-        String sql = "INSERT INTO service_order (idClient, idEmployee, orderDate) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO service_order (idClient, idEmployee, orderDate, price) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, serviceOrder.idClientProperty().get());
             stmt.setInt(2, serviceOrder.idEmployeeProperty().get());
             stmt.setString(3, serviceOrder.orderDateProperty().get());
+            stmt.setDouble(4, serviceOrder.priceProperty().get());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -76,12 +79,13 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
 
     @Override
     public void update(ServiceOrder serviceOrder, String[] params) {
-        String sql = "UPDATE service_order SET idClient = ?, idEmployee = ?, orderDate = ? WHERE idServiceOrder = ?";
+        String sql = "UPDATE service_order SET idClient = ?, idEmployee = ?, orderDate = ?, price = ? WHERE idServiceOrder = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, Integer.parseInt(params[0]));
             stmt.setInt(2, Integer.parseInt(params[1]));
-            stmt.setString(3, params[2]);
-            stmt.setInt(4, serviceOrder.idServiceOrderProperty().get());
+
+            stmt.setDouble(4, Double.parseDouble(params[3]));
+            stmt.setInt(5, serviceOrder.idServiceOrderProperty().get());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -109,7 +113,8 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
                         rs.getInt("idServiceOrder"),
                         rs.getInt("idClient"),
                         rs.getInt("idEmployee"),
-                        rs.getString("orderDate")
+                        rs.getString("orderDate"),
+                        rs.getDouble("price")
                 );
                 serviceOrders.add(serviceOrder);
             }
@@ -119,12 +124,14 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
         return serviceOrders;
     }
 
-    public double getPriceServiceOrderById(int i) {
-        return 0;
+
+
+    public String getStatusServiceOrderById(int id) {
+        return "In process";
     }
 
-    public String getStatusServiceOrderById(int i) {
-        return null;
+    public String getCompleteDateById(int id) {
+        return "Not completed";
     }
 
 //    public String getStatusServiceOrderById(String id) {
