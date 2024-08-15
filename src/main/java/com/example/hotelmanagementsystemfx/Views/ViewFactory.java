@@ -2,7 +2,9 @@ package com.example.hotelmanagementsystemfx.Views;
 
 import com.example.hotelmanagementsystemfx.Controllers.Administrator.AdministratorController;
 import com.example.hotelmanagementsystemfx.Controllers.Maid.MaidController;
+import com.example.hotelmanagementsystemfx.Controllers.Manager.EmployeePageController;
 import com.example.hotelmanagementsystemfx.Controllers.Manager.ManagerController;
+import com.example.hotelmanagementsystemfx.Controllers.RoomCellController;
 import com.example.hotelmanagementsystemfx.Models.Entities.Employee;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -20,6 +22,7 @@ public class ViewFactory {
     private AnchorPane addRoomView;
     private AnchorPane addEmployeeView;
     private AnchorPane addServiceOrdersTypeView;
+    private AnchorPane employeeView;
 
     // Administrator Views
     private final ObjectProperty<AdministratorMenuOptions> administratorSelectedMenuItem;
@@ -77,13 +80,28 @@ public class ViewFactory {
     public AnchorPane getEmployeesView() {
         if(employeesView == null){
             try{
-                employeesView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/Employees.fxml")).load();
+                employeesView = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/EmployeesCopy.fxml")).load();
             }catch (Exception e){
                 e.printStackTrace();
             }
         }
         return employeesView;
     }
+
+    public AnchorPane getEmployeeView(Employee employee) {
+        if(employeeView == null){
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/hotelmanagementsystemfx/Fxml/Manager/EmployeePage.fxml"));
+                EmployeePageController cellController = new EmployeePageController(employee);
+                loader.setController(cellController);
+                employeeView = loader.load();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return employeeView;
+    }
+
     public AnchorPane getClientsView() {
         if(clientsView == null){
             try{

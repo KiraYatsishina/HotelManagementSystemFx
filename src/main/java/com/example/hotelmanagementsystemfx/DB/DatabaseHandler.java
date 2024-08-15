@@ -5,7 +5,7 @@ import com.example.hotelmanagementsystemfx.Models.DAO.*;
 import java.sql.*;
 
 public class DatabaseHandler extends Configs{
-    
+
     Connection dbConnection;
 
     public Connection getDbConnection() throws ClassNotFoundException, SQLException{

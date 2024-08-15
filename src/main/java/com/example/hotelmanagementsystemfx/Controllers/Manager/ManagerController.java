@@ -23,8 +23,8 @@ public class ManagerController implements Initializable {
                 case ADD_SERVICE_ORDERS_TYPE -> manager_parent.setCenter(Model.getInstance().getViewFactory().getAddServoceOrdersTypeView());
                 case SETTINGS -> manager_parent.setCenter(Model.getInstance().getViewFactory().getSettingsView());
                 default -> manager_parent.setCenter(Model.getInstance().getViewFactory().getManagerHomePageView());
-
             }
         });
+
     }
 }

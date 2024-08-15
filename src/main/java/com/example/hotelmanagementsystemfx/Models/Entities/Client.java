@@ -39,4 +39,7 @@ public class Client {
     public void setIdClient(int id){
         this.idClient.set(id);
     }
+    public String getFullName(){
+        return firstNameProperty().get() + " " + lastNameProperty().get();
+    }
 }

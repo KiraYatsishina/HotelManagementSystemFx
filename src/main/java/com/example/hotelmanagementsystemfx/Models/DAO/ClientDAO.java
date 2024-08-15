@@ -36,6 +36,7 @@ public class ClientDAO implements Dao<Client> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return Optional.empty();
     }
 

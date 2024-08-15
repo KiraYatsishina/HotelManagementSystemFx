@@ -147,6 +147,34 @@ public class ReservationDAO implements Dao<Reservation>{
         return reservations;
     }
 
+    public List<Reservation> getByEmployee(int idEmployee) {
+        List<Reservation> reservations = new ArrayList<>();
+        String sql = "SELECT * FROM reservation WHERE idEmployee = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, idEmployee);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Reservation reservation = new Reservation(
+                            rs.getInt("idReservation"),
+                            rs.getInt("idClient"),
+                            rs.getInt("idRoom"),
+                            rs.getInt("idEmployee"),
+                            rs.getInt("numberOfGuests"),
+                            rs.getString("reservationDate"),
+                            rs.getString("checkInDate"),
+                            rs.getString("checkOutDate"),
+                            rs.getDouble("price"),
+                            rs.getString("status")
+                    );
+                    reservations.add(reservation);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return reservations;
+    }
+
 
 //    public ResultSet getAllReservationsData(){
 //        return search("SELECT * FROM reservation;");

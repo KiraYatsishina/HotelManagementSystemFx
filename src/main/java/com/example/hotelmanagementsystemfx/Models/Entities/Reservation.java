@@ -1,9 +1,14 @@
 package com.example.hotelmanagementsystemfx.Models.Entities;
 
+import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.beans.property.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Optional;
+import java.util.PrimitiveIterator;
 
 public class Reservation {
     private final IntegerProperty idReservation;
@@ -20,6 +25,11 @@ public class Reservation {
     private final StringProperty status;
     private final IntegerProperty tenure;
 
+    private final Client client;
+    private final Room room;
+    private final Employee employee;
+
+
     public Reservation(int idReservation, int idClient, int idRoom,int idEmployee,
                        int numberOfGuests, String reservationDate, String checkInDate,String checkOutDate,
                        double price,String status) {
@@ -33,10 +43,13 @@ public class Reservation {
         this.checkOutDate = new SimpleStringProperty(this, "checkOutDate", checkOutDate);
         this.price = new SimpleDoubleProperty(this, "price", price);
         this.status = new SimpleStringProperty(this, "status", status);
-        this.tenure = new SimpleIntegerProperty(this, "tenure", getTenure());
+        this.tenure = new SimpleIntegerProperty(this, "tenure", getTenurePeriod());
+        client = Model.getInstance().getDatabaseHandler().getClientDAO().get(idClient).get();
+        room = Model.getInstance().getDatabaseHandler().getRoomDAO().get(idRoom).get();
+        employee = Model.getInstance().getDatabaseHandler().getEmployeeDAO().get(idEmployee).get();
     }
 
-    private int getTenure() {
+    private int getTenurePeriod() {
         LocalDate checkIn = LocalDate.parse(checkInDate.get());
         LocalDate checkOut = LocalDate.parse(checkOutDate.get());
         return (int) ChronoUnit.DAYS.between(checkIn, checkOut);
@@ -76,4 +89,74 @@ public class Reservation {
         return this.tenure;
     }
 
+
+    public static TableColumn<Reservation, String> getClientFullName(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Client");
+        col.setCellValueFactory(cellData -> {
+            Reservation reservation = cellData.getValue();
+            return new SimpleStringProperty(reservation.client.getFullName());
+        });
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getRoomNumber(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Room");
+        col.setCellValueFactory(cellData -> {
+            Reservation reservation = cellData.getValue();
+            return new SimpleStringProperty(reservation.room.roomNumberProperty().get());
+        });
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getEmployeeFullName(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Employee");
+        col.setCellValueFactory(cellData -> {
+            Reservation reservation = cellData.getValue();
+            return new SimpleStringProperty(reservation.employee.getFullName());
+
+        });
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getNumberOfGuests(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Number of guests");
+        col.setCellValueFactory(new PropertyValueFactory<>("numberOfGuests"));
+        return col;
+    }
+
+    public static TableColumn<Reservation, Integer> getTenure() {
+        TableColumn<Reservation, Integer> col = new TableColumn<>("Tenure");
+        col.setCellValueFactory(new PropertyValueFactory<>("tenure"));
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getReservationDate(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Reservation date");
+        col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getCheckInDate(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Check in date");
+        col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getCheckOutDate(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Check out date");
+        col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getPrice(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Price");
+        col.setCellValueFactory(new PropertyValueFactory<>("price"));
+        return col;
+    }
+
+    public static TableColumn<Reservation, String> getStatus(){
+        TableColumn<Reservation, String> col = new TableColumn<>("Status");
+        col.setCellValueFactory(new PropertyValueFactory<>("status"));
+        return col;
+    }
 }

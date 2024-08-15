@@ -2,6 +2,8 @@ package com.example.hotelmanagementsystemfx.Models.Entities;
 
 import com.example.hotelmanagementsystemfx.Models.Model;
 import javafx.beans.property.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class Employee {
     private final IntegerProperty idEmployee;
@@ -73,5 +75,28 @@ public class Employee {
     public void updatePassword(String newPassword) {
         this.password.set(newPassword);
         Model.getInstance().getDatabaseHandler().getEmployeeDAO().updateEmployeeByField(idEmployee.get(), "password", newPassword);
+    }
+    public String getFullName(){
+        return firstNameProperty().get() + " " + lastNameProperty().get();
+    }
+    public static TableColumn<Employee, String> getFirstName(){
+        TableColumn<Employee, String> col = new TableColumn<>("First name");
+        col.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        return col;
+    }
+    public static TableColumn<Employee, String> getLastName(){
+        TableColumn<Employee, String> col = new TableColumn<>("Last name");
+        col.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        return col;
+    }
+    public static TableColumn<Employee, String> getStatus(){
+        TableColumn<Employee, String> col = new TableColumn<>("Status");
+        col.setCellValueFactory(new PropertyValueFactory<>("status"));
+        return col;
+    }
+    public static TableColumn<Employee, String> getProfile(){
+        TableColumn<Employee, String> fNameCol = new TableColumn<>("Profile");
+        fNameCol.setCellValueFactory(new PropertyValueFactory<>("profile"));
+        return fNameCol;
     }
 }

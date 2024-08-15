@@ -232,6 +232,7 @@ public class EmployeeDAO implements Dao<Employee> {
         return employees;
     }
 
+
 //    public ResultSet getAllEmployeesData(){
 //        return search("SELECT * FROM " + EMPLOYEE_TABLE + ";");
 //    }

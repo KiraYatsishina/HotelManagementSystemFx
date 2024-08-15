@@ -71,7 +71,7 @@
                         <Font name="Yu Gothic Medium" size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="670.0" />
+                        <Insets left="660.0" />
                      </HBox.margin>
                   </Text>
                </children>
