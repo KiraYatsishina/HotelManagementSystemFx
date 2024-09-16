@@ -64,7 +64,7 @@ public class ServiceTypeDAO implements Dao<ServiceType>{
     }
 
     @Override
-    public void save(ServiceType serviceType) {
+    public int save(ServiceType serviceType) {
         String sql = "INSERT INTO service_type (name, description, price, status, assigned) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, serviceType.nameProperty().get());
@@ -76,6 +76,7 @@ public class ServiceTypeDAO implements Dao<ServiceType>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override

@@ -119,7 +119,7 @@ public class Reservation {
     }
 
     public static TableColumn<Reservation, String> getNumberOfGuests(){
-        TableColumn<Reservation, String> col = new TableColumn<>("Number of guests");
+        TableColumn<Reservation, String> col = new TableColumn<>("Guests");
         col.setCellValueFactory(new PropertyValueFactory<>("numberOfGuests"));
         return col;
     }
@@ -158,5 +158,17 @@ public class Reservation {
         TableColumn<Reservation, String> col = new TableColumn<>("Status");
         col.setCellValueFactory(new PropertyValueFactory<>("status"));
         return col;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public Employee getEmployee() {
+        return employee;
     }
 }

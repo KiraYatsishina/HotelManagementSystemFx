@@ -77,10 +77,12 @@ public class EmployeeDAO implements Dao<Employee> {
     }
 
     @Override
-    public void save(Employee employee) {
+    public int save(Employee employee) {
         String sql = "INSERT INTO employee (idEmployeeType, firstName, lastName, email, phoneNumber, gender, login, password, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, translateProfileToId(employee.profileProperty().get()));
+        int idEmployee = -1;
+        try (PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            stmt.setInt(1, translateProfileToId(employee.profileProperty().get()));
             stmt.setString(2, employee.firstNameProperty().get());
             stmt.setString(3, employee.lastNameProperty().get());
             stmt.setString(4, employee.emailProperty().get());
@@ -89,17 +91,26 @@ public class EmployeeDAO implements Dao<Employee> {
             stmt.setString(7, employee.loginProperty().get());
             stmt.setString(8, employee.passwordProperty().get());
             stmt.setString(9, employee.statusProperty().get());
+
             stmt.executeUpdate();
+
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    idEmployee = generatedKeys.getInt(1);
+                }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return idEmployee;
     }
 
-    private String translateProfileToId(String profile) {
+
+    private int translateProfileToId(String profile) {
         switch (profile) {
-            case "Manager": return "1";
-            case "Administrator": return "2";
-            case "Maid": return "3";
+            case "Manager": return 1;
+            case "Administrator": return 2;
+            case "Maid": return 3;
             default: throw new IllegalArgumentException("Unknown profile: " + profile);
         }
     }
@@ -108,7 +119,7 @@ public class EmployeeDAO implements Dao<Employee> {
     public void update(Employee employee, String[] params) {
         String sql = "UPDATE employee SET idEmployeeType = ?, firstName = ?, lastName = ?, email = ?, phoneNumber = ?, gender = ?, login = ?, password = ?, status = ? WHERE idEmployee = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            stmt.setString(1, translateProfileToId(employee.profileProperty().get()));
+            stmt.setInt(1, translateProfileToId(employee.profileProperty().get()));
             stmt.setString(2, params[0]); // firstName
             stmt.setString(3, params[1]); // lastName
             stmt.setString(4, params[2]); // email

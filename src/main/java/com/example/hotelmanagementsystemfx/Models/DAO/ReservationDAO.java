@@ -73,7 +73,7 @@ public class ReservationDAO implements Dao<Reservation>{
     }
 
     @Override
-    public void save(Reservation reservation) {
+    public int save(Reservation reservation) {
         String sql = "INSERT INTO reservation (idClient, idRoom, idEmployee, numberOfGuests, reservationDate, checkInDate, checkOutDate, price, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, reservation.idClientProperty().get());
@@ -89,6 +89,7 @@ public class ReservationDAO implements Dao<Reservation>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override

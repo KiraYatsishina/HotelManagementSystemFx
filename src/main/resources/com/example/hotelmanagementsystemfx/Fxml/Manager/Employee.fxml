@@ -3,8 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.control.TreeTableView?>
@@ -81,8 +81,19 @@
             <Line endX="898.0" startX="-100.0" stroke="#cccccc" strokeWidth="0.4" />
          </children>
       </VBox>
-      <TableView fx:id="reservations_tableView" layoutX="32.0" layoutY="211.0" prefHeight="280.0" prefWidth="935.0" />
-      <ChoiceBox fx:id="period_choiceBox" layoutX="747.0" layoutY="163.0" prefHeight="33.0" prefWidth="220.0" />
+      <TableView fx:id="reservations_tableView" layoutX="32.0" layoutY="211.0" prefHeight="280.0" prefWidth="935.0" stylesheets="@../../Styles/General.css">
+         <columns>
+            <TableColumn fx:id="client_tableCol" prefWidth="127.20001220703125" text="Client" />
+            <TableColumn fx:id="room_tableCol" prefWidth="51.33331298828125" text="Room" />
+            <TableColumn fx:id="employee_tableCol" prefWidth="107.33335876464844" text="Employee" />
+            <TableColumn fx:id="guests_tableCol" prefWidth="56.0" text="Guests" />
+            <TableColumn fx:id="reservationDate_tableCol" prefWidth="120.66668701171875" text="Reservation date" />
+            <TableColumn fx:id="checkInDate_tableCol" prefWidth="100.00009155273438" text="Check in date" />
+            <TableColumn fx:id="checkOutDate_tableCol" prefWidth="111.3333740234375" text="Check out date" />
+            <TableColumn fx:id="tenure_tableCol" prefWidth="55.33331298828125" text="Tenure" />
+            <TableColumn fx:id="price_tableCol" prefWidth="82.0" text="Price" />
+            <TableColumn fx:id="status_tableCol" prefWidth="116.1334228515625" text="Status" />
+         </columns></TableView>
       <Button fx:id="back_button" layoutX="911.0" layoutY="90.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="40.0" style="-fx-background-radius: 10; -fx-background-color: #7090f6;" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -184,16 +195,15 @@
          </cursor>
       </Button>
       <TableView fx:id="completeServiceOrders_tableView" layoutX="32.0" layoutY="211.0" prefHeight="583.0" prefWidth="935.0" visible="false" />
-      <TreeTableView fx:id="serviceOrders_treeTableView" layoutX="33.0" layoutY="511.0" prefHeight="280.0" prefWidth="935.0">
+      <TreeTableView fx:id="serviceOrders_treeTableView" layoutX="33.0" layoutY="511.0" prefHeight="280.0" prefWidth="935.0" styleClass="table-view" stylesheets="@../../Styles/General.css">
          <columns>
-            <TreeTableColumn fx:id="client_treeTableCol" prefWidth="128.0000343322754" text="Client" />
-            <TreeTableColumn fx:id="orderDate_treeTableCol" prefWidth="85.33328247070312" text="Order date" />
-            <TreeTableColumn fx:id="type_treeTableCol" prefWidth="65.99998474121094" text="Type" />
-            <TreeTableColumn fx:id="employee_treeTableCol" prefWidth="105.33331298828125" text="Employee" />
-            <TreeTableColumn fx:id="price_treeTableCol" prefWidth="83.33331298828125" text="Price" />
-            <TreeTableColumn fx:id="count_treeTableCol" prefWidth="83.33331298828125" text="Count" />
-            <TreeTableColumn fx:id="status_treeTableCol" prefWidth="71.33340454101562" text="Status" />
-            <TreeTableColumn fx:id="completeDate_treeTableCol" prefWidth="148.00006103515625" text="Complete date" />
+            <TreeTableColumn fx:id="client_treeTableCol" prefWidth="199.3332862854004" text="Client" />
+            <TreeTableColumn fx:id="orderDate_treeTableCol" minWidth="4.79998779296875" prefWidth="129.33335876464844" text="Order date" />
+            <TreeTableColumn fx:id="type_treeTableCol" prefWidth="118.66668701171875" text="Type" />
+            <TreeTableColumn fx:id="employee_treeTableCol" prefWidth="213.99996948242188" text="Employee" />
+            <TreeTableColumn fx:id="price_treeTableCol" text="Price" />
+            <TreeTableColumn fx:id="count_treeTableCol" prefWidth="70.0" text="Count" />
+            <TreeTableColumn fx:id="status_treeTableCol" prefWidth="119.9998779296875" text="Status" />
          </columns>
       </TreeTableView>
    </children>

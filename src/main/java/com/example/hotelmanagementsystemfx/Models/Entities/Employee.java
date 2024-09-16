@@ -5,6 +5,8 @@ import javafx.beans.property.*;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.nio.file.attribute.UserDefinedFileAttributeView;
+
 public class Employee {
     private final IntegerProperty idEmployee;
 
@@ -98,5 +100,9 @@ public class Employee {
         TableColumn<Employee, String> fNameCol = new TableColumn<>("Profile");
         fNameCol.setCellValueFactory(new PropertyValueFactory<>("profile"));
         return fNameCol;
+    }
+
+    public void setIdEmployee(int savedEmployeeId) {
+        idEmployeeProperty().set(savedEmployeeId);
     }
 }

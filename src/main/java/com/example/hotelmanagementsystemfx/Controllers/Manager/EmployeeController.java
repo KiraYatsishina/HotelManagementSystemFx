@@ -2,8 +2,6 @@ package com.example.hotelmanagementsystemfx.Controllers.Manager;
 
 import com.example.hotelmanagementsystemfx.Models.Entities.*;
 import com.example.hotelmanagementsystemfx.Models.Model;
-import com.example.hotelmanagementsystemfx.Views.ManagerMenuOptions;
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -12,9 +10,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
@@ -25,6 +25,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EmployeeController implements Initializable {
+
     @FXML
     private Button back_button;
 
@@ -44,9 +45,6 @@ public class EmployeeController implements Initializable {
     private ImageView gender_image;
 
     @FXML
-    private ChoiceBox<String> period_choiceBox;
-
-    @FXML
     private Label phoneNumber_label;
 
     @FXML
@@ -57,8 +55,6 @@ public class EmployeeController implements Initializable {
 
     @FXML
     private Label salary_label;
-
-
 
     @FXML
     private Circle status_circle;
@@ -74,9 +70,6 @@ public class EmployeeController implements Initializable {
 
     @FXML
     private TreeTableColumn<CompleteServiceOrder, String> client_treeTableCol;
-
-    @FXML
-    private TreeTableColumn<CompleteServiceOrder, String> completeDate_treeTableCol;
 
     @FXML
     private TreeTableColumn<CompleteServiceOrder, String> employee_treeTableCol;
@@ -96,6 +89,36 @@ public class EmployeeController implements Initializable {
     @FXML
     private TreeTableColumn<CompleteServiceOrder, Integer> count_treeTableCol;
 
+    @FXML
+    private TableColumn<Reservation, String> checkOutDate_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, String> checkInDate_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, String> client_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, String> employee_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, Integer> guests_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, Double> price_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, String> reservationDate_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, String> room_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, String> status_tableCol;
+
+    @FXML
+    private TableColumn<Reservation, Integer> tenure_tableCol;
+
     private Employee employee;
 
     public EmployeeController(Employee employee) {
@@ -105,18 +128,17 @@ public class EmployeeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         back_button.setOnAction(event -> onBackButton());
         change_button.setOnAction(event -> onChangeButton());
-        period_choiceBox.getItems().setAll("All", "Day", "Month", "Year");
-        period_choiceBox.setValue("All");
+
+
         fullAccInfo();
         if(employee.profileProperty().get().equals("Manager")){
             reservations_tableView.setVisible(false);
             serviceOrders_treeTableView.setVisible(false);
-            period_choiceBox.setVisible(false);
         }else if(employee.profileProperty().get().equals("Maid")){
             reservations_tableView.setVisible(false);
             serviceOrders_treeTableView.setVisible(false);
             completeServiceOrders_tableView.setVisible(true);
-            fullServiceOrdersForMaid(employee);
+            fullServiceOrdersForMaid();
         }else{
             fullTableView();
             fullTreeTableView();
@@ -129,7 +151,7 @@ public class EmployeeController implements Initializable {
         TreeItem<CompleteServiceOrder> invisibleRoot = new TreeItem<>(null);
         invisibleRoot.setExpanded(true);
 
-        List<ServiceOrder> serviceOrders = Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getAll();
+        List<ServiceOrder> serviceOrders = Model.getInstance().getDatabaseHandler().getServiceOrderDAO().getByField("idEmployee", employee.idEmployeeProperty().get());
         for (ServiceOrder serviceOrder : serviceOrders){
             List<TreeItem<CompleteServiceOrder>> treeItemList = new ArrayList<>();
             for (CompleteServiceOrder completeServiceOrder : serviceOrder.getCompleteServiceOrders()) {
@@ -137,8 +159,8 @@ public class EmployeeController implements Initializable {
                 treeItemList.add(item);
             }
             CompleteServiceOrder rootServiceOrderItem  = new CompleteServiceOrder(
-                    0, serviceOrder.idServiceOrderProperty().get(), 0, treeItemList.size(), serviceOrder.idEmployeeProperty().get(),
-                    serviceOrder.getStatus(), serviceOrder.getCompleteDate()
+                    0, serviceOrder.idServiceOrderProperty().get(), 0,
+                    treeItemList.size(), serviceOrder.idEmployeeProperty().get(), serviceOrder.statusProperty().get()
             );
             rootServiceOrderItem.setClientName(serviceOrder.idClientProperty().get());
             rootServiceOrderItem.setOrderDate(serviceOrder.orderDateProperty().get());
@@ -152,7 +174,6 @@ public class EmployeeController implements Initializable {
 
     private void fillingColumns(){
         client_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().clientNameProperty());
-        completeDate_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().completeDateProperty());
         employee_treeTableCol.setCellValueFactory(cellData -> {
             Employee maid = cellData.getValue().getValue().getMaid();
             ServiceType serviceType = cellData.getValue().getValue().getServiceType();
@@ -174,7 +195,7 @@ public class EmployeeController implements Initializable {
             } else if (optionalServiceOrder.isPresent()) {
                 price = optionalServiceOrder.get().priceProperty().get();
             } else {
-                price = 2;
+                price = 0;
             }
             return new SimpleDoubleProperty(price).asObject();
         });
@@ -186,8 +207,22 @@ public class EmployeeController implements Initializable {
         count_treeTableCol.setCellValueFactory(cellData -> cellData.getValue().getValue().countProperty().asObject());
     }
 
-    private void fullServiceOrdersForMaid(Employee employee) {
-
+    private void fullServiceOrdersForMaid() {
+        completeServiceOrders_tableView.getColumns().addAll(
+                CompleteServiceOrder.getClient(),
+                CompleteServiceOrder.getOrderDate(),
+                CompleteServiceOrder.getType(),
+                CompleteServiceOrder.getAdministratorFullName(),
+                CompleteServiceOrder.getPrice(),
+                CompleteServiceOrder.getCount(),
+                CompleteServiceOrder.getStatus()
+        );
+        List<CompleteServiceOrder> completeServiceOrders =
+                Model.getInstance().getDatabaseHandler().getCompleteServiceOrderDAO()
+                        .getByField("idEmployeeComplete", employee.idEmployeeProperty().get());
+        if(completeServiceOrders.isEmpty()) return;
+        ObservableList<CompleteServiceOrder> obsCompleteServiceOrders = FXCollections.observableArrayList(completeServiceOrders);
+        completeServiceOrders_tableView.setItems(obsCompleteServiceOrders);
     }
 
     private void onChangeButton() {
@@ -226,19 +261,19 @@ public class EmployeeController implements Initializable {
     }
 
     private void fullTableView() {
-        reservations_tableView.getColumns().addAll(
-                Reservation.getClientFullName(),
-                Reservation.getRoomNumber(),
-                Reservation.getEmployeeFullName(),
-                Reservation.getNumberOfGuests(),
-                Reservation.getReservationDate(),
-                Reservation.getCheckInDate(),
-                Reservation.getCheckOutDate(),
-                Reservation.getTenure(),
-                Reservation.getPrice(),
-                Reservation.getStatus()
+        // Настройка колонок
+        client_tableCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getClient().getFullName()));
+        room_tableCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRoom().roomNumberProperty().get()));
+        employee_tableCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getFullName()));
+        guests_tableCol.setCellValueFactory(new PropertyValueFactory<>("numberOfGuests"));
+        tenure_tableCol.setCellValueFactory(new PropertyValueFactory<>("tenure"));
+        reservationDate_tableCol.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        checkInDate_tableCol.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
+        checkOutDate_tableCol.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
+        price_tableCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        status_tableCol.setCellValueFactory(new PropertyValueFactory<>("status"));
 
-        );
+        // Загрузка данных
         List<Reservation> reservations = Model.getInstance().getDatabaseHandler().getReservationDAO().getByEmployee(employee.idEmployeeProperty().get());
         ObservableList<Reservation> obsReservation = FXCollections.observableArrayList(reservations);
         reservations_tableView.setItems(obsReservation);

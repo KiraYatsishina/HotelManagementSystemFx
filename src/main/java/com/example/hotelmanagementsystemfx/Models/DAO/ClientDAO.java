@@ -63,7 +63,7 @@ public class ClientDAO implements Dao<Client> {
     }
 
     @Override
-    public void save(Client client) {
+    public int save(Client client) {
         String sql = "INSERT INTO client (firstName, lastName, phoneNumber, gender) VALUES (?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, client.firstNameProperty().get());
@@ -74,6 +74,7 @@ public class ClientDAO implements Dao<Client> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override

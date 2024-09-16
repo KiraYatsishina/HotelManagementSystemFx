@@ -330,7 +330,7 @@
             </Button>
          </children>
       </VBox>
-      <VBox fx:id="account_VB" layoutX="391.0" layoutY="87.0" prefHeight="166.0" prefWidth="580.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;" visible="false">
+      <VBox fx:id="account_VB" layoutX="391.0" layoutY="87.0" prefHeight="166.0" prefWidth="580.0" style="-fx-background-color: #fefefe; -fx-background-radius: 10;">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -480,7 +480,7 @@
       </VBox>
       <VBox fx:id="errors_VB" layoutX="375.0" layoutY="242.0" prefHeight="409.0" prefWidth="580.0">
          <children>
-            <Label fx:id="emailError_label">
+            <Label fx:id="emailError_label" wrapText="true">
                <font>
                   <Font name="Yu Gothic Regular" size="16.0" />
                </font>

@@ -55,12 +55,21 @@
     -fx-font-weight: bold;
 
 }
-.text_field{
-    -fx-background-radius:  5;
-    -fx-background-color:  rgba(255, 255, 255, 0);
-    -fx-prompt-text-fill:  black;
-    -fx-border-color:   #1e7f78;
-    -fx-border-width:  0 0 1 0;
+.text-field {
+    -fx-background-radius: 5;
+    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-border-color: #1e7f78;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-family: "Yu Gothic"; /* Шрифт */
+    -fx-font-size: 14; /* Размер шрифта */
+}
+
+.text-field .text {
+    -fx-fill: black; /* Цвет основного текста */
+}
+
+.text-field .text-field:prompt-text {
+    -fx-fill: rgba(0, 0, 0, 0.4); /* Прозрачный текст prompt */
 }
 
 .custom-checkbox .box {
@@ -75,8 +84,12 @@
     -fx-background-color: #f0f6f6;
     -fx-border-color: #145a4e;
     -fx-border-radius: 50%;
-    -fx-padding: 5px;
-    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+    -fx-padding: 2px; /* Уменьшаем padding */
+    -fx-min-width: 10px; /* Минимальная ширина */
+    -fx-min-height: 10px; /* Минимальная высота */
+    -fx-pref-width: 12px; /* Предпочтительная ширина */
+    -fx-pref-height: 12px; /* Предпочтительная высота */
+    -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1); /* Меньший тень */
 }
 .listCell{
     -fx-background-color: #fefefe;
@@ -124,6 +137,44 @@
     -fx-font-family: "Yu Gothic";
     -fx-font-size: 16;
     -fx-background-color:    #7caea9;
+}
+
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-font-size: 14px;
+    -fx-font-family: 'Yu Gothic Regular';
+}
+
+.table-view .column-header {
+    -fx-background-color: #bfe1f2;
+    -fx-border-color: #f0f6f6;
+    -fx-text-fill: black;
+}
+
+.table-view .table-row-cell {
+    -fx-border-color: #f0f6f6;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-border-color: #f0f6f6;
+    -fx-border-width: 0 1px 0 1px;
+}
+
+.table-view .table-row-cell:filled {
+    -fx-background-color: #fff;
+    -fx-border-color: #f0f6f6;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: lightblue;
+}
+
+.table-view .table-row-cell:empty:hover {
+    -fx-background-color: transparent;
 }
 
 

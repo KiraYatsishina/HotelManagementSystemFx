@@ -29,7 +29,8 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
                         rs.getInt("idClient"),
                         rs.getInt("idEmployee"),
                         rs.getString("orderDate"),
-                        rs.getDouble("price")
+                        rs.getDouble("price"),
+                        rs.getString("status")
                 );
                 return Optional.of(serviceOrder);
             }
@@ -52,7 +53,8 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
                         rs.getInt("idClient"),
                         rs.getInt("idEmployee"),
                         rs.getString("orderDate"),
-                        rs.getDouble("price")
+                        rs.getDouble("price"),
+                        rs.getString("status")
                 );
                 serviceOrders.add(serviceOrder);
             }
@@ -63,29 +65,32 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
     }
 
     @Override
-    public void save(ServiceOrder serviceOrder) {
-        String sql = "INSERT INTO service_order (idClient, idEmployee, orderDate, price) VALUES (?, ?, ?, ?)";
+    public int save(ServiceOrder serviceOrder) {
+        String sql = "INSERT INTO service_order (idClient, idEmployee, orderDate, price, status) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, serviceOrder.idClientProperty().get());
             stmt.setInt(2, serviceOrder.idEmployeeProperty().get());
             stmt.setString(3, serviceOrder.orderDateProperty().get());
             stmt.setDouble(4, serviceOrder.priceProperty().get());
+            stmt.setString(5, serviceOrder.statusProperty().get());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override
     public void update(ServiceOrder serviceOrder, String[] params) {
-        String sql = "UPDATE service_order SET idClient = ?, idEmployee = ?, orderDate = ?, price = ? WHERE idServiceOrder = ?";
+        String sql = "UPDATE service_order SET idClient = ?, idEmployee = ?, orderDate = ?, price = ?, status = ? WHERE idServiceOrder = ?";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, Integer.parseInt(params[0]));
             stmt.setInt(2, Integer.parseInt(params[1]));
-
+            stmt.setString(3, params[2]);
             stmt.setDouble(4, Double.parseDouble(params[3]));
-            stmt.setInt(5, serviceOrder.idServiceOrderProperty().get());
+            stmt.setString(5, params[4]);
+            stmt.setInt(6, serviceOrder.idServiceOrderProperty().get());
 
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -114,7 +119,8 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
                         rs.getInt("idClient"),
                         rs.getInt("idEmployee"),
                         rs.getString("orderDate"),
-                        rs.getDouble("price")
+                        rs.getDouble("price"),
+                        rs.getString("status")
                 );
                 serviceOrders.add(serviceOrder);
             }
@@ -124,14 +130,33 @@ public class ServiceOrderDAO implements Dao<ServiceOrder>{
         return serviceOrders;
     }
 
-
-
     public String getStatusServiceOrderById(int id) {
         return "In process";
     }
 
-    public String getCompleteDateById(int id) {
-        return "Not completed";
+    public List<ServiceOrder> getByField(String someField, int value) {
+        List<ServiceOrder> serviceOrders = new ArrayList<>();
+        String sql = "SELECT * FROM service_order WHERE " + someField + " = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, value);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ServiceOrder serviceOrder = new ServiceOrder(
+                        rs.getInt("idServiceOrder"),
+                        rs.getInt("idClient"),
+                        rs.getInt("idEmployee"),
+                        rs.getString("orderDate"),
+                        rs.getDouble("price"),
+                        rs.getString("status")
+                );
+                serviceOrders.add(serviceOrder);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return serviceOrders;
     }
 
 //    public String getStatusServiceOrderById(String id) {

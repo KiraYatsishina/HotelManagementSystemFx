@@ -33,8 +33,7 @@ public class CompleteServiceOrderDAO implements Dao<CompleteServiceOrder>{
                         rs.getInt("idServiceType"),
                         rs.getInt("count"),
                         rs.getInt("idEmployeeComplete"),
-                        rs.getString("status"),
-                        rs.getString("completeDate")
+                        rs.getString("status")
                 );
                 return Optional.of(completeServiceOrder);
             }
@@ -57,8 +56,7 @@ public class CompleteServiceOrderDAO implements Dao<CompleteServiceOrder>{
                         rs.getInt("idServiceType"),
                         rs.getInt("count"),
                         rs.getInt("idEmployeeComplete"),
-                        rs.getString("status"),
-                        rs.getString("completeDate")
+                        rs.getString("status")
                 );
                 completeServiceOrders.add(completeServiceOrder);
             }
@@ -69,32 +67,31 @@ public class CompleteServiceOrderDAO implements Dao<CompleteServiceOrder>{
     }
 
     @Override
-    public void save(CompleteServiceOrder completeServiceOrder) {
-        String sql = "INSERT INTO complete_service_order (idServiceOrder, idServiceType, count, idEmployeeComplete, status, completeDate) VALUES (?, ?, ?, ?, ?)";
+    public int save(CompleteServiceOrder completeServiceOrder) {
+        String sql = "INSERT INTO complete_service_order (idServiceOrder, idServiceType, count, idEmployeeComplete, status) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, completeServiceOrder.idServiceOrderProperty().get());
             pstmt.setInt(2, completeServiceOrder.idServiceTypeProperty().get());
             pstmt.setInt(3, completeServiceOrder.countProperty().get());
             pstmt.setInt(4, completeServiceOrder.idEmployeeCompleteProperty().get());
             pstmt.setString(5, completeServiceOrder.statusProperty().get());
-            pstmt.setString(6, completeServiceOrder.completeDateProperty().get());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override
     public void update(CompleteServiceOrder completeServiceOrder, String[] params) {
-        String sql = "UPDATE complete_service_order SET idServiceOrder = ?, idServiceType = ?, count = ?, idEmployeeComplete = ?, status = ?, completeDate = ? WHERE idCompleteServiceOrder = ?";
+        String sql = "UPDATE complete_service_order SET idServiceOrder = ?, idServiceType = ?, count = ?, idEmployeeComplete = ?, status = ? WHERE idCompleteServiceOrder = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, completeServiceOrder.idServiceOrderProperty().get());
             pstmt.setInt(2, completeServiceOrder.idServiceTypeProperty().get());
             pstmt.setInt(3, completeServiceOrder.countProperty().get());
             pstmt.setInt(4, completeServiceOrder.idEmployeeCompleteProperty().get());
             pstmt.setString(5, completeServiceOrder.statusProperty().get());
-            pstmt.setString(6, completeServiceOrder.completeDateProperty().get());
-            pstmt.setInt(7, completeServiceOrder.idCompleteServiceOrderProperty().get());
+            pstmt.setInt(6, completeServiceOrder.idCompleteServiceOrderProperty().get());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -124,8 +121,7 @@ public class CompleteServiceOrderDAO implements Dao<CompleteServiceOrder>{
                         rs.getInt("idServiceType"),
                         rs.getInt("count"),
                         rs.getInt("idEmployeeComplete"),
-                        rs.getString("status"),
-                        rs.getString("completeDate")
+                        rs.getString("status")
                 );
                 completeServiceOrders.add(completeServiceOrder);
             }
@@ -148,8 +144,7 @@ public class CompleteServiceOrderDAO implements Dao<CompleteServiceOrder>{
                         rs.getInt("idServiceType"),
                         rs.getInt("count"),
                         rs.getInt("idEmployeeComplete"),
-                        rs.getString("status"),
-                        rs.getString("completeDate")
+                        rs.getString("status")
                 );
                 completeServiceOrders.add(completeServiceOrder);
             }

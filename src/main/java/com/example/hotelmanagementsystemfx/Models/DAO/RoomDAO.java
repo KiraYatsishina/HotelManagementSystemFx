@@ -71,7 +71,7 @@ public class RoomDAO implements Dao<Room>{
     }
 
     @Override
-    public void save(Room room) {
+    public int save(Room room) {
         String sql = "INSERT INTO room (roomNumber, roomType, capacity, pricePerNight, floor, hasRefrigerator, hasAirConditioning) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, room.roomNumberProperty().get());
@@ -85,6 +85,7 @@ public class RoomDAO implements Dao<Room>{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return 0;
     }
 
     @Override

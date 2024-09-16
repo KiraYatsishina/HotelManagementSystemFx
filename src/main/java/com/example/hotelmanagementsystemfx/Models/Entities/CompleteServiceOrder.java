@@ -1,10 +1,9 @@
 package com.example.hotelmanagementsystemfx.Models.Entities;
 
 import com.example.hotelmanagementsystemfx.Models.Model;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.Optional;
 
@@ -15,7 +14,6 @@ public class CompleteServiceOrder {
     private final IntegerProperty count;
     private final IntegerProperty idEmployeeComplete;
     private final StringProperty status;
-    private final StringProperty completeDate;
 
     private StringProperty clientName;
     private StringProperty orderDate;
@@ -24,14 +22,13 @@ public class CompleteServiceOrder {
     private final ServiceType serviceType;
 
     public CompleteServiceOrder(int idCompleteServiceOrder, int idServiceOrder, int idServiceType, int count,
-                                int idEmployeeComplete, String status, String completeDate) {
+                                int idEmployeeComplete, String status) {
         this.idCompleteServiceOrder = new SimpleIntegerProperty(this, "idCompleteServiceOrder", idCompleteServiceOrder);
         this.idServiceOrder = new SimpleIntegerProperty(this, "idServiceOrder", idServiceOrder);
         this.idServiceType = new SimpleIntegerProperty(this, "idServiceType", idServiceType);
         this.count = new SimpleIntegerProperty(this, "count", count);
         this.idEmployeeComplete = new SimpleIntegerProperty(this, "idEmployeeComplete", idEmployeeComplete);
         this.status = new SimpleStringProperty(this, "status", status);
-        this.completeDate = new SimpleStringProperty(this, "completeDate", completeDate);
 
         this.clientName = new SimpleStringProperty(this, "clientName", "");
         this.orderDate = new SimpleStringProperty(this, "orderDate", "");
@@ -46,6 +43,105 @@ public class CompleteServiceOrder {
         Optional<Employee> maid = Model.getInstance().getDatabaseHandler().getEmployeeDAO().get(idEmployeeComplete);
         this.maid = maid.orElse(null);
     }
+
+
+
+    public static TableColumn<CompleteServiceOrder, String> getClient() {
+        TableColumn<CompleteServiceOrder, String> col = new TableColumn<>("Client");
+        col.setCellValueFactory(cellData -> {
+            Optional<ServiceOrder> serviceOrder = Model.getInstance()
+                    .getDatabaseHandler()
+                    .getServiceOrderDAO()
+                    .get(cellData.getValue().idServiceOrder.get());
+
+            if (serviceOrder.isPresent()) {
+                cellData.getValue().setClientName(serviceOrder.get().idClientProperty().get());
+                return new SimpleStringProperty(cellData.getValue().clientNameProperty().get());
+            } else {
+                return new SimpleStringProperty("Unknown Client");
+            }
+        });
+        return col;
+    }
+
+    public static TableColumn<CompleteServiceOrder, String> getOrderDate() {
+        TableColumn<CompleteServiceOrder, String> col = new TableColumn<>("Order Date");
+        col.setCellValueFactory(cellData -> {
+            Optional<ServiceOrder> serviceOrder = Model.getInstance()
+                    .getDatabaseHandler()
+                    .getServiceOrderDAO()
+                    .get(cellData.getValue().idServiceOrder.get());
+
+            if (serviceOrder.isPresent()) {
+                cellData.getValue().setOrderDate(serviceOrder.get().orderDateProperty().get());
+                return new SimpleStringProperty(cellData.getValue().orderDateProperty().get());
+            } else {
+                return new SimpleStringProperty("Unknown Date");
+            }
+        });
+        return col;
+    }
+
+    public static TableColumn<CompleteServiceOrder, String> getType() {
+        TableColumn<CompleteServiceOrder, String> col = new TableColumn<>("Type");
+        col.setCellValueFactory(cellData -> {
+            ServiceType serviceType = cellData.getValue().getServiceType();
+            if (serviceType != null) {
+                return new SimpleStringProperty(serviceType.nameProperty().get());
+            } else {
+                return new SimpleStringProperty("Unknown Type");
+            }
+        });
+        return col;
+    }
+
+    public static TableColumn<CompleteServiceOrder, Double> getPrice() {
+        TableColumn<CompleteServiceOrder, Double> col = new TableColumn<>("Price");
+        col.setCellValueFactory(cellData -> {
+            ServiceType serviceType = cellData.getValue().getServiceType();
+            if (serviceType != null) {
+                return new SimpleDoubleProperty(serviceType.priceProperty().get()).asObject();
+            } else {
+                return new SimpleDoubleProperty(0.0).asObject();
+            }
+        });
+        return col;
+    }
+
+    public static TableColumn<CompleteServiceOrder, String> getAdministratorFullName() {
+        TableColumn<CompleteServiceOrder, String> col = new TableColumn<>("Administrator");
+        col.setCellValueFactory(cellData -> {
+            Optional<ServiceOrder> serviceOrder = Model.getInstance()
+                    .getDatabaseHandler()
+                    .getServiceOrderDAO()
+                    .get(cellData.getValue().idServiceOrder.get());
+
+            if (serviceOrder.isPresent()) {
+                Employee admin = serviceOrder.get().getEmployee();
+                if (admin != null) {
+                    return new SimpleStringProperty(admin.getFullName());
+                } else {
+                    return new SimpleStringProperty("Unknown Administrator");
+                }
+            } else {
+                return new SimpleStringProperty("Unknown Administrator");
+            }
+        });
+        return col;
+    }
+
+    public static TableColumn<CompleteServiceOrder, Integer> getCount() {
+        TableColumn<CompleteServiceOrder, Integer> col = new TableColumn<>("Count");
+        col.setCellValueFactory(new PropertyValueFactory<>("count"));
+        return col;
+    }
+
+    public static TableColumn<CompleteServiceOrder, String> getStatus() {
+        TableColumn<CompleteServiceOrder, String> col = new TableColumn<>("Status");
+        col.setCellValueFactory(new PropertyValueFactory<>("status"));
+        return col;
+    }
+
 
     public Employee getMaid() {
         return maid;
@@ -71,9 +167,6 @@ public class CompleteServiceOrder {
     }
     public StringProperty statusProperty() {
         return this.status;
-    }
-    public StringProperty completeDateProperty() {
-        return this.completeDate;
     }
     public StringProperty clientNameProperty() {
         return this.clientName;
